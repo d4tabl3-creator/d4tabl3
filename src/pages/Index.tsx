@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import HeroSection from "@/components/landing/HeroSection";
 import ServicesSection from "@/components/landing/ServicesSection";
 import PhilosophySection from "@/components/landing/PhilosophySection";
@@ -8,17 +8,25 @@ import AnalysisResults from "@/components/interactive/AnalysisResults";
 import Dashboard from "@/components/interactive/Dashboard";
 import ProposalGenerator from "@/components/interactive/ProposalGenerator";
 import ChatAssistant from "@/components/interactive/ChatAssistant";
+import ConfettiBackground from "@/components/effects/ConfettiBackground";
+import { fireFireworks } from "@/components/effects/useFireworks";
 
 const Index = () => {
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
   const [chatStarted, setChatStarted] = useState(false);
 
+  const handleAnalysisComplete = useCallback((result: AnalysisResult) => {
+    setAnalysisResult(result);
+    fireFireworks();
+  }, []);
+
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background relative">
+      <ConfettiBackground />
       <HeroSection />
       <ServicesSection />
       <PhilosophySection />
-      <ImageUpload onAnalysisComplete={setAnalysisResult} />
+      <ImageUpload onAnalysisComplete={handleAnalysisComplete} />
 
       {analysisResult && (
         <>
