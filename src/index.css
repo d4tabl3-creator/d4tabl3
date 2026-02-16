@@ -96,4 +96,76 @@
   .text-glow {
     text-shadow: 0 0 40px hsl(var(--emerald) / 0.3);
   }
+  .text-3d {
+    text-shadow:
+      0 1px 0 hsl(var(--rainbow-2)),
+      0 2px 0 hsl(var(--rainbow-3)),
+      0 3px 0 hsl(var(--rainbow-4)),
+      0 4px 0 hsl(var(--rainbow-5)),
+      0 5px 0 hsl(var(--rainbow-6)),
+      0 6px 10px rgba(0,0,0,0.4),
+      0 8px 20px rgba(0,0,0,0.3),
+      0 12px 40px rgba(0,0,0,0.2);
+  }
+  .text-3d-letter {
+    display: inline-block;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    text-shadow:
+      0 2px 0 rgba(0,0,0,0.3),
+      0 4px 0 rgba(0,0,0,0.2),
+      0 6px 0 rgba(0,0,0,0.1),
+      0 8px 15px rgba(0,0,0,0.4);
+  }
+  .text-3d-letter:hover {
+    transform: translateY(-8px) scale(1.2);
+    text-shadow:
+      0 4px 0 rgba(0,0,0,0.3),
+      0 8px 0 rgba(0,0,0,0.2),
+      0 12px 0 rgba(0,0,0,0.1),
+      0 16px 30px rgba(0,0,0,0.5);
+  }
+  .rainbow-border {
+    border-image: linear-gradient(
+      135deg,
+      hsl(var(--rainbow-1)),
+      hsl(var(--rainbow-2)),
+      hsl(var(--rainbow-3)),
+      hsl(var(--rainbow-4)),
+      hsl(var(--rainbow-5)),
+      hsl(var(--rainbow-6))
+    ) 1;
+  }
+  .glass-rainbow {
+    @apply bg-card/30 backdrop-blur-xl;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  .glass-rainbow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--rainbow-1) / 0.5),
+      hsl(var(--rainbow-2) / 0.5),
+      hsl(var(--rainbow-3) / 0.5),
+      hsl(var(--rainbow-4) / 0.5),
+      hsl(var(--rainbow-5) / 0.5),
+      hsl(var(--rainbow-6) / 0.5)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  @keyframes rainbow-shift {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  .animate-rainbow {
+    animation: rainbow-shift 8s linear infinite;
+  }
 }

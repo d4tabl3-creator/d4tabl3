@@ -2,49 +2,91 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Sparkles } from "lucide-react";
 
+const letters = [
+  { char: "d", color: "--rainbow-1" },
+  { char: "ª", color: "--rainbow-2" },
+  { char: "t", color: "--rainbow-3" },
+  { char: "ª", color: "--rainbow-4" },
+  { char: "b", color: "--rainbow-5" },
+  { char: "l", color: "--rainbow-6" },
+  { char: "ɛ", color: "--rainbow-1" },
+];
+
 const Logo = () => (
-  <span className="text-5xl md:text-7xl font-display font-bold tracking-tight">
-    <span className="text-[hsl(var(--rainbow-1))]">d</span>
-    <span className="text-[hsl(var(--rainbow-2))]">ª</span>
-    <span className="text-[hsl(var(--rainbow-3))]">t</span>
-    <span className="text-[hsl(var(--rainbow-4))]">ª</span>
-    <span className="text-[hsl(var(--rainbow-5))]">b</span>
-    <span className="text-[hsl(var(--rainbow-6))]">l</span>
-    <span className="text-[hsl(var(--rainbow-1))]">ɛ</span>
-  </span>
+  <div className="flex items-center justify-center gap-1">
+    {letters.map((l, i) => (
+      <motion.span
+        key={i}
+        className="text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tight text-3d-letter cursor-pointer select-none"
+        style={{
+          color: `hsl(var(${l.color}))`,
+          textShadow: `
+            0 2px 0 hsl(var(${l.color}) / 0.6),
+            0 4px 0 hsl(var(${l.color}) / 0.4),
+            0 6px 0 hsl(var(${l.color}) / 0.2),
+            0 8px 15px rgba(0,0,0,0.4),
+            0 0 30px hsl(var(${l.color}) / 0.3)
+          `,
+        }}
+        initial={{ opacity: 0, y: 60, rotateX: -90 }}
+        animate={{ opacity: 1, y: 0, rotateX: 0 }}
+        transition={{
+          delay: 0.15 * i,
+          duration: 0.7,
+          type: "spring",
+          stiffness: 120,
+        }}
+        whileHover={{
+          y: -12,
+          scale: 1.25,
+          rotateZ: [-5, 5, 0],
+          transition: { duration: 0.3 },
+        }}
+      >
+        {l.char}
+      </motion.span>
+    ))}
+  </div>
 );
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(270_60%_15%/0.4),transparent_70%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(155_70%_20%/0.15),transparent_60%)]" />
+      {/* Colorful background blobs */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[hsl(var(--rainbow-1)/0.15)] rounded-full blur-[120px] animate-pulse-glow" />
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-[hsl(var(--rainbow-5)/0.2)] rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "1s" }} />
+        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-[hsl(var(--rainbow-4)/0.15)] rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
+        <div className="absolute bottom-0 right-1/3 w-64 h-64 bg-[hsl(var(--rainbow-6)/0.2)] rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "0.5s" }} />
+        <div className="absolute top-1/2 left-0 w-48 h-48 bg-[hsl(var(--rainbow-2)/0.15)] rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+      </div>
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <Logo />
-        </motion.div>
+      {/* Rainbow line accent */}
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-1 gradient-rainbow"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+      />
+
+      <div className="relative z-10 text-center max-w-4xl mx-auto" style={{ perspective: "1000px" }}>
+        <Logo />
 
         <motion.h1
-          className="mt-8 text-2xl md:text-4xl font-display font-semibold text-foreground text-glow"
+          className="mt-8 text-2xl md:text-4xl font-display font-semibold text-foreground"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
         >
           Del prototipo a la plataforma.{" "}
-          <span className="gradient-rainbow-text">Sin caos.</span>
+          <span className="gradient-rainbow-text font-bold">Sin caos.</span>
         </motion.h1>
 
         <motion.p
           className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
         >
           Digitalizamos y automatizamos tu negocio. Sube una imagen de tu empresa y
           descubre cómo transformarla con inteligencia artificial.
@@ -54,11 +96,11 @@ export default function HeroSection() {
           className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
+          transition={{ delay: 1.6, duration: 0.6 }}
         >
           <Button
             size="lg"
-            className="gradient-rainbow text-primary-foreground font-display font-semibold text-lg px-8 py-6 rounded-xl hover:opacity-90 transition-opacity"
+            className="gradient-rainbow text-primary-foreground font-display font-semibold text-lg px-8 py-6 rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-[hsl(var(--rainbow-1)/0.3)]"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
             <Sparkles className="mr-2 h-5 w-5" />
