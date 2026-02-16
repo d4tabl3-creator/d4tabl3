@@ -3,6 +3,7 @@ import HeroSection from "@/components/landing/HeroSection";
 import ServicesSection from "@/components/landing/ServicesSection";
 import PhilosophySection from "@/components/landing/PhilosophySection";
 import ContactSection from "@/components/landing/ContactSection";
+import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import ImageUpload, { type AnalysisResult } from "@/components/interactive/ImageUpload";
 import AnalysisResults from "@/components/interactive/AnalysisResults";
 import Dashboard from "@/components/interactive/Dashboard";
@@ -26,6 +27,7 @@ const Index = () => {
       <HeroSection />
       <ServicesSection />
       <PhilosophySection />
+      <TestimonialsSection />
       <ImageUpload onAnalysisComplete={handleAnalysisComplete} />
 
       {analysisResult && (
