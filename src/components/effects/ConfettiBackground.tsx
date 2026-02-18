@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Particle {
   x: number;
@@ -24,7 +24,13 @@ const COLORS = [
   "hsl(45, 95%, 60%)",
 ];
 
-const PARTICLE_COUNT = 35;
+// Fewer particles on mobile for performance (especially iOS)
+const isMobileDevice = () => {
+  if (typeof window === 'undefined') return false;
+  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+};
+
+const PARTICLE_COUNT = isMobileDevice() ? 12 : 35;
 
 export default function ConfettiBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -34,8 +40,12 @@ export default function ConfettiBackground() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
+
+    // On iOS, use lower frame rate to prevent crashes
+    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    let frameCount = 0;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -81,7 +91,13 @@ export default function ConfettiBackground() {
     };
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Skip frames on iOS for better performance
+      frameCount++;
+      if (isIOS && frameCount % 2 !== 0) {
+        animRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
 
       particlesRef.current.forEach((p, i) => {
         p.y += p.speedY;

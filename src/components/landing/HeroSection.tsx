@@ -54,11 +54,11 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
       {/* Colorful background blobs */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[hsl(var(--rainbow-1)/0.15)] rounded-full blur-[120px] animate-pulse-glow" />
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-[hsl(var(--rainbow-5)/0.2)] rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "1s" }} />
-        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-[hsl(var(--rainbow-4)/0.15)] rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
-        <div className="absolute bottom-0 right-1/3 w-64 h-64 bg-[hsl(var(--rainbow-6)/0.2)] rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "0.5s" }} />
-        <div className="absolute top-1/2 left-0 w-48 h-48 bg-[hsl(var(--rainbow-2)/0.15)] rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-destructive/15 rounded-full blur-[120px] animate-pulse-glow" />
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "1s" }} />
+        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-primary/15 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
+        <div className="absolute bottom-0 right-1/3 w-64 h-64 bg-accent/20 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "0.5s" }} />
+        <div className="absolute top-1/2 left-0 w-48 h-48 bg-secondary/15 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
       </div>
 
       {/* Rainbow line accent */}
@@ -100,7 +100,7 @@ export default function HeroSection() {
         >
           <Button
             size="lg"
-            className="gradient-rainbow text-primary-foreground font-display font-semibold text-lg px-8 py-6 rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-[hsl(var(--rainbow-1)/0.3)]"
+            className="gradient-rainbow text-primary-foreground font-display font-semibold text-lg px-8 py-6 rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-destructive/30"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
             <Sparkles className="mr-2 h-5 w-5" />

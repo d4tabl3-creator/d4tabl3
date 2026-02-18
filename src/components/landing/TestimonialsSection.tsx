@@ -32,7 +32,7 @@ export default function TestimonialsSection() {
   return (
     <section className="py-24 px-4 relative overflow-hidden">
       {/* Subtle glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[hsl(var(--rainbow-6)/0.08)] rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
@@ -67,7 +67,7 @@ export default function TestimonialsSection() {
                 {Array.from({ length: t.stars }).map((_, s) => (
                   <Star
                     key={s}
-                    className="h-4 w-4 fill-[hsl(var(--rainbow-3))] text-[hsl(var(--rainbow-3))]"
+                    className="h-4 w-4 fill-emerald text-emerald"
                   />
                 ))}
               </div>

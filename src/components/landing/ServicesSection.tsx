@@ -12,8 +12,8 @@ export default function ServicesSection() {
     <section className="py-24 px-4 relative">
       {/* Background color blobs */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[hsl(var(--rainbow-6)/0.1)] rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[hsl(var(--rainbow-3)/0.1)] rounded-full blur-[100px]" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
