@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export default function ContactSection() {
   return (
@@ -12,7 +12,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          ¿Listo para <span className="gradient-rainbow-text">escalar</span>?
+          ¿Te gustó tu diagnóstico? <span className="gradient-rainbow-text">Hablemos.</span>
         </motion.h2>
         <motion.p
           className="text-muted-foreground mb-10 max-w-lg mx-auto"
@@ -21,10 +21,10 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Hablemos de cómo dªtªblɛ puede transformar tu operación.
+          El diagnóstico es gratis. Si quieres que lo implementemos, platiquemos sin compromiso.
         </motion.p>
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -32,24 +32,24 @@ export default function ContactSection() {
         >
           <Button
             size="lg"
-            className="gradient-rainbow text-primary-foreground font-display font-semibold rounded-xl px-8 py-6 hover:opacity-90 transition-opacity"
-            onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            <MessageCircle className="mr-2 h-5 w-5" />
-            Iniciar chat con IA
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-border/60 font-display rounded-xl px-8 py-6"
+            className="gradient-rainbow text-primary-foreground font-display font-bold rounded-2xl px-10 py-6 hover:opacity-90 transition-all hover:scale-105 text-lg"
             asChild
           >
             <a href="mailto:contacto@datable.com">
               <Mail className="mr-2 h-5 w-5" />
-              contacto@datable.com
+              Escríbenos — es gratis platicar
             </a>
           </Button>
         </motion.div>
+        <motion.p
+          className="mt-4 text-xs text-muted-foreground"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          Sin compromiso · Sin vendedores molestos · Respuesta en menos de 24h
+        </motion.p>
       </div>
 
       <footer className="mt-24 text-center text-sm text-muted-foreground">

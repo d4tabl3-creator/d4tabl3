@@ -78,8 +78,8 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.6 }}
         >
-          Del prototipo a la plataforma.{" "}
-          <span className="gradient-rainbow-text font-bold">Sin caos.</span>
+          ¿Y si pudieras ver el futuro de tu negocio{" "}
+          <span className="gradient-rainbow-text font-bold">en 30 segundos?</span>
         </motion.h1>
 
         <motion.p
@@ -88,32 +88,25 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.6 }}
         >
-          Digitalizamos y automatizamos tu negocio. Sube una imagen de tu empresa y
-          descubre cómo transformarla con inteligencia artificial.
+          Sube una foto de tu negocio y nuestra IA te dirá exactamente cómo mejorarlo.
+          <span className="block mt-2 text-emerald font-semibold">100% gratis. Sin registro. Sin trucos.</span>
         </motion.p>
 
         <motion.div
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.6, duration: 0.6 }}
         >
           <Button
             size="lg"
-            className="gradient-rainbow text-primary-foreground font-display font-semibold text-lg px-8 py-6 rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-destructive/30"
+            className="gradient-rainbow text-primary-foreground font-display font-bold text-lg px-10 py-7 rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-destructive/30 animate-pulse hover:animate-none hover:scale-105"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
             <Sparkles className="mr-2 h-5 w-5" />
-            Solicitar Demo Express
+            Probar gratis ahora →
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-border/60 text-foreground font-display text-lg px-8 py-6 rounded-xl hover:bg-card/50"
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            Cuéntanos tu historia
-          </Button>
+          <span className="text-xs text-muted-foreground">Sin tarjeta · Sin registro · 30 segundos</span>
         </motion.div>
 
         <motion.div
