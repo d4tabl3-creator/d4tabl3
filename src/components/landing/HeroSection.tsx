@@ -88,7 +88,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.6 }}
         >
-          Sube una foto de tu negocio y nuestra IA te dirá exactamente cómo mejorarlo.
+          Sube una foto de tu negocio y nuestro <span className="font-semibold text-foreground">Automation Blueprint</span> te genera un plan de acción personalizado.
           <span className="block mt-2 text-emerald font-semibold">100% gratis. Sin registro. Sin trucos.</span>
         </motion.p>
 

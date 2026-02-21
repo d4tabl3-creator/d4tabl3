@@ -12,12 +12,12 @@ export default function ProposalGenerator({ result }: Props) {
     { name: "Automatización de documentos", price: "$2,500 MXN/mes" },
     { name: "Dashboard de métricas en tiempo real", price: "$1,800 MXN/mes" },
     { name: "Integración con sistemas existentes", price: "$3,200 MXN/mes" },
-    { name: "Asistente IA personalizado", price: "$4,000 MXN/mes" },
+    { name: "Asistente virtual personalizado", price: "$4,000 MXN/mes" },
   ];
 
   const handleDownload = () => {
     const content = `
-PLAN DE DIGITALIZACIÓN - dªtªblɛ
+AUTOMATION BLUEPRINT - dªtªblɛ
 =================================
 
 RESUMEN: ${result.summary}
@@ -44,7 +44,7 @@ Generado por dªtªblɛ | contacto@datable.com | Ciudad de México
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "plan-digitalizacion-datable.txt";
+    a.download = "automation-blueprint-datable.txt";
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -60,10 +60,10 @@ Generado por dªtªblɛ | contacto@datable.com | Ciudad de México
         >
           <div className="text-center">
             <h2 className="text-3xl font-display font-bold">
-              Tu Plan de <span className="gradient-rainbow-text">Digitalización</span>
+              Tu <span className="gradient-rainbow-text">Automation Blueprint</span>
             </h2>
             <p className="text-muted-foreground mt-2">
-              Personalizado basado en el análisis de tu negocio
+              Estrategia personalizada generada por el motor exclusivo de dªtªblɛ
             </p>
           </div>
 

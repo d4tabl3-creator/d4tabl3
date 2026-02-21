@@ -28,7 +28,7 @@ export default function AnalysisResults({ result, onUpdate }: Props) {
           animate={{ opacity: 1, y: 0 }}
         >
           <h2 className="text-3xl font-display font-bold">
-            Análisis <span className="gradient-rainbow-text">Completado</span>
+            Blueprint <span className="gradient-rainbow-text">Completado</span>
           </h2>
           <p className="text-muted-foreground mt-2">{result.summary}</p>
         </motion.div>
@@ -41,7 +41,7 @@ export default function AnalysisResults({ result, onUpdate }: Props) {
           transition={{ delay: 0.1 }}
         >
           <BarChart3 className="mx-auto h-8 w-8 text-primary mb-2" />
-          <p className="text-sm text-muted-foreground">Potencial de Digitalización</p>
+          <p className="text-sm text-muted-foreground">Potencial de Automatización</p>
           <p className="text-5xl font-display font-bold gradient-rainbow-text mt-1">
             {result.digitalizationScore}%
           </p>
