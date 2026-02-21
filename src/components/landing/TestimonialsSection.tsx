@@ -3,7 +3,7 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Juan Pérez",
+    name: "Ricardo Valenzuela",
     role: "Dueño de Maki Sushi Restaurant",
     text: "Datable me ayudó a digitalizar mi negocio por completo. Ahora todo fluye en una sola plataforma: pedidos, inventario y nómina. He dejado de necesitar personal extra para tareas administrativas.",
     stars: 5,
