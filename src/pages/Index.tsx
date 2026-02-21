@@ -10,6 +10,7 @@ import Dashboard from "@/components/interactive/Dashboard";
 import ProposalGenerator from "@/components/interactive/ProposalGenerator";
 import ChatAssistant from "@/components/interactive/ChatAssistant";
 import ConfettiBackground from "@/components/effects/ConfettiBackground";
+import ReadAloudButton from "@/components/interactive/ReadAloudButton";
 import { fireFireworks } from "@/components/effects/useFireworks";
 
 const Index = () => {
@@ -45,6 +46,7 @@ const Index = () => {
       <ChatAssistant
         analysisResult={analysisResult}
       />
+      <ReadAloudButton />
     </main>
   );
 };

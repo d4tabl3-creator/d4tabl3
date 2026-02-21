@@ -99,6 +99,8 @@ export default function ConfettiBackground() {
       }
 
 
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
       particlesRef.current.forEach((p, i) => {
         p.y += p.speedY;
         p.x += p.speedX + Math.sin(p.y * 0.01) * 0.3;
