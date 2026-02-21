@@ -29,7 +29,7 @@ export default function PhilosophySection() {
             Ya lo hicimos con decenas de empresas.
           </p>
           <Button
-            className="mt-8 gradient-rainbow text-primary-foreground font-display font-bold rounded-2xl px-10 py-6 hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-primary/30 relative z-10 text-lg"
+            className="mt-8 btn-glow gradient-rainbow text-primary-foreground font-display font-bold rounded-2xl px-10 py-6 hover:opacity-90 transition-all hover:scale-105 relative z-10 text-lg"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
             Quiero ver mi diagnóstico gratis <ArrowDown className="ml-2 h-5 w-5" />

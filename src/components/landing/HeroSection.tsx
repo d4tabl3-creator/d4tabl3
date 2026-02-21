@@ -100,7 +100,7 @@ export default function HeroSection() {
         >
           <Button
             size="lg"
-            className="gradient-rainbow text-primary-foreground font-display font-bold text-lg px-10 py-7 rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-destructive/30 animate-pulse hover:animate-none hover:scale-105"
+            className="btn-glow gradient-rainbow text-primary-foreground font-display font-bold text-lg px-10 py-7 rounded-2xl hover:opacity-90 transition-all hover:scale-105"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
             <Sparkles className="mr-2 h-5 w-5" />
