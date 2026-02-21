@@ -97,7 +97,7 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Una factura, un menú, un local, un organigrama… lo que sea. Nuestro Automation Blueprint analiza tu imagen y te entrega un diagnóstico accionable en segundos.
+          Un screenshot de tu página, una foto de tu local, el nombre de tu negocio, o simplemente el rubro al que te dedicas. Sin datos sensibles si tú no quieres.
         </motion.p>
 
         <AnimatePresence mode="wait">
