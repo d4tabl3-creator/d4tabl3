@@ -53,7 +53,7 @@ export default function Dashboard({ result, chatStarted }: Props) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Panel de <span className="gradient-rainbow-text">Descubrimiento</span>
+          Tu <span className="gradient-rainbow-text">Automation Blueprint</span>
         </motion.h2>
 
         {/* Progress bar */}
@@ -64,7 +64,7 @@ export default function Dashboard({ result, chatStarted }: Props) {
           viewport={{ once: true }}
         >
           <div className="flex justify-between text-sm text-muted-foreground mb-3">
-            <span>Progreso de Digitalización</span>
+            <span>Progreso de tu Blueprint</span>
             <span>{Math.round(progressPct)}%</span>
           </div>
           <Progress value={progressPct} className="h-3" />

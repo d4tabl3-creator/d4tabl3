@@ -25,7 +25,7 @@ export default function ChatAssistant({ analysisResult }: Props) {
     if (analysisResult && messages.length === 0) {
       setMessages([{
         role: "assistant",
-        content: `¡Hola! He analizado tu documento. ${analysisResult.summary}\n\n¿Tienes preguntas sobre los datos extraídos o las recomendaciones?`
+        content: `¡Hola! Tu Automation Blueprint está listo. ${analysisResult.summary}\n\n¿Tienes preguntas sobre tu estrategia o las recomendaciones?`
       }]);
     }
   }, [analysisResult]);

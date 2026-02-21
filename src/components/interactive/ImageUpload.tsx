@@ -88,6 +88,7 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
           <h2 className="text-3xl md:text-4xl font-display font-bold">
             Paso 1: Sube una foto de tu <span className="gradient-rainbow-text">negocio</span>
           </h2>
+          <p className="text-xs text-muted-foreground mt-2">Nuestro sistema exclusivo genera tu estrategia personalizada</p>
         </motion.div>
         <motion.p
           className="text-muted-foreground text-center mb-12 max-w-lg mx-auto"
@@ -96,7 +97,7 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Una factura, un menú, un local, un organigrama… lo que sea. Nuestra IA analiza tu imagen y te da un diagnóstico personalizado en segundos.
+          Una factura, un menú, un local, un organigrama… lo que sea. Nuestro Automation Blueprint analiza tu imagen y te entrega un diagnóstico accionable en segundos.
         </motion.p>
 
         <AnimatePresence mode="wait">
@@ -163,7 +164,7 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
                   <Progress value={progress} className="h-2" />
                   <p className="text-sm text-muted-foreground text-center flex items-center justify-center gap-2">
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    Analizando con IA...
+                    Generando tu Blueprint...
                   </p>
                 </div>
               )}
@@ -172,7 +173,7 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
                   onClick={analyze}
                   className="w-full gradient-rainbow text-primary-foreground font-display font-semibold rounded-xl py-5 hover:opacity-90 transition-opacity"
                 >
-                  Analizar con IA
+                  Generar mi Blueprint
                 </Button>
               )}
             </motion.div>

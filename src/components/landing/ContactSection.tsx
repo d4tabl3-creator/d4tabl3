@@ -12,7 +12,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          ¿Te gustó tu diagnóstico? <span className="gradient-rainbow-text">Hablemos.</span>
+          ¿Te gustó tu Blueprint? <span className="gradient-rainbow-text">Hablemos.</span>
         </motion.h2>
         <motion.p
           className="text-muted-foreground mb-10 max-w-lg mx-auto"
@@ -21,7 +21,7 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          El diagnóstico es gratis. Si quieres que lo implementemos, platiquemos sin compromiso.
+          Tu Automation Blueprint es gratis. Si quieres que lo implementemos, platiquemos sin compromiso.
         </motion.p>
         <motion.div
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
