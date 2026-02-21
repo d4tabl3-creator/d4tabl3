@@ -23,7 +23,7 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Habilidades & <span className="gradient-rainbow-text">Magia</span>
+          ¿Qué hacemos por <span className="gradient-rainbow-text">tu negocio</span>?
         </motion.h2>
         <motion.p
           className="text-muted-foreground text-center mb-16 max-w-xl mx-auto"
@@ -32,7 +32,7 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Lo que hacemos, hecho simple.
+          Automatizamos lo aburrido para que tú te enfoques en crecer.
         </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

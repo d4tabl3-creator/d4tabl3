@@ -21,18 +21,18 @@ export default function PhilosophySection() {
           <div className="absolute bottom-0 right-0 w-24 h-24 bg-accent/15 rounded-full blur-[40px]" />
 
           <p className="text-2xl md:text-3xl font-display font-semibold text-foreground leading-snug relative z-10">
-            "Sabemos lo que hacemos, pero nos encanta{" "}
-            <span className="gradient-rainbow-text">divertirnos</span> haciéndolo."
+            "Tu negocio tiene potencial escondido.{" "}
+            <span className="gradient-rainbow-text">Nosotros lo encontramos.</span>"
           </p>
           <p className="mt-6 text-muted-foreground relative z-10">
-            En dªtªblɛ combinamos expertise técnico con creatividad radical. Tu negocio merece
-            soluciones que funcionen y que inspiren.
+            Combinamos tecnología de punta con creatividad para transformar negocios como el tuyo.
+            Ya lo hicimos con decenas de empresas.
           </p>
           <Button
-            className="mt-8 gradient-rainbow text-primary-foreground font-display font-semibold rounded-xl px-8 py-5 hover:opacity-90 transition-opacity shadow-lg shadow-primary/30 relative z-10"
+            className="mt-8 gradient-rainbow text-primary-foreground font-display font-bold rounded-2xl px-10 py-6 hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-primary/30 relative z-10 text-lg"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
-            Descubre tu potencial <ArrowDown className="ml-2 h-4 w-4" />
+            Quiero ver mi diagnóstico gratis <ArrowDown className="ml-2 h-5 w-5" />
           </Button>
         </motion.div>
       </div>

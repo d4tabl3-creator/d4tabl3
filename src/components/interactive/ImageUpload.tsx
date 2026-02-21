@@ -76,14 +76,19 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
   return (
     <section id="upload" className="py-24 px-4">
       <div className="max-w-3xl mx-auto">
-        <motion.h2
-          className="text-3xl md:text-4xl font-display font-bold text-center mb-4"
+        <motion.div
+          className="text-center mb-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Sube una imagen de tu <span className="gradient-rainbow-text">negocio</span>
-        </motion.h2>
+          <span className="inline-block gradient-rainbow text-primary-foreground font-display font-bold text-sm px-4 py-1.5 rounded-full mb-4">
+            ✨ 100% GRATIS — Sin registro
+          </span>
+          <h2 className="text-3xl md:text-4xl font-display font-bold">
+            Paso 1: Sube una foto de tu <span className="gradient-rainbow-text">negocio</span>
+          </h2>
+        </motion.div>
         <motion.p
           className="text-muted-foreground text-center mb-12 max-w-lg mx-auto"
           initial={{ opacity: 0 }}
@@ -91,7 +96,7 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Una factura, un organigrama, un diagrama de procesos… Nuestra IA lo analiza y te muestra el camino.
+          Una factura, un menú, un local, un organigrama… lo que sea. Nuestra IA analiza tu imagen y te da un diagnóstico personalizado en segundos.
         </motion.p>
 
         <AnimatePresence mode="wait">
@@ -120,10 +125,10 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
             >
               <Upload className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
               <p className="text-lg font-display font-semibold text-foreground">
-                Arrastra tu imagen aquí
+                👆 Arrastra tu imagen aquí
               </p>
               <p className="text-sm text-muted-foreground mt-2">
-                o haz clic para seleccionar un archivo
+                o haz clic para seleccionar — acepta cualquier foto
               </p>
             </motion.div>
           ) : (
