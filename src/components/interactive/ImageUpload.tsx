@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Upload, Image as ImageIcon, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 
 interface ImageUploadProps {
@@ -17,10 +18,22 @@ export interface AnalysisResult {
   digitalizationScore: number;
 }
 
+const examples = [
+  "📸 Una foto de tu local o negocio",
+  "📱 Un screenshot de tu página web o redes sociales",
+  "📋 Una factura, un menú o una lista de precios",
+  "🏷️ Tu logotipo o tarjeta de presentación",
+  "📝 El nombre de tu negocio o tu nombre profesional",
+  "🔧 Una imagen del rubro al que te dedicas",
+  "👤 Tu foto de perfil si tú eres tu propia marca",
+  "📊 Un organigrama, un diagrama o cualquier documento",
+];
+
 export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
   const [dragOver, setDragOver] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [context, setContext] = useState("");
   const [analyzing, setAnalyzing] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -51,7 +64,7 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
     try {
       const base64 = preview.split(",")[1];
       const { data, error } = await supabase.functions.invoke("analyze-image", {
-        body: { image: base64, mimeType: file.type },
+        body: { image: base64, mimeType: file.type, context },
       });
 
       clearInterval(interval);
@@ -70,6 +83,7 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
   const clear = () => {
     setFile(null);
     setPreview(null);
+    setContext("");
     setProgress(0);
   };
 
@@ -86,19 +100,31 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
             ✨ 100% GRATIS — Sin registro
           </span>
           <h2 className="text-3xl md:text-4xl font-display font-bold">
-            Paso 1: Sube una foto de tu <span className="gradient-rainbow-text">negocio</span>
+            Paso 1: Sube <span className="gradient-rainbow-text">cualquier imagen</span> de lo que haces
           </h2>
-          <p className="text-xs text-muted-foreground mt-2">Nuestro sistema exclusivo genera tu estrategia personalizada</p>
+          <p className="text-sm text-muted-foreground mt-3 max-w-xl mx-auto">
+            No importa si tienes empresa, eres freelancer, o apenas estás empezando.
+            <span className="font-semibold text-foreground"> Si haces algo, esto es para ti.</span>
+          </p>
         </motion.div>
-        <motion.p
-          className="text-muted-foreground text-center mb-12 max-w-lg mx-auto"
+
+        {/* Examples grid */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-2 mb-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Un screenshot de tu página, una foto de tu local, el nombre de tu negocio, o simplemente el rubro al que te dedicas. Sin datos sensibles si tú no quieres.
-        </motion.p>
+          {examples.map((ex, i) => (
+            <span
+              key={i}
+              className="text-xs bg-secondary/60 text-secondary-foreground px-3 py-1.5 rounded-full"
+            >
+              {ex}
+            </span>
+          ))}
+        </motion.div>
 
         <AnimatePresence mode="wait">
           {!preview ? (
@@ -129,7 +155,10 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
                 👆 Arrastra tu imagen aquí
               </p>
               <p className="text-sm text-muted-foreground mt-2">
-                o haz clic para seleccionar — acepta cualquier foto
+                o haz clic para seleccionar — vale cualquier foto, screenshot o imagen
+              </p>
+              <p className="text-xs text-muted-foreground mt-4">
+                No necesitas datos sensibles. Con una simple imagen del rubro basta.
               </p>
             </motion.div>
           ) : (
@@ -159,6 +188,25 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
                 <ImageIcon className="h-4 w-4" />
                 <span>{file?.name}</span>
               </div>
+
+              {/* Context field */}
+              {!analyzing && (
+                <div className="space-y-2">
+                  <label className="text-sm font-display font-medium text-foreground">
+                    Cuéntanos más (opcional)
+                  </label>
+                  <Textarea
+                    value={context}
+                    onChange={(e) => setContext(e.target.value)}
+                    placeholder="Ej: Soy fotógrafa freelance y quiero automatizar cómo consigo clientes... / Este es mi restaurante, quiero mejorar mis pedidos..."
+                    className="bg-background/50 rounded-xl text-sm min-h-[80px] resize-none"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Entre más nos cuentes, mejor será tu Blueprint. Pero si prefieres no escribir nada, también funciona.
+                  </p>
+                </div>
+              )}
+
               {analyzing && (
                 <div className="space-y-2">
                   <Progress value={progress} className="h-2" />
@@ -171,7 +219,7 @@ export default function ImageUpload({ onAnalysisComplete }: ImageUploadProps) {
               {!analyzing && (
                 <Button
                   onClick={analyze}
-                  className="w-full gradient-rainbow text-primary-foreground font-display font-semibold rounded-xl py-5 hover:opacity-90 transition-opacity"
+                  className="w-full btn-glow gradient-rainbow text-primary-foreground font-display font-semibold rounded-xl py-5 hover:opacity-90 transition-opacity"
                 >
                   Generar mi Blueprint
                 </Button>
