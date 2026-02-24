@@ -1,7 +1,10 @@
 import { useState, useCallback } from "react";
 import HeroSection from "@/components/landing/HeroSection";
+import ForWhoSection from "@/components/landing/ForWhoSection";
+import PainSection from "@/components/landing/PainSection";
 import ServicesSection from "@/components/landing/ServicesSection";
 import PhilosophySection from "@/components/landing/PhilosophySection";
+import ClosingSection from "@/components/landing/ClosingSection";
 import ContactSection from "@/components/landing/ContactSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import ImageUpload, { type AnalysisResult } from "@/components/interactive/ImageUpload";
@@ -25,6 +28,8 @@ const Index = () => {
     <main className="min-h-screen bg-background relative">
       <ConfettiBackground />
       <HeroSection />
+      <ForWhoSection />
+      <PainSection />
       <ServicesSection />
       <PhilosophySection />
       <TestimonialsSection />
@@ -41,11 +46,9 @@ const Index = () => {
         </>
       )}
 
+      <ClosingSection />
       <ContactSection />
-      <ChatAssistant
-        analysisResult={analysisResult}
-      />
-      
+      <ChatAssistant analysisResult={analysisResult} />
     </main>
   );
 };
