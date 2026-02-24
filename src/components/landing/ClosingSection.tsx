@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function ClosingSection() {
   return (
-    <section className="py-28 px-4 relative">
+    <section className="py-28 px-6 sm:px-8 relative">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cta-green/10 rounded-full blur-[150px]" />
       </div>
@@ -39,7 +39,7 @@ export default function ClosingSection() {
         >
           <Button
             size="lg"
-            className="bg-cta-green hover:bg-cta-green/90 text-background font-display font-bold text-lg px-10 py-7 rounded-2xl shadow-[0_0_30px_hsl(var(--cta-green)/0.4)] hover:shadow-[0_0_50px_hsl(var(--cta-green)/0.6)] transition-all hover:scale-105"
+            className="bg-cta-green hover:bg-cta-green/90 text-background font-display font-bold text-base sm:text-lg px-6 sm:px-10 py-6 sm:py-7 rounded-2xl shadow-[0_0_30px_hsl(var(--cta-green)/0.4)] hover:shadow-[0_0_50px_hsl(var(--cta-green)/0.6)] transition-all hover:scale-105 w-full sm:w-auto"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
             👉 Generar mi plan en 30 segundos

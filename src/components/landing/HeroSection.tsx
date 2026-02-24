@@ -17,7 +17,7 @@ const Logo = () => (
     {letters.map((l, i) => (
       <motion.span
         key={i}
-        className="text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tight text-3d-letter cursor-pointer select-none"
+        className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tight text-3d-letter cursor-pointer select-none"
         style={{
           color: `hsl(var(${l.color}))`,
           textShadow: `
@@ -57,7 +57,7 @@ const benefits = [
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 sm:px-8">
       {/* Colorful background blobs */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-destructive/10 rounded-full blur-[120px] animate-pulse-glow" />
@@ -78,7 +78,7 @@ export default function HeroSection() {
         <Logo />
 
         <motion.h1
-          className="mt-8 text-2xl md:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight"
+          className="mt-6 text-xl sm:text-2xl md:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.6 }}
@@ -88,7 +88,7 @@ export default function HeroSection() {
         </motion.h1>
 
         <motion.p
-          className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+          className="mt-5 text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.6 }}
@@ -98,7 +98,7 @@ export default function HeroSection() {
 
         {/* Benefits */}
         <motion.div
-          className="mt-8 flex flex-col items-center gap-3"
+          className="mt-6 flex flex-col items-start sm:items-center gap-2 px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.6 }}
@@ -106,14 +106,14 @@ export default function HeroSection() {
           {benefits.map((b) => (
             <div key={b} className="flex items-center gap-2 text-foreground">
               <CheckCircle2 className="h-5 w-5 text-cta-green flex-shrink-0" />
-              <span className="text-base md:text-lg">{b}</span>
+              <span className="text-sm md:text-lg">{b}</span>
             </div>
           ))}
         </motion.div>
 
         {/* Trust line */}
         <motion.p
-          className="mt-6 text-sm font-semibold text-cta-green"
+          className="mt-6 text-xs sm:text-sm font-semibold text-cta-green px-2 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.5 }}
@@ -140,7 +140,7 @@ export default function HeroSection() {
         >
           <Button
             size="lg"
-            className="bg-cta-green hover:bg-cta-green/90 text-background font-display font-bold text-lg px-10 py-7 rounded-2xl shadow-[0_0_30px_hsl(var(--cta-green)/0.4)] hover:shadow-[0_0_50px_hsl(var(--cta-green)/0.6)] transition-all hover:scale-105"
+            className="bg-cta-green hover:bg-cta-green/90 text-background font-display font-bold text-base sm:text-lg px-6 sm:px-10 py-6 sm:py-7 rounded-2xl shadow-[0_0_30px_hsl(var(--cta-green)/0.4)] hover:shadow-[0_0_50px_hsl(var(--cta-green)/0.6)] transition-all hover:scale-105 w-full sm:w-auto"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
             👉 Quiero mi plan de automatización ahora

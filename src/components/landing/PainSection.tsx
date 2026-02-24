@@ -10,7 +10,7 @@ const pains = [
 
 export default function PainSection() {
   return (
-    <section className="py-24 px-4 relative">
+    <section className="py-24 px-6 sm:px-8 relative">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-destructive/5 via-transparent to-transparent" />
       </div>

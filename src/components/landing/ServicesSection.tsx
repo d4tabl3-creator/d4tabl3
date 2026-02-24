@@ -9,7 +9,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-24 px-4 relative">
+    <section className="py-24 px-6 sm:px-8 relative">
       {/* Background color blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[100px]" />
