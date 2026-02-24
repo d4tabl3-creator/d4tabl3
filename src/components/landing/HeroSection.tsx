@@ -50,15 +50,15 @@ const Logo = () => (
 );
 
 const benefits = [
-  "Detecta dónde estás perdiendo dinero",
-  "Descubre qué tareas puedes automatizar hoy",
-  "Obtén un plan accionable listo para implementar",
+  "Detecta ineficiencias ocultas",
+  "Reduce costos operativos",
+  "Mejora tiempos de respuesta y seguimiento",
+  "Escala sin aumentar nómina",
 ];
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 sm:px-8">
-      {/* Colorful background blobs */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-destructive/10 rounded-full blur-[120px] animate-pulse-glow" />
         <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "1s" }} />
@@ -66,7 +66,6 @@ export default function HeroSection() {
         <div className="absolute bottom-0 right-1/3 w-64 h-64 bg-accent/15 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "0.5s" }} />
       </div>
 
-      {/* Rainbow line accent */}
       <motion.div
         className="absolute top-0 left-0 right-0 h-1 gradient-rainbow"
         initial={{ scaleX: 0 }}
@@ -78,13 +77,13 @@ export default function HeroSection() {
         <Logo />
 
         <motion.h1
-          className="mt-6 text-xl sm:text-2xl md:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight px-2"
+          className="mt-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground leading-tight px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.6 }}
         >
-          Automatiza tu negocio en 30 segundos y{" "}
-          <span className="gradient-rainbow-text">deja de perder tiempo y dinero.</span>
+          Descubre dónde tu negocio está perdiendo dinero —{" "}
+          <span className="gradient-rainbow-text">y qué automatizar para escalar sin contratar más personal.</span>
         </motion.h1>
 
         <motion.p
@@ -93,10 +92,9 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.6 }}
         >
-          Sube una captura de cómo trabajas hoy (WhatsApp, Instagram, tu agenda o tu tienda online) y recibe un plan claro con lo que debes automatizar para <span className="font-semibold text-foreground">vender más y trabajar menos.</span>
+          Sube una captura de tu operación actual (sistema, Excel, software, agenda o proceso interno) y recibe un diagnóstico claro con <span className="font-semibold text-foreground">oportunidades reales de automatización.</span>
         </motion.p>
 
-        {/* Benefits */}
         <motion.div
           className="mt-6 flex flex-col items-start sm:items-center gap-2 px-2"
           initial={{ opacity: 0, y: 20 }}
@@ -111,27 +109,24 @@ export default function HeroSection() {
           ))}
         </motion.div>
 
-        {/* Trust line */}
         <motion.p
           className="mt-6 text-xs sm:text-sm font-semibold text-cta-green px-2 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.5 }}
         >
-          100% gratis · Sin registro · Sin tarjeta · Resultado en 30 segundos
+          100% gratuito · Sin registro · Diagnóstico en 30 segundos
         </motion.p>
 
-        {/* Social proof */}
         <motion.p
           className="mt-4 text-xs text-muted-foreground"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.65, duration: 0.5 }}
         >
-          Más de 120 negocios ya probaron su plan.
+          Más de 120 empresas ya optimizaron su operación.
         </motion.p>
 
-        {/* CTA */}
         <motion.div
           className="mt-6 flex flex-col items-center gap-3"
           initial={{ opacity: 0, y: 20 }}
@@ -143,10 +138,10 @@ export default function HeroSection() {
             className="bg-cta-green hover:bg-cta-green/90 text-background font-display font-bold text-base sm:text-lg px-6 sm:px-10 py-6 sm:py-7 rounded-2xl shadow-[0_0_30px_hsl(var(--cta-green)/0.4)] hover:shadow-[0_0_50px_hsl(var(--cta-green)/0.6)] transition-all hover:scale-105 w-full sm:w-auto"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
-            👉 Quiero mi plan de automatización ahora
+            👉 Obtener diagnóstico ahora
           </Button>
           <span className="text-xs text-muted-foreground italic">
-            Si el plan no te sirve, no pasa nada. No te pedimos datos.
+            Sin consultoría costosa. Sin reuniones. Sin compromiso.
           </span>
         </motion.div>
 

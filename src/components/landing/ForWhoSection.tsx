@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { MessageSquare, Repeat, User, TrendingUp } from "lucide-react";
+import { Settings, Users, Table2, RefreshCw } from "lucide-react";
 
 const items = [
-  { icon: MessageSquare, text: "Venden por WhatsApp o Instagram y sienten caos." },
-  { icon: Repeat, text: "Repiten las mismas respuestas todos los días." },
-  { icon: User, text: "No tienen sistema y todo depende de ellos." },
-  { icon: TrendingUp, text: "Quieren crecer sin contratar más personal." },
+  { icon: Settings, text: "Empresas con procesos manuales que ya no escalan." },
+  { icon: Users, text: "Negocios que dependen de demasiadas personas para tareas repetitivas." },
+  { icon: Table2, text: "Equipos que usan Excel, sistemas viejos o procesos improvisados." },
+  { icon: RefreshCw, text: "Empresas que quieren modernizar sin rehacer todo desde cero." },
 ];
 
 export default function ForWhoSection() {
@@ -18,7 +18,8 @@ export default function ForWhoSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          ¿Para quién es <span className="gradient-rainbow-text">esto</span>?
+          Diseñado para negocios que ya facturan{" "}
+          <span className="gradient-rainbow-text">y quieren optimizar</span>
         </motion.h2>
         <motion.p
           className="text-muted-foreground mb-12"
@@ -27,7 +28,7 @@ export default function ForWhoSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          Datable es para dueños de negocio que:
+          Datable es para:
         </motion.p>
 
         <div className="grid gap-5 max-w-xl mx-auto text-left">
@@ -53,7 +54,7 @@ export default function ForWhoSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          Si ese eres tú, esto te sirve.
+          Si tu negocio ya genera ingresos pero opera como hace 10 años, aquí empiezas.
         </motion.p>
       </div>
     </section>
