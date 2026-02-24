@@ -17,7 +17,7 @@ export default function ClosingSection() {
         >
           Tu negocio no necesita más esfuerzo.
           <br />
-          <span className="gradient-rainbow-text">Necesita sistema.</span>
+          <span className="gradient-rainbow-text">Necesita eficiencia.</span>
         </motion.h2>
 
         <motion.p
@@ -27,7 +27,7 @@ export default function ClosingSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Haz la prueba gratis ahora y descubre qué automatizar primero.
+          Obtén tu diagnóstico gratuito y descubre qué optimizar primero.
         </motion.p>
 
         <motion.div
@@ -42,10 +42,10 @@ export default function ClosingSection() {
             className="bg-cta-green hover:bg-cta-green/90 text-background font-display font-bold text-base sm:text-lg px-6 sm:px-10 py-6 sm:py-7 rounded-2xl shadow-[0_0_30px_hsl(var(--cta-green)/0.4)] hover:shadow-[0_0_50px_hsl(var(--cta-green)/0.6)] transition-all hover:scale-105 w-full sm:w-auto"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
-            👉 Generar mi plan en 30 segundos
+            👉 Obtener diagnóstico ahora
           </Button>
           <span className="text-xs text-muted-foreground italic">
-            Si el plan no te sirve, no pasa nada. No te pedimos datos.
+            Sin consultoría costosa. Sin reuniones. Sin compromiso.
           </span>
         </motion.div>
       </div>

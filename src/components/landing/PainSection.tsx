@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { AlertTriangle } from "lucide-react";
+import { XCircle } from "lucide-react";
 
 const pains = [
-  "Pierdes ventas por no responder a tiempo.",
-  "Olvidas seguimientos.",
-  "Trabajas más horas sin ganar más dinero.",
-  "Tu negocio depende solo de ti.",
+  "Procesos lentos",
+  "Información dispersa",
+  "Demasiada dependencia humana",
+  "Errores manuales",
+  "Sistemas que no se comunican entre sí",
 ];
 
 export default function PainSection() {
@@ -22,7 +23,8 @@ export default function PainSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Si no automatizas, <span className="text-destructive">esto pasa:</span>
+          El verdadero problema no es vender.{" "}
+          <span className="text-destructive">Es operar.</span>
         </motion.h2>
 
         <div className="mt-12 grid gap-4 max-w-xl mx-auto text-left">
@@ -35,7 +37,7 @@ export default function PainSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
-              <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0" />
+              <XCircle className="h-5 w-5 text-destructive flex-shrink-0" />
               <span className="text-foreground text-base md:text-lg">{pain}</span>
             </motion.div>
           ))}
@@ -48,8 +50,8 @@ export default function PainSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          Automatizar no es lujo.{" "}
-          <span className="gradient-rainbow-text">Es supervivencia.</span>
+          Automatizar no es moda.{" "}
+          <span className="gradient-rainbow-text">Es eficiencia estructural.</span>
         </motion.p>
       </div>
     </section>
