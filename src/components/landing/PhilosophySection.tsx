@@ -4,7 +4,7 @@ import { ArrowDown } from "lucide-react";
 
 export default function PhilosophySection() {
   return (
-    <section className="py-24 px-4 relative">
+    <section className="py-24 px-6 sm:px-8 relative">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
       </div>

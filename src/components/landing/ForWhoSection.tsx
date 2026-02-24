@@ -10,7 +10,7 @@ const items = [
 
 export default function ForWhoSection() {
   return (
-    <section className="py-24 px-4 relative">
+    <section className="py-24 px-6 sm:px-8 relative">
       <div className="max-w-3xl mx-auto text-center relative z-10">
         <motion.h2
           className="text-3xl md:text-5xl font-display font-bold mb-4"
