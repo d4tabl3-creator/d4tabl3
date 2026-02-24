@@ -29,7 +29,7 @@ export default function PhilosophySection() {
             Ya lo hicimos con decenas de empresas.
           </p>
           <Button
-            className="mt-8 btn-glow gradient-rainbow text-primary-foreground font-display font-bold rounded-2xl px-10 py-6 hover:opacity-90 transition-all hover:scale-105 relative z-10 text-lg"
+            className="mt-8 bg-cta-green hover:bg-cta-green/90 text-background font-display font-bold rounded-2xl px-10 py-6 shadow-[0_0_30px_hsl(var(--cta-green)/0.4)] hover:shadow-[0_0_50px_hsl(var(--cta-green)/0.6)] transition-all hover:scale-105 relative z-10 text-lg"
             onClick={() => document.getElementById("upload")?.scrollIntoView({ behavior: "smooth" })}
           >
             Quiero mi Blueprint gratis <ArrowDown className="ml-2 h-5 w-5" />
