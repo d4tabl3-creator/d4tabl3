@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { LogOut, CreditCard, Settings, Loader2, Lock, Zap, BarChart3, CheckCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import AutomationsSection from "@/components/dashboard/AutomationsSection";
+import MetricsSection from "@/components/dashboard/MetricsSection";
+import ProcessSection from "@/components/dashboard/ProcessSection";
 
 export default function DashboardPage() {
   const { user, loading, subscribed, subscriptionEnd, signOut, checkSubscription, checkingSubscription } = useAuth();
@@ -115,25 +119,22 @@ export default function DashboardPage() {
               </Button>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { icon: Zap, title: "Automatizaciones", desc: "Configura flujos automáticos" },
-                { icon: BarChart3, title: "Métricas KPI", desc: "Monitorea tu rendimiento" },
-                { icon: CheckCircle, title: "Gestión de procesos", desc: "Organiza tareas y seguimiento" },
-              ].map((card, i) => (
-                <motion.div
-                  key={card.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="glass rounded-xl p-6 space-y-3 hover:border-primary/30 transition-colors cursor-pointer"
-                >
-                  <card.icon className="h-8 w-8 text-primary" />
-                  <h3 className="font-display font-semibold">{card.title}</h3>
-                  <p className="text-sm text-muted-foreground">{card.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+            <Tabs defaultValue="automations" className="w-full">
+              <TabsList className="w-full grid grid-cols-3 bg-muted/50">
+                <TabsTrigger value="automations" className="flex items-center gap-2"><Zap className="h-4 w-4" />Automatizaciones</TabsTrigger>
+                <TabsTrigger value="metrics" className="flex items-center gap-2"><BarChart3 className="h-4 w-4" />Métricas</TabsTrigger>
+                <TabsTrigger value="processes" className="flex items-center gap-2"><CheckCircle className="h-4 w-4" />Procesos</TabsTrigger>
+              </TabsList>
+              <TabsContent value="automations" className="mt-6">
+                <AutomationsSection />
+              </TabsContent>
+              <TabsContent value="metrics" className="mt-6">
+                <MetricsSection />
+              </TabsContent>
+              <TabsContent value="processes" className="mt-6">
+                <ProcessSection />
+              </TabsContent>
+            </Tabs>
           </>
         )}
       </div>
