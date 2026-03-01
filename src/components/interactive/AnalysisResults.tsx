@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { CheckCircle, Edit2, Lightbulb, Settings, BarChart3 } from "lucide-react";
+import { CheckCircle, Edit2, Lightbulb, Settings, BarChart3, Copy, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 import type { AnalysisResult } from "./ImageUpload";
 
 interface Props {
@@ -12,6 +15,27 @@ interface Props {
 
 export default function AnalysisResults({ result, onUpdate }: Props) {
   const [editingIdx, setEditingIdx] = useState<number | null>(null);
+  const [blueprintCode, setBlueprintCode] = useState<string | null>(null);
+  const [generatingCode, setGeneratingCode] = useState(false);
+
+  useEffect(() => {
+    // Generate blueprint code when results appear
+    const generateCode = async () => {
+      setGeneratingCode(true);
+      try {
+        const { data, error } = await supabase.functions.invoke("generate-blueprint-code", {
+          body: { blueprintData: result },
+        });
+        if (!error && data?.code) {
+          setBlueprintCode(data.code);
+        }
+      } catch (err) {
+        console.error("Error generating code:", err);
+      }
+      setGeneratingCode(false);
+    };
+    generateCode();
+  }, [result]);
 
   const updateField = (idx: number, value: string) => {
     const updated = { ...result, extractedData: [...result.extractedData] };
@@ -46,6 +70,40 @@ export default function AnalysisResults({ result, onUpdate }: Props) {
             {result.digitalizationScore}%
           </p>
         </motion.div>
+
+        {/* Blueprint Code */}
+        {(blueprintCode || generatingCode) && (
+          <motion.div
+            className="glass-rainbow rounded-2xl p-6 text-center space-y-3"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.15 }}
+          >
+            <h3 className="font-display font-bold text-lg gradient-rainbow-text">Tu Código Blueprint</h3>
+            <p className="text-xs text-muted-foreground">
+              Guarda este código. Lo necesitarás para vincular tu diagnóstico cuando te registres.
+            </p>
+            {generatingCode ? (
+              <Loader2 className="h-6 w-6 animate-spin mx-auto text-primary" />
+            ) : (
+              <div className="flex items-center justify-center gap-3">
+                <span className="text-3xl font-mono font-bold tracking-widest gradient-rainbow-text">
+                  {blueprintCode}
+                </span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => {
+                    navigator.clipboard.writeText(blueprintCode!);
+                    toast({ title: "Código copiado", description: "Pégalo cuando te registres en la plataforma." });
+                  }}
+                >
+                  <Copy className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+          </motion.div>
+        )}
 
         {/* Extracted data cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

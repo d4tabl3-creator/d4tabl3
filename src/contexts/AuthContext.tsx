@@ -9,6 +9,7 @@ interface AuthState {
   subscribed: boolean;
   subscriptionEnd: string | null;
   checkingSubscription: boolean;
+  isAdmin: boolean;
 }
 
 interface AuthContextType extends AuthState {
@@ -28,6 +29,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     subscribed: false,
     subscriptionEnd: null,
     checkingSubscription: false,
+    isAdmin: false,
   });
 
   const checkSubscription = useCallback(async () => {
@@ -50,17 +52,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [state.session]);
 
+  const checkAdmin = useCallback(async (userId: string) => {
+    const { data } = await supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", userId)
+      .eq("role", "admin");
+    setState((s) => ({ ...s, isAdmin: !!data && data.length > 0 }));
+  }, []);
+
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setState((s) => ({ ...s, user: session?.user ?? null, session, loading: false }));
+      if (session?.user) checkAdmin(session.user.id);
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
       setState((s) => ({ ...s, user: session?.user ?? null, session, loading: false }));
+      if (session?.user) checkAdmin(session.user.id);
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [checkAdmin]);
 
   // Check subscription when session changes
   useEffect(() => {

@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import ProcessSection from "@/components/dashboard/ProcessSection";
 
 export default function DashboardProcesses() {
-  const { subscribed } = useAuth();
+  const { subscribed, isAdmin } = useAuth();
   const navigate = useNavigate();
-  useEffect(() => { if (!subscribed) navigate("/dashboard"); }, [subscribed]);
+  useEffect(() => { if (!subscribed && !isAdmin) navigate("/dashboard"); }, [subscribed, isAdmin]);
 
   return (
     <div className="max-w-5xl mx-auto">

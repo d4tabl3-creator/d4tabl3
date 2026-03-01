@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import MetricsSection from "@/components/dashboard/MetricsSection";
 
 export default function DashboardMetrics() {
-  const { subscribed } = useAuth();
+  const { subscribed, isAdmin } = useAuth();
   const navigate = useNavigate();
-  useEffect(() => { if (!subscribed) navigate("/dashboard"); }, [subscribed]);
+  useEffect(() => { if (!subscribed && !isAdmin) navigate("/dashboard"); }, [subscribed, isAdmin]);
 
   return (
     <div className="max-w-5xl mx-auto">
