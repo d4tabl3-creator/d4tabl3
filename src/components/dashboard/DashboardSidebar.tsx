@@ -1,4 +1,4 @@
-import { Zap, BarChart3, CheckCircle, Settings, LogOut, CreditCard, Home, HelpCircle } from "lucide-react";
+import { Zap, BarChart3, CheckCircle, Settings, LogOut, CreditCard, Home, HelpCircle, ShoppingBag, Briefcase, Gift } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
@@ -22,9 +22,12 @@ const mainNav = [
   { title: "Automatizaciones", url: "/dashboard/automations", icon: Zap },
   { title: "Métricas", url: "/dashboard/metrics", icon: BarChart3 },
   { title: "Procesos", url: "/dashboard/processes", icon: CheckCircle },
+  { title: "Bolsa de Trucos", url: "/dashboard/add-ons", icon: ShoppingBag },
 ];
 
 const secondaryNav = [
+  { title: "Ventas", url: "/dashboard/sales", icon: Briefcase },
+  { title: "Referidos", url: "/dashboard/referrals", icon: Gift },
   { title: "Suscripción", url: "/dashboard/billing", icon: CreditCard },
   { title: "Soporte", url: "/dashboard/support", icon: HelpCircle },
 ];

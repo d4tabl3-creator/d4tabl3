@@ -3,6 +3,7 @@ import { useNavigate, Outlet } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "./DashboardSidebar";
+import SOSButton from "./SOSButton";
 import { Loader2 } from "lucide-react";
 
 export default function DashboardLayout() {
@@ -36,6 +37,7 @@ export default function DashboardLayout() {
           <main className="flex-1 overflow-y-auto p-6">
             <Outlet />
           </main>
+          <SOSButton />
         </div>
       </div>
     </SidebarProvider>

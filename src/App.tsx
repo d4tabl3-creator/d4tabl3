@@ -15,6 +15,9 @@ import DashboardMetrics from "./pages/dashboard/DashboardMetrics";
 import DashboardProcesses from "./pages/dashboard/DashboardProcesses";
 import DashboardBilling from "./pages/dashboard/DashboardBilling";
 import DashboardSupport from "./pages/dashboard/DashboardSupport";
+import DashboardAddOns from "./pages/dashboard/DashboardAddOns";
+import DashboardSales from "./pages/dashboard/DashboardSales";
+import DashboardReferrals from "./pages/dashboard/DashboardReferrals";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +39,9 @@ const App = () => (
               <Route path="processes" element={<DashboardProcesses />} />
               <Route path="billing" element={<DashboardBilling />} />
               <Route path="support" element={<DashboardSupport />} />
+              <Route path="add-ons" element={<DashboardAddOns />} />
+              <Route path="sales" element={<DashboardSales />} />
+              <Route path="referrals" element={<DashboardReferrals />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

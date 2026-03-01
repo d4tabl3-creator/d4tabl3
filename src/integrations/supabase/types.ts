@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      add_ons: {
+        Row: {
+          active: boolean | null
+          created_at: string
+          description: string | null
+          icon: string | null
+          id: string
+          name: string
+          price_mxn: number
+        }
+        Insert: {
+          active?: boolean | null
+          created_at?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          name: string
+          price_mxn?: number
+        }
+        Update: {
+          active?: boolean | null
+          created_at?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          name?: string
+          price_mxn?: number
+        }
+        Relationships: []
+      }
       blueprint_codes: {
         Row: {
           blueprint_data: Json
@@ -38,6 +68,42 @@ export type Database = {
           code?: string
           created_at?: string
           id?: string
+        }
+        Relationships: []
+      }
+      client_referrals: {
+        Row: {
+          completed_analysis: boolean | null
+          created_at: string
+          id: string
+          referred_email: string | null
+          referred_user_id: string | null
+          referrer_user_id: string
+          reward_granted: boolean | null
+          status: string
+          subscribed: boolean | null
+        }
+        Insert: {
+          completed_analysis?: boolean | null
+          created_at?: string
+          id?: string
+          referred_email?: string | null
+          referred_user_id?: string | null
+          referrer_user_id: string
+          reward_granted?: boolean | null
+          status?: string
+          subscribed?: boolean | null
+        }
+        Update: {
+          completed_analysis?: boolean | null
+          created_at?: string
+          id?: string
+          referred_email?: string | null
+          referred_user_id?: string | null
+          referrer_user_id?: string
+          reward_granted?: boolean | null
+          status?: string
+          subscribed?: boolean | null
         }
         Relationships: []
       }
@@ -85,6 +151,121 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      referrals: {
+        Row: {
+          agent_id: string
+          client_business: string | null
+          client_name: string | null
+          client_user_id: string | null
+          created_at: string
+          first_month_paid: boolean | null
+          id: string
+          recurring_commission_rate: number | null
+          status: string
+          subscribed_at: string | null
+          total_earned: number | null
+        }
+        Insert: {
+          agent_id: string
+          client_business?: string | null
+          client_name?: string | null
+          client_user_id?: string | null
+          created_at?: string
+          first_month_paid?: boolean | null
+          id?: string
+          recurring_commission_rate?: number | null
+          status?: string
+          subscribed_at?: string | null
+          total_earned?: number | null
+        }
+        Update: {
+          agent_id?: string
+          client_business?: string | null
+          client_name?: string | null
+          client_user_id?: string | null
+          created_at?: string
+          first_month_paid?: boolean | null
+          id?: string
+          recurring_commission_rate?: number | null
+          status?: string
+          subscribed_at?: string | null
+          total_earned?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "referrals_agent_id_fkey"
+            columns: ["agent_id"]
+            isOneToOne: false
+            referencedRelation: "sales_agents"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sales_agents: {
+        Row: {
+          active: boolean | null
+          commission_rate: number | null
+          created_at: string
+          display_name: string | null
+          id: string
+          phone: string | null
+          ref_code: string
+          user_id: string
+        }
+        Insert: {
+          active?: boolean | null
+          commission_rate?: number | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          ref_code: string
+          user_id: string
+        }
+        Update: {
+          active?: boolean | null
+          commission_rate?: number | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          ref_code?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_add_ons: {
+        Row: {
+          active: boolean | null
+          add_on_id: string
+          id: string
+          purchased_at: string
+          user_id: string
+        }
+        Insert: {
+          active?: boolean | null
+          add_on_id: string
+          id?: string
+          purchased_at?: string
+          user_id: string
+        }
+        Update: {
+          active?: boolean | null
+          add_on_id?: string
+          id?: string
+          purchased_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_add_ons_add_on_id_fkey"
+            columns: ["add_on_id"]
+            isOneToOne: false
+            referencedRelation: "add_ons"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
