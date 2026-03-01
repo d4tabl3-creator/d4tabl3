@@ -6,6 +6,8 @@ import { Zap, BarChart3, CheckCircle, ArrowRight, CreditCard, Loader2, Lock } fr
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import GamifiedChecklist from "@/components/dashboard/GamifiedChecklist";
+import BlueprintCodeInput from "@/components/dashboard/BlueprintCodeInput";
 
 const modules = [
   {
@@ -32,9 +34,28 @@ const modules = [
 ];
 
 export default function DashboardHome() {
-  const { subscribed, subscriptionEnd, checkSubscription, checkingSubscription } = useAuth();
+  const { subscribed, isAdmin, subscriptionEnd, checkSubscription, checkingSubscription } = useAuth();
   const navigate = useNavigate();
   const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [hasBlueprintCode, setHasBlueprintCode] = useState(false);
+  const [visitedModules, setVisitedModules] = useState<Record<string, boolean>>({});
+
+  // Check if user already has blueprint linked
+  const { user } = useAuth();
+  useEffect(() => {
+    if (!user) return;
+    supabase
+      .from("profiles")
+      .select("blueprint_data")
+      .eq("user_id", user.id)
+      .single()
+      .then(({ data }) => {
+        if (data?.blueprint_data) setHasBlueprintCode(true);
+      });
+    // Load visited modules from localStorage
+    const visited = JSON.parse(localStorage.getItem("dtb_visited_modules") || "{}");
+    setVisitedModules(visited);
+  }, [user]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -57,7 +78,17 @@ export default function DashboardHome() {
     setCheckoutLoading(false);
   };
 
-  if (!subscribed) {
+  const handleModuleClick = (url: string) => {
+    const key = url.split("/").pop() || "";
+    const visited = { ...visitedModules, [key]: true };
+    setVisitedModules(visited);
+    localStorage.setItem("dtb_visited_modules", JSON.stringify(visited));
+    navigate(url);
+  };
+
+  const hasAccess = subscribed || isAdmin;
+
+  if (!hasAccess) {
     return (
       <div className="max-w-lg mx-auto mt-12">
         <motion.div
@@ -68,7 +99,7 @@ export default function DashboardHome() {
           <Lock className="h-12 w-12 text-primary mx-auto" />
           <h2 className="text-2xl font-display font-bold">Activa tu plataforma</h2>
           <p className="text-sm text-muted-foreground">
-            Accede a todas las herramientas para implementar las recomendaciones de tu diagnóstico: automatizaciones, métricas, gestión de procesos y soporte de nuestro equipo.
+            Accede a todas las herramientas para implementar las recomendaciones de tu diagnóstico.
           </p>
 
           <div className="rounded-xl border border-border bg-muted/20 p-6 space-y-4">
@@ -107,7 +138,14 @@ export default function DashboardHome() {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div>
-        <h1 className="text-2xl font-display font-bold">Bienvenido a tu plataforma</h1>
+        <h1 className="text-2xl font-display font-bold">
+          Bienvenido a tu plataforma
+          {isAdmin && (
+            <span className="ml-2 text-xs gradient-rainbow text-primary-foreground px-2 py-0.5 rounded-full font-normal">
+              ADMIN
+            </span>
+          )}
+        </h1>
         <p className="text-sm text-muted-foreground mt-1">
           Aquí implementamos las recomendaciones de tu diagnóstico. Selecciona un módulo para comenzar.
         </p>
@@ -125,6 +163,20 @@ export default function DashboardHome() {
         </div>
       )}
 
+      {/* Blueprint Code Input */}
+      <BlueprintCodeInput
+        onClaimed={() => setHasBlueprintCode(true)}
+        alreadyClaimed={hasBlueprintCode}
+      />
+
+      {/* Gamified Checklist */}
+      <GamifiedChecklist
+        hasBlueprintCode={hasBlueprintCode}
+        hasAutomations={!!visitedModules.automations}
+        hasMetrics={!!visitedModules.metrics}
+        hasProcesses={!!visitedModules.processes}
+      />
+
       <div className="grid md:grid-cols-3 gap-4">
         {modules.map((mod, i) => (
           <motion.button
@@ -132,7 +184,7 @@ export default function DashboardHome() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.08 }}
-            onClick={() => navigate(mod.url)}
+            onClick={() => handleModuleClick(mod.url)}
             className="group rounded-xl border border-border bg-card/50 p-5 text-left hover:border-primary/30 hover:bg-card transition-all"
           >
             <div className="flex items-center justify-between mb-3">
