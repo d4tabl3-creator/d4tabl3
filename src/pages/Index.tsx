@@ -1,4 +1,7 @@
 import { useState, useCallback } from "react";
+import { Link } from "react-router-dom";
+import { LogIn } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import HeroSection from "@/components/landing/HeroSection";
 import ForWhoSection from "@/components/landing/ForWhoSection";
 import PainSection from "@/components/landing/PainSection";
@@ -26,6 +29,15 @@ const Index = () => {
 
   return (
     <main className="min-h-screen bg-background relative">
+      {/* Floating login button */}
+      <div className="fixed top-4 right-4 z-50">
+        <Button asChild variant="outline" size="sm" className="backdrop-blur-sm bg-card/80 border-border/50">
+          <Link to="/auth" className="flex items-center gap-2">
+            <LogIn className="h-4 w-4" />
+            Iniciar sesión
+          </Link>
+        </Button>
+      </div>
       <ConfettiBackground />
       <HeroSection />
       <ForWhoSection />
