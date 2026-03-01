@@ -50,6 +50,7 @@ export type Database = {
           full_name: string | null
           id: string
           phone: string | null
+          preview_used_at: string | null
           stripe_customer_id: string | null
           subscription_status: string | null
           updated_at: string
@@ -63,6 +64,7 @@ export type Database = {
           full_name?: string | null
           id?: string
           phone?: string | null
+          preview_used_at?: string | null
           stripe_customer_id?: string | null
           subscription_status?: string | null
           updated_at?: string
@@ -76,6 +78,7 @@ export type Database = {
           full_name?: string | null
           id?: string
           phone?: string | null
+          preview_used_at?: string | null
           stripe_customer_id?: string | null
           subscription_status?: string | null
           updated_at?: string
