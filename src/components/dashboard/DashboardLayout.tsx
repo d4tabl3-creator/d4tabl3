@@ -30,8 +30,8 @@ export default function DashboardLayout() {
           <header className="h-14 flex items-center border-b border-border px-4 shrink-0 bg-card/30 backdrop-blur-sm">
             <SidebarTrigger className="mr-4" />
             <div className="flex-1" />
-            <span className="text-xs text-muted-foreground font-medium px-3 py-1 rounded-full bg-primary/10 text-primary">
-              Plataforma activa
+            <span className="text-xs font-semibold px-3 py-1 rounded-full gradient-rainbow text-primary-foreground">
+              ✨ Plataforma activa
             </span>
           </header>
           <main className="flex-1 overflow-y-auto p-6">

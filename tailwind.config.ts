@@ -31,6 +31,12 @@ export default {
         emerald: "hsl(var(--emerald))",
         "purple-glow": "hsl(var(--purple-glow))",
         "cta-green": "hsl(var(--cta-green))",
+        "fun-coral": "hsl(var(--fun-coral))",
+        "fun-yellow": "hsl(var(--fun-yellow))",
+        "fun-sky": "hsl(var(--fun-sky))",
+        "fun-mint": "hsl(var(--fun-mint))",
+        "fun-lavender": "hsl(var(--fun-lavender))",
+        "fun-pink": "hsl(var(--fun-pink))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
