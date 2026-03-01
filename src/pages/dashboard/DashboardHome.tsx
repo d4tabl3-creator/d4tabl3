@@ -8,6 +8,7 @@ import { toast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 import GamifiedChecklist from "@/components/dashboard/GamifiedChecklist";
 import BlueprintCodeInput from "@/components/dashboard/BlueprintCodeInput";
+import BlueprintPreview from "@/components/dashboard/BlueprintPreview";
 
 const modules = [
   {
@@ -34,28 +35,47 @@ const modules = [
 ];
 
 export default function DashboardHome() {
-  const { subscribed, isAdmin, subscriptionEnd, checkSubscription, checkingSubscription } = useAuth();
+  const { user, subscribed, isAdmin, subscriptionEnd, checkSubscription, checkingSubscription } = useAuth();
   const navigate = useNavigate();
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [hasBlueprintCode, setHasBlueprintCode] = useState(false);
   const [visitedModules, setVisitedModules] = useState<Record<string, boolean>>({});
+  const [blueprintData, setBlueprintData] = useState<any>(null);
+  const [previewUsedAt, setPreviewUsedAt] = useState<string | null | undefined>(undefined); // undefined = loading
 
-  // Check if user already has blueprint linked
-  const { user } = useAuth();
+  // Load profile data
   useEffect(() => {
     if (!user) return;
     supabase
       .from("profiles")
-      .select("blueprint_data")
+      .select("blueprint_data, preview_used_at")
       .eq("user_id", user.id)
       .single()
       .then(({ data }) => {
-        if (data?.blueprint_data) setHasBlueprintCode(true);
+        if (data?.blueprint_data) {
+          setHasBlueprintCode(true);
+          setBlueprintData(data.blueprint_data);
+        }
+        setPreviewUsedAt(data?.preview_used_at ?? null);
       });
-    // Load visited modules from localStorage
     const visited = JSON.parse(localStorage.getItem("dtb_visited_modules") || "{}");
     setVisitedModules(visited);
   }, [user]);
+
+  // Mark preview as used on first load (only if has blueprint + preview not used + not subscribed + not admin)
+  useEffect(() => {
+    if (!user || !blueprintData || previewUsedAt !== null || subscribed || isAdmin) return;
+    // previewUsedAt is null = never used, mark it now
+    if (previewUsedAt === null && blueprintData) {
+      supabase
+        .from("profiles")
+        .update({ preview_used_at: new Date().toISOString() })
+        .eq("user_id", user.id)
+        .then(() => {
+          setPreviewUsedAt(new Date().toISOString());
+        });
+    }
+  }, [user, blueprintData, previewUsedAt, subscribed, isAdmin]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -86,11 +106,45 @@ export default function DashboardHome() {
     navigate(url);
   };
 
+  const handleBlueprintClaimed = () => {
+    setHasBlueprintCode(true);
+    // Reload profile to get blueprint_data
+    if (user) {
+      supabase
+        .from("profiles")
+        .select("blueprint_data, preview_used_at")
+        .eq("user_id", user.id)
+        .single()
+        .then(({ data }) => {
+          if (data?.blueprint_data) setBlueprintData(data.blueprint_data);
+          setPreviewUsedAt(data?.preview_used_at ?? null);
+        });
+    }
+  };
+
   const hasAccess = subscribed || isAdmin;
 
+  // --- PREVIEW MODE ---
+  // User has blueprint data, not subscribed, not admin → show preview
+  if (!hasAccess && blueprintData && previewUsedAt !== undefined) {
+    const isExpired = previewUsedAt !== null;
+    return (
+      <BlueprintPreview
+        blueprintData={blueprintData}
+        onSubscribe={handleCheckout}
+        checkoutLoading={checkoutLoading}
+        isExpired={isExpired}
+      />
+    );
+  }
+
+  // --- PAYWALL (no blueprint) ---
   if (!hasAccess) {
     return (
-      <div className="max-w-lg mx-auto mt-12">
+      <div className="max-w-lg mx-auto mt-12 space-y-6">
+        {/* Blueprint code input first */}
+        <BlueprintCodeInput onClaimed={handleBlueprintClaimed} alreadyClaimed={hasBlueprintCode} />
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -99,7 +153,9 @@ export default function DashboardHome() {
           <Lock className="h-12 w-12 text-primary mx-auto" />
           <h2 className="text-2xl font-display font-bold">Activa tu plataforma</h2>
           <p className="text-sm text-muted-foreground">
-            Accede a todas las herramientas para implementar las recomendaciones de tu diagnóstico.
+            ¿Aún no tienes código Blueprint? Haz tu{" "}
+            <a href="/" className="text-primary underline">diagnóstico gratuito</a>{" "}
+            primero y recibe una vista previa personalizada.
           </p>
 
           <div className="rounded-xl border border-border bg-muted/20 p-6 space-y-4">
@@ -135,6 +191,7 @@ export default function DashboardHome() {
     );
   }
 
+  // --- FULL ACCESS ---
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div>
@@ -163,13 +220,8 @@ export default function DashboardHome() {
         </div>
       )}
 
-      {/* Blueprint Code Input */}
-      <BlueprintCodeInput
-        onClaimed={() => setHasBlueprintCode(true)}
-        alreadyClaimed={hasBlueprintCode}
-      />
+      <BlueprintCodeInput onClaimed={handleBlueprintClaimed} alreadyClaimed={hasBlueprintCode} />
 
-      {/* Gamified Checklist */}
       <GamifiedChecklist
         hasBlueprintCode={hasBlueprintCode}
         hasAutomations={!!visitedModules.automations}
