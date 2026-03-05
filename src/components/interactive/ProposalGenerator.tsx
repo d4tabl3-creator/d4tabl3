@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Download, Share2, CheckCircle, Wrench, DollarSign } from "lucide-react";
+import { Download, Share2, CheckCircle, Rocket, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { AnalysisResult } from "./ImageUpload";
 
 interface Props {
@@ -8,13 +9,6 @@ interface Props {
 }
 
 export default function ProposalGenerator({ result }: Props) {
-  const tools = [
-    { name: "Automatización de documentos", price: "$2,500 MXN/mes" },
-    { name: "Dashboard de métricas en tiempo real", price: "$1,800 MXN/mes" },
-    { name: "Integración con sistemas existentes", price: "$3,200 MXN/mes" },
-    { name: "Asistente virtual personalizado", price: "$4,000 MXN/mes" },
-  ];
-
   const handleDownload = () => {
     const content = `
 AUTOMATION BLUEPRINT - dªtªblɛ
@@ -33,9 +27,6 @@ ${result.processes.map((p) => `  • ${p}`).join("\n")}
 RECOMENDACIONES:
 ${result.recommendations.map((r) => `  • ${r}`).join("\n")}
 
-HERRAMIENTAS RECOMENDADAS:
-${tools.map((t) => `  • ${t.name} - ${t.price}`).join("\n")}
-
 ---
 Generado por dªtªblɛ | contacto@datable.com | Ciudad de México
     `.trim();
@@ -51,7 +42,7 @@ Generado por dªtªblɛ | contacto@datable.com | Ciudad de México
 
   return (
     <section className="py-16 px-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto space-y-8">
         <motion.div
           className="glass rounded-3xl p-8 md:p-12 space-y-8"
           initial={{ opacity: 0, y: 30 }}
@@ -91,25 +82,6 @@ Generado por dªtªblɛ | contacto@datable.com | Ciudad de México
             </ul>
           </div>
 
-          {/* Tools */}
-          <div>
-            <h3 className="font-display font-semibold mb-3 flex items-center gap-2">
-              <Wrench className="h-5 w-5 text-primary" />
-              Herramientas Recomendadas
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {tools.map((t) => (
-                <div key={t.name} className="bg-secondary/50 rounded-xl p-4">
-                  <p className="text-sm font-medium text-foreground">{t.name}</p>
-                  <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
-                    <DollarSign className="h-3 w-3" />
-                    {t.price}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
             <Button
@@ -132,6 +104,41 @@ Generado por dªtªblɛ | contacto@datable.com | Ciudad de México
               Compartir
             </Button>
           </div>
+        </motion.div>
+
+        {/* CTA to register */}
+        <motion.div
+          className="glass-rainbow rounded-3xl p-8 text-center space-y-5"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Rocket className="h-12 w-12 text-primary mx-auto" />
+          </motion.div>
+          <h3 className="text-2xl font-display font-bold">
+            ¿Te gustó tu <span className="gradient-rainbow-text">Blueprint</span>?
+          </h3>
+          <p className="text-sm text-muted-foreground max-w-md mx-auto">
+            ¡Excelente! Ahora imagina tener todas estas soluciones <strong className="text-foreground">funcionando en automático</strong> para tu negocio. 
+            Regístrate y activa tu plan personalizado en minutos.
+          </p>
+          <Button
+            asChild
+            size="lg"
+            className="btn-glow rounded-xl font-display font-semibold gap-2 px-8"
+          >
+            <Link to="/auth">
+              Crear mi cuenta gratis
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </Button>
+          <p className="text-xs text-muted-foreground">
+            🔒 Sin tarjeta de crédito · Diagnóstico incluido · Cancela cuando quieras
+          </p>
         </motion.div>
       </div>
     </section>
