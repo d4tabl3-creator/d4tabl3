@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
-import { Loader2, UserPlus, Trophy, DollarSign, Users, Copy, Check } from "lucide-react";
-import { useEffect as useEffectOnce } from "react";
+import { Loader2, UserPlus, Trophy, DollarSign, Users, Copy, Check, QrCode } from "lucide-react";
 import ConfettiBackground from "@/components/effects/ConfettiBackground";
 
 interface Referral {
@@ -27,7 +26,7 @@ interface AgentProfile {
 }
 
 export default function DashboardSales() {
-  const { user, isAdmin } = useAuth();
+  const { user } = useAuth();
   const [agent, setAgent] = useState<AgentProfile | null>(null);
   const [referrals, setReferrals] = useState<Referral[]>([]);
   const [loading, setLoading] = useState(true);
@@ -36,6 +35,7 @@ export default function DashboardSales() {
   const [adding, setAdding] = useState(false);
   const [copied, setCopied] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showQR, setShowQR] = useState(false);
 
   useEffect(() => {
     if (!user) return;
@@ -83,9 +83,11 @@ export default function DashboardSales() {
     setAdding(false);
   };
 
+  const refLink = agent ? `${window.location.origin}/?ref=${agent.ref_code}` : "";
+
   const copyLink = () => {
     if (!agent) return;
-    navigator.clipboard.writeText(`${window.location.origin}/?ref=${agent.ref_code}`);
+    navigator.clipboard.writeText(refLink);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
     toast({ title: "Link copiado", description: "Comparte este link con tus prospectos." });
@@ -117,6 +119,25 @@ export default function DashboardSales() {
         <p className="text-sm text-muted-foreground mt-1">Registra clientes, comparte tu link y gana comisiones.</p>
       </div>
 
+      {/* Comisiones info */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="rounded-xl border border-primary/20 bg-primary/5 p-5 space-y-3"
+      >
+        <h3 className="font-display font-semibold text-sm">💰 Así ganas con d4tabl3</h3>
+        <div className="grid grid-cols-2 gap-3 text-sm">
+          <div className="rounded-lg bg-card/50 p-3">
+            <p className="text-muted-foreground text-xs mb-1">Primera mensualidad</p>
+            <p className="font-bold text-primary">100% para ti</p>
+          </div>
+          <div className="rounded-lg bg-card/50 p-3">
+            <p className="text-muted-foreground text-xs mb-1">Comisión recurrente</p>
+            <p className="font-bold text-primary">10% mensual</p>
+          </div>
+        </div>
+      </motion.div>
+
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4">
         {[
@@ -138,15 +159,33 @@ export default function DashboardSales() {
         ))}
       </div>
 
-      {/* Ref link */}
-      <div className="rounded-xl border border-border bg-card/50 p-4 flex items-center gap-3">
-        <div className="flex-1">
-          <p className="text-xs text-muted-foreground mb-1">Tu link de referido</p>
-          <p className="text-sm font-mono truncate">{window.location.origin}/?ref={agent.ref_code}</p>
+      {/* Ref link + QR */}
+      <div className="rounded-xl border border-border bg-card/50 p-4 space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="flex-1">
+            <p className="text-xs text-muted-foreground mb-1">Tu link de referido</p>
+            <p className="text-sm font-mono truncate">{refLink}</p>
+          </div>
+          <Button variant="outline" size="sm" onClick={copyLink}>
+            {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => setShowQR(!showQR)}>
+            <QrCode className="h-4 w-4" />
+          </Button>
         </div>
-        <Button variant="outline" size="sm" onClick={copyLink}>
-          {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-        </Button>
+        {showQR && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            className="flex justify-center pt-2"
+          >
+            <img
+              src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(refLink)}`}
+              alt="QR Code"
+              className="h-48 w-48 rounded-xl border border-border"
+            />
+          </motion.div>
+        )}
       </div>
 
       {/* Register client */}
@@ -154,7 +193,7 @@ export default function DashboardSales() {
         <h3 className="font-display font-semibold flex items-center gap-2">
           <UserPlus className="h-4 w-4 text-primary" /> Registrar nuevo cliente
         </h3>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <Input placeholder="Nombre del cliente" value={clientName} onChange={(e) => setClientName(e.target.value)} />
           <Input placeholder="Nombre del negocio (opcional)" value={clientBusiness} onChange={(e) => setClientBusiness(e.target.value)} />
           <Button onClick={handleAddReferral} disabled={adding || !clientName.trim()}>

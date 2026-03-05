@@ -1,4 +1,4 @@
-import { Zap, BarChart3, CheckCircle, LogOut, CreditCard, Home, HelpCircle, ShoppingBag, Briefcase, Gift, Sparkles } from "lucide-react";
+import { Zap, BarChart3, CheckCircle, LogOut, CreditCard, Home, HelpCircle, ShoppingBag, Briefcase, Gift, Shield, FlaskConical } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
@@ -32,11 +32,16 @@ const secondaryNav = [
   { title: "Soporte", url: "/dashboard/support", icon: HelpCircle, emoji: "🛟", color: "var(--fun-mint)" },
 ];
 
+const adminNav = [
+  { title: "Gestionar Vendedores", url: "/dashboard/admin-agents", icon: Shield, emoji: "🛡️", color: "var(--rainbow-1)" },
+  { title: "Códigos de Prueba", url: "/dashboard/test-codes", icon: FlaskConical, emoji: "🧪", color: "var(--rainbow-2)" },
+];
+
 export function DashboardSidebar() {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
   const location = useLocation();
-  const { user, signOut } = useAuth();
+  const { user, signOut, isAdmin } = useAuth();
 
   return (
     <Sidebar collapsible="icon" className="border-r border-border">
@@ -105,6 +110,34 @@ export function DashboardSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        {isAdmin && (
+          <SidebarGroup>
+            <SidebarGroupLabel className="text-[10px] uppercase tracking-widest text-muted-foreground/60">
+              🔒 Admin
+            </SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {adminNav.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <NavLink
+                        to={item.url}
+                        end
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all"
+                        activeClassName="text-foreground font-medium"
+                        style={location.pathname === item.url ? { backgroundColor: `hsl(${item.color} / 0.1)` } : {}}
+                      >
+                        <span className="text-base">{item.emoji}</span>
+                        {!collapsed && <span className="text-sm">{item.title}</span>}
+                      </NavLink>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        )}
       </SidebarContent>
 
       <SidebarFooter className="p-3">
