@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Send, X, Loader2 } from "lucide-react";
+import { MessageCircle, Send, X, Loader2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import type { AnalysisResult } from "./ImageUpload";
 
@@ -12,20 +13,22 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
 interface Props {
   analysisResult: AnalysisResult | null;
+  onChatStarted?: () => void;
 }
 
-export default function ChatAssistant({ analysisResult }: Props) {
+export default function ChatAssistant({ analysisResult, onChatStarted }: Props) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [hasSentMessage, setHasSentMessage] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (analysisResult && messages.length === 0) {
       setMessages([{
         role: "assistant",
-        content: `¡Hola! Tu Automation Blueprint está listo. ${analysisResult.summary}\n\n¿Tienes preguntas sobre tu estrategia o las recomendaciones?`
+        content: `¡Hola! Tu Automation Blueprint está listo. ${analysisResult.summary}\n\n¿Tienes preguntas sobre tu estrategia? Pregúntame lo que quieras — todo lo que necesitas ya está disponible en **d4tabl3** 🚀`
       }]);
     }
   }, [analysisResult]);
@@ -41,6 +44,11 @@ export default function ChatAssistant({ analysisResult }: Props) {
     setMessages(allMessages);
     setInput("");
     setLoading(true);
+
+    if (!hasSentMessage) {
+      setHasSentMessage(true);
+      onChatStarted?.();
+    }
 
     let assistantSoFar = "";
     const upsertAssistant = (chunk: string) => {
@@ -177,6 +185,17 @@ export default function ChatAssistant({ analysisResult }: Props) {
                 </div>
               )}
             </div>
+
+            {/* CTA banner */}
+            {hasSentMessage && (
+              <Link
+                to="/auth"
+                className="mx-3 mb-1 flex items-center justify-between rounded-xl bg-primary/10 border border-primary/20 px-4 py-2 hover:bg-primary/20 transition-colors"
+              >
+                <span className="text-xs font-medium text-primary">🚀 Activa tu plan en d4tabl3</span>
+                <ArrowRight className="h-3.5 w-3.5 text-primary" />
+              </Link>
+            )}
 
             {/* Input */}
             <div className="p-3 border-t border-border/50">

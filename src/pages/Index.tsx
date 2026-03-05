@@ -60,7 +60,10 @@ const Index = () => {
 
       <ClosingSection />
       <ContactSection />
-      <ChatAssistant analysisResult={analysisResult} />
+      <ChatAssistant
+        analysisResult={analysisResult}
+        onChatStarted={() => setChatStarted(true)}
+      />
     </main>
   );
 };

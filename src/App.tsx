@@ -18,6 +18,8 @@ import DashboardSupport from "./pages/dashboard/DashboardSupport";
 import DashboardAddOns from "./pages/dashboard/DashboardAddOns";
 import DashboardSales from "./pages/dashboard/DashboardSales";
 import DashboardReferrals from "./pages/dashboard/DashboardReferrals";
+import DashboardAdminAgents from "./pages/dashboard/DashboardAdminAgents";
+import DashboardTestCodes from "./pages/dashboard/DashboardTestCodes";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +44,8 @@ const App = () => (
               <Route path="add-ons" element={<DashboardAddOns />} />
               <Route path="sales" element={<DashboardSales />} />
               <Route path="referrals" element={<DashboardReferrals />} />
+              <Route path="admin-agents" element={<DashboardAdminAgents />} />
+              <Route path="test-codes" element={<DashboardTestCodes />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
