@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Majahuitas beach party, Saturday November 7, 2026. Options, prices and WhatsApp booking.">
+<title>Majahuitas Concierge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: one narrow night-time column — hero, five options, reserve form, essentials. Single dark look (beach party at night). */
+:root{
+  --jungle:#0a120e;      /* page ground */
+  --canopy:#122019;      /* raised surface */
+  --leaf:#1d3328;        /* lines */
+  --emerald:#2fd38f;     /* primary accent */
+  --laser:#ff3fb4;       /* laser magenta, used sparingly */
+  --mist:#e7f2ec;        /* text */
+  --moss:#9db7a9;        /* muted text */
+  --display:"Syne", "Arial Black", system-ui, sans-serif;
+  --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--jungle);color:var(--mist);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:720px;margin:0 auto}
+a{color:var(--emerald)}
+:focus-visible{outline:2px solid var(--laser);outline-offset:3px}
+
+.top{display:flex;justify-content:space-between;align-items:center;padding-block:18px;gap:12px}
+.brand{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--moss)}
+.lang{display:flex;border:1px solid var(--leaf);border-radius:999px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--moss);font:600 12px var(--body);padding:7px 12px;cursor:pointer;letter-spacing:.06em}
+.lang button[aria-pressed="true"]{background:var(--emerald);color:var(--jungle)}
+
+.hero{position:relative;padding-block:28px 36px;overflow:hidden}
+.beams{position:absolute;inset:0;pointer-events:none;opacity:.55}
+.beams i{position:absolute;top:-10%;left:50%;width:2px;height:140%;background:linear-gradient(var(--laser),transparent 70%);transform-origin:top center}
+.beams i:nth-child(1){transform:rotate(-38deg)}
+.beams i:nth-child(2){transform:rotate(-14deg);background:linear-gradient(var(--emerald),transparent 65%)}
+.beams i:nth-child(3){transform:rotate(16deg)}
+.beams i:nth-child(4){transform:rotate(40deg);background:linear-gradient(var(--emerald),transparent 65%)}
+@media (prefers-reduced-motion:no-preference){.beams i{animation:sweep 7s ease-in-out infinite alternate}.beams i:nth-child(2n){animation-duration:9s}}
+@keyframes sweep{to{opacity:.35;filter:blur(1px)}}
+.hero>*{position:relative}
+.date{font:600 13px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--laser)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,11vw,76px);line-height:.95;margin:10px 0 14px;text-wrap:balance;letter-spacing:-.01em}
+.lineup{font-family:var(--display);font-weight:700;font-size:clamp(18px,4.6vw,24px);margin:0 0 14px}
+.lineup span{color:var(--moss);font-weight:500}
+.lede{color:var(--moss);max-width:58ch;margin:0}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{border:1px solid var(--leaf);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--mist);background:var(--canopy)}
+
+h2{font-family:var(--display);font-weight:700;font-size:24px;margin:44px 0 6px}
+.sub{color:var(--moss);margin:0 0 18px;font-size:15px}
+
+.opts{display:grid;gap:12px}
+.opt{border:1px solid var(--leaf);border-radius:14px;padding:18px;background:var(--canopy);display:grid;gap:10px}
+.opt.feature{border-color:var(--emerald)}
+.opt-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.opt h3{font-family:var(--display);font-size:19px;margin:0}
+.tag{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--jungle);background:var(--emerald);border-radius:999px;padding:3px 9px;margin-left:8px;vertical-align:middle}
+.price{font-variant-numeric:tabular-nums;font-weight:600;font-size:20px;white-space:nowrap}
+.price small{display:block;text-align:right;font-size:12px;font-weight:500;color:var(--moss)}
+.opt ul{margin:0;padding-left:18px;color:var(--mist);font-size:15px}
+.opt li{margin:2px 0}
+.note{font-size:13px;color:var(--moss);margin:0}
+.pick{justify-self:start;background:none;border:1px solid var(--emerald);color:var(--emerald);font:600 14px var(--body);border-radius:999px;padding:9px 16px;cursor:pointer}
+.pick:hover{background:var(--emerald);color:var(--jungle)}
+
+form{border:1px solid var(--laser);border-radius:16px;padding:20px;background:var(--canopy);display:grid;gap:14px}
+label{display:grid;gap:6px;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--moss)}
+select,input{font:16px var(--body);color:var(--mist);background:var(--jungle);border:1px solid var(--leaf);border-radius:10px;padding:11px 12px;width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.row{grid-template-columns:1fr}}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--leaf);padding-top:14px}
+.total b{font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums}
+.go{display:block;text-align:center;background:var(--laser);color:#14040d;text-decoration:none;font:700 16px var(--body);border-radius:999px;padding:14px}
+.go:hover{filter:brightness(1.08)}
+.alt{font-size:13px;color:var(--moss);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.alt code{font:600 14px var(--body);color:var(--mist);user-select:all}
+.copy{background:none;border:1px solid var(--leaf);color:var(--moss);border-radius:8px;padding:4px 10px;font:600 12px var(--body);cursor:pointer}
+
+.more{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.more{grid-template-columns:1fr}}
+.more .opt h3{font-size:17px}
+
+.ess{display:grid;gap:18px}
+.ess h3{font-family:var(--display);font-size:16px;margin:0 0 6px}
+.ess p,.ess ul{margin:0;color:var(--moss);font-size:15px}
+.ess ul{padding-left:18px}
+footer{margin-top:40px;font-size:12px;color:var(--moss);border-top:1px solid var(--leaf);padding-top:16px}
+.bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.shade{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,18,14,.5) 0%,rgba(10,18,14,.74) 45%,rgba(10,18,14,.8) 100%)}
+.hero{margin-left:calc(-1*max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1*max(16px,env(safe-area-inset-right,0px)));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-radius:0 0 18px 18px}
+@media (min-width:752px){.hero{margin-left:0;margin-right:0;border-radius:18px;padding-left:28px;padding-right:28px}}
+@media (prefers-reduced-motion:reduce){.bg{display:none}body{background:var(--jungle)}}
+.opt,form,.ess{background:rgba(18,32,25,.62);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.ess{border:1px solid var(--leaf);border-radius:14px;padding:18px}
+.hero{border-radius:0}
+.hero>*{z-index:2}
+.hero>.beams{position:absolute;z-index:1}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}
+.boats-intro{display:grid;gap:10px}
+.boats{display:grid;gap:18px}
+.boat{border:1px solid var(--leaf);border-radius:16px;overflow:hidden;background:rgba(18,32,25,.62);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);display:grid}
+.gal{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;height:280px;background:var(--jungle);scrollbar-width:thin}
+.gal img,.gal video{height:100%;width:auto;max-width:none;flex:none;scroll-snap-align:start;object-fit:cover;display:block}
+.gal-hint{font-size:12px;color:var(--moss);padding:8px 18px 0}
+.boat-body{padding:16px 18px 20px;display:grid;gap:14px}
+.boat-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.boat h3{font-family:var(--display);font-size:21px;margin:0;text-wrap:balance}
+.boat .kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--laser);font-weight:600}
+.rate{font-variant-numeric:tabular-nums;font-weight:600;font-size:20px;text-align:right}
+.rate small{display:block;font-size:12px;font-weight:500;color:var(--moss)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){.cols{grid-template-columns:1fr}}
+.cols h4{margin:0 0 6px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--emerald)}
+.cols ul{margin:0;padding-left:18px;font-size:15px}
+.cols li{margin:2px 0}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;border-top:1px solid var(--leaf);padding-top:14px}
+.calc .sum{display:flex;justify-content:space-between;align-items:baseline;grid-column:1/-1}
+.calc .sum b{font-family:var(--display);font-size:24px;font-variant-numeric:tabular-nums}
+.calc .go{grid-column:1/-1}
+.fine{font-size:13px;color:var(--moss);margin:0}
+@media (max-width:520px){.rate{text-align:left}}
+.notice{border-left:3px solid var(--emerald);padding:2px 0 2px 12px;font-size:14px;color:var(--moss);margin:0}
+</style>
+</head>
+<body>
+
+<video class="bg" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="palmas.mp4" type="video/mp4"></video><div class="shade" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="top">
+    <div class="brand" data-t="brand">Private Concierge · Vallarta</div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="en" aria-pressed="true">EN</button>
+      <button type="button" id="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="beams" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="date" data-t="date">Saturday · November 7, 2026 · 1:30–9:00 PM</div>
+    <h1>Majahuitas</h1>
+    <p class="lineup">Amal Nemer <span>·</span> Dox <span>·</span> Rameff</p>
+    <p class="lede" data-t="lede">A beach club you can only reach by boat, surrounded by 480+ hectares of jungle. House music from renowned DJs, Mexican‑Mediterranean food, and a laser show between the jungle and the sea once the sun goes down.</p>
+    <div class="facts">
+      <span class="chip" data-t="f1">Boat access only</span>
+      <span class="chip" data-t="f2">18+ · photo ID required</span>
+      <span class="chip" data-t="f3">Rain plan: covered area on site</span>
+    </div>
+  </header>
+
+  <h2 data-t="h-opts">Choose your experience</h2>
+  <p class="sub" data-t="s-opts">All prices in Mexican pesos and include concierge service: booking, boat coordination and personal assistance.</p>
+
+  <div class="opts" id="opts"></div>
+
+  <h2 id="reserve-h" data-t="h-res">Reserve</h2>
+  <p class="sub" data-t="s-res">Pick an option, set your guests, and send it to me on WhatsApp. I confirm availability and send payment details.</p>
+
+  <form id="f" novalidate>
+    <label for="opt"><span data-t="l-opt">Experience</span>
+      <select id="opt"></select>
+    </label>
+    <div class="row">
+      <label for="guests"><span data-t="l-guests">Guests</span>
+        <input id="guests" type="number" inputmode="numeric" min="1" max="30" placeholder="—">
+      </label>
+      <label for="boat"><span data-t="l-boat">Boat departure</span>
+        <select id="boat">
+          <option value="" data-t="b-ch">Choose</option>
+          <option value="pv" data-t="b-pv">Puerto Vallarta · 2:00 PM</option>
+          <option value="nv" data-t="b-nv">Nuevo Vallarta · 1:30 PM</option>
+          <option value="own" data-t="b-own">Own boat / yacht</option>
+        </select>
+      </label>
+    </div>
+    <label for="name"><span data-t="l-name">Name for the reservation</span>
+      <input id="name" type="text" autocomplete="name" >
+    </label>
+    <p class="note" id="minnote"></p>
+    <div class="total" id="totalrow" hidden><span data-t="l-total">Estimated total</span><b id="total">$0</b></div>
+    <a class="go" id="go" href="#" target="_blank" rel="noopener" data-t="go">Confirm on WhatsApp</a>
+    <div class="alt"><span data-t="alt">WhatsApp</span> <code id="num">+52 55 3880 2185</code> <button type="button" class="copy" id="copy" data-t="copy">Copy</button></div>
+  </form>
+
+
+  <h2 id="boats-h" data-t="h-boats">Private Boats</h2>
+  <div class="boats-intro">
+    <p class="sub" data-t="s-boats" style="margin:0">Go to Majahuitas on your own boat, just your group. You set the time to leave and the time to come back.</p>
+    <p class="notice" data-t="n-boats">Every charter includes the boat with its captain and crew. Majahuitas entry and anything you order at the club are booked separately.</p>
+  </div>
+  <div class="boats" id="boats"></div>
+
+  <h2 data-t="h-more">Also available</h2>
+  <p class="sub" data-t="s-more">Rates on request.</p>
+  <div class="more" style="grid-template-columns:1fr">
+    <div class="opt"><h3 data-t="y-h">Yelapa</h3><p class="note" data-t="y-p">A village reachable only by sea, with waterfalls, beaches and spa retreats.</p><a class="pick" target="_blank" rel="noopener" href="https://wa.me/525538802185?text=Hi%20Alexa%2C%20I%27d%20like%20rates%20for%20Yelapa." data-t="ask">Ask for rates</a></div>
+  </div>
+
+  <h2 data-t="h-ess">Good to know</h2>
+  <div class="ess">
+    <div><h3 data-t="e1h">Check‑in points</h3><p data-t="e1p">Puerto Vallarta: Maritime Terminal (Puerto Mágico), boat leaves 2:00 PM. Nuevo Vallarta: Paseo de las Palmas 39, boat leaves 1:30 PM. Arrive 30 minutes early; boarding closes 10 minutes before departure.</p></div>
+    <div><h3 data-t="e2h">Payment and cancellation</h3><ul>
+      <li data-t="e2a">Full payment secures your reservation.</li>
+      <li data-t="e2b">Cancel more than 48 hours before: 10% administrative charge.</li>
+      <li data-t="e2c">Cancel within 48 hours, no‑show or arriving late: no changes or refunds.</li></ul></div>
+    <div><h3 data-t="e3h">Not allowed</h3><p data-t="e3p">Outside food or drinks, drugs, e‑cigarettes, weapons or sharp objects.</p></div>
+  </div>
+
+  <footer data-t="foot">Independent concierge service in Puerto Vallarta. Event operated by its organizer; schedules subject to change.</footer>
+</div>
+
+<script>
+const PHONE="525538802185";
+const OPTS=[
+ {id:"ga",pp:1200,min:1,name:{en:"General Access",es:"Acceso general"},
+  inc:{en:["Entry to the event","World‑class DJs and live performances"],es:["Entrada al evento","DJs de talla mundial y presentaciones en vivo"]},
+  note:{en:"Food, drinks and 15% service not included. Boat transfer available on request.",es:"No incluye alimentos, bebidas ni el 15% de servicio. Traslado en barco disponible bajo solicitud."}},
+ {id:"pp",pp:3600,min:1,feature:true,name:{en:"Party Package",es:"Paquete fiesta"},
+  inc:{en:["Entry to the event","Round‑trip party boat","Three‑course meal","Up to 5 drinks","15% service included"],es:["Entrada al evento","Barco fiesta redondo","Comida de tres tiempos","Hasta 5 bebidas","15% de servicio incluido"]},
+  note:{en:"Premium brand drinks available for purchase.",es:"Bebidas de marca premium con costo adicional."}},
+ {id:"ts",pp:2760,min:2,name:{en:"Table Share",es:"Mesa compartida"},
+  inc:{en:["Shared table, from 2 guests","$2,000 MXN food and drink credit per guest","Service included"],es:["Mesa compartida, desde 2 personas","$2,000 MXN de consumo por persona","Servicio incluido"]},
+  note:{en:"Boat transfer available on request.",es:"Traslado en barco disponible bajo solicitud."}},
+ {id:"rt",pp:2760,min:6,name:{en:"Private Table",es:"Mesa privada"},
+  inc:{en:["Your own table, from 6 guests","$2,000 MXN food and drink credit per guest","Service included"],es:["Mesa propia, desde 6 personas","$2,000 MXN de consumo por persona","Servicio incluido"]},
+  note:{en:"Boat transfer available on request.",es:"Traslado en barco disponible bajo solicitud."}},
+ {id:"vip",pp:0,min:1,name:{en:"VIP Table",es:"Mesa VIP"},
+  inc:{en:["Premium location and personalized service"],es:["Ubicación preferente y servicio personalizado"]},
+  note:{en:"Rate on request.",es:"Tarifa a consultar."}}
+];
+const T={
+ es:{brand:"Conserjería privada · Vallarta",date:"Sábado · 7 de noviembre de 2026 · 1:30–9:00 p.m.",
+  lede:"Un club de playa al que solo se llega en barco, rodeado de más de 480 hectáreas de selva. Música house con DJs reconocidos, comida mexicana‑mediterránea y un show de láser entre la selva y el mar al ponerse el sol.",
+  f1:"Acceso solo en barco",f2:"Mayores de 18 · identificación obligatoria",f3:"Si llueve: área techada en el lugar",
+  "h-opts":"Elige tu experiencia","s-opts":"Precios en pesos mexicanos; incluyen servicio de conserjería: reservación, coordinación del barco y atención personal.",
+  "h-res":"Reservar","s-res":"Elige una opción, indica cuántas personas y envíamelo por WhatsApp. Confirmo disponibilidad y te mando los datos de pago.",
+  "l-opt":"Experiencia","l-guests":"Personas","l-boat":"Salida del barco","b-pv":"Puerto Vallarta · 2:00 p.m.","b-nv":"Nuevo Vallarta · 1:30 p.m.","b-own":"Barco o yate propio","b-ch":"Elegir",
+  "l-name":"Nombre para la reservación","l-total":"Total estimado",go:"Confirmar por WhatsApp",alt:"WhatsApp",copy:"Copiar",
+  "h-more":"También disponible","s-more":"Tarifas a consultar.","y-h":"Yelapa","y-p":"Un pueblo al que solo se llega por mar, con cascadas, playas y spas.",
+  "c-h":"Catamarán privado","c-p":"Pesca de día, ancla en Majahuitas para la fiesta y duerme a bordo.",ask:"Pedir tarifas",
+  "h-ess":"Información importante","e1h":"Puntos de abordaje","e1p":"Puerto Vallarta: Terminal Marítima (Puerto Mágico), el barco sale a las 2:00 p.m. Nuevo Vallarta: Paseo de las Palmas 39, el barco sale a la 1:30 p.m. Llega 30 minutos antes; el abordaje cierra 10 minutos antes de la salida.",
+  "e2h":"Pago y cancelación","e2a":"La reservación se asegura con el pago completo.","e2b":"Cancelación con más de 48 horas: cargo administrativo del 10%.","e2c":"Cancelación con menos de 48 horas, no presentarse o llegar tarde: sin cambios ni reembolsos.",
+  "e3h":"No se permite","e3p":"Alimentos o bebidas del exterior, drogas, cigarros electrónicos, armas u objetos punzocortantes.",
+  foot:"Servicio independiente de conserjería en Puerto Vallarta. Evento operado por su organizador; horarios sujetos a cambios.",
+  "h-boats":"Embarcaciones privadas","s-boats":"Llega a Majahuitas en tu propia embarcación, solo tu grupo. Tú decides a qué hora sales y a qué hora regresas.","n-boats":"Toda renta incluye la embarcación con su capitán y tripulación. La entrada a Majahuitas y lo que consumas en el club se reservan por separado.",
+  choose:"Elegir",pick:"Elegir",from:"desde",per:"por persona",min:"Mínimo {n} personas para esta opción.",req:"Tarifa a consultar",copied:"Copiado"},
+ en:{choose:"Choose",pick:"Select",from:"from",per:"per guest",min:"Minimum {n} guests for this option.",req:"Rate on request",copied:"Copied"}
+};
+let lang="en";const EN={};
+document.querySelectorAll("[data-t]").forEach(e=>EN[e.dataset.t]=e.textContent);
+const $=id=>document.getElementById(id);
+const fmt=n=>"$"+n.toLocaleString("en-US")+" MXN";
+const tr=k=>(T[lang]&&T[lang][k])||T.en[k];
+
+function renderOpts(){
+  $("opts").innerHTML=OPTS.map(o=>{
+    const price=o.pp?`${o.min>1?`<small>${tr("from")} ${o.min}</small>`:""}${fmt(o.pp*o.min)}<small>${fmt(o.pp)} ${tr("per")}</small>`:`<small>&nbsp;</small>${tr("req")}`;
+    return `<article class="opt${o.feature?" feature":""}"><div class="opt-head"><h3>${o.name[lang]}${o.feature?` <span class="tag">${lang==="es"?"Todo incluido":"All‑in"}</span>`:""}</h3><div class="price">${price}</div></div>
+    <ul>${o.inc[lang].map(i=>`<li>${i}</li>`).join("")}</ul><p class="note">${o.note[lang]}</p>
+    <button type="button" class="pick" data-id="${o.id}">${tr("pick")}</button></article>`}).join("");
+  const cur=$("opt").value||"";
+  $("opt").innerHTML=`<option value="">${tr("choose")}</option>`+OPTS.map(o=>`<option value="${o.id}">${o.name[lang]}</option>`).join("");
+  $("opt").value=cur;
+}
+function update(){
+  const o=OPTS.find(x=>x.id===$("opt").value);
+  const gv=$("guests").value.trim();let g=parseInt(gv,10);
+  $("minnote").textContent=o&&o.min>1?tr("min").replace("{n}",o.min):"";
+  const ready=o&&g>=1;
+  if(ready&&g<o.min){g=o.min;$("guests").value=g}
+  $("totalrow").hidden=!ready;
+  if(ready)$("total").textContent=o.pp?fmt(o.pp*g):tr("req");
+  const boat=$("boat").value?$("boat").selectedOptions[0].textContent:"";
+  const name=$("name").value.trim();
+  const L=lang==="es";
+  let msg=L?"Hola Alexa, quiero reservar Majahuitas, sábado 7 de noviembre.":"Hi Alexa, I'd like to book Majahuitas, Saturday November 7.";
+  if(o)msg+=(L?"\nOpción: ":"\nOption: ")+o.name[lang];
+  if(g>=1)msg+=(L?"\nPersonas: ":"\nGuests: ")+g;
+  if(boat)msg+=(L?"\nSalida: ":"\nDeparture: ")+boat;
+  if(name)msg+=(L?"\nNombre: ":"\nName: ")+name;
+  if(ready)msg+=(L?"\nTotal estimado: ":"\nEstimated total: ")+$("total").textContent;
+  $("go").href=`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+}
+function setLang(l){
+  lang=l;document.documentElement.lang=l;
+  $("en").setAttribute("aria-pressed",l==="en");$("es").setAttribute("aria-pressed",l==="es");
+  document.querySelectorAll("[data-t]").forEach(e=>{const k=e.dataset.t;e.textContent=l==="es"&&T.es[k]?T.es[k]:EN[k]});
+  renderOpts();update();renderBoats();
+  try{localStorage.setItem("lang",l)}catch(e){}
+}
+$("en").onclick=()=>setLang("en");$("es").onclick=()=>setLang("es");
+$("opts").addEventListener("click",e=>{const b=e.target.closest(".pick");if(!b)return;$("opt").value=b.dataset.id;update();$("reserve-h").scrollIntoView({behavior:"smooth"})});
+["opt","guests","boat","name"].forEach(id=>$(id).addEventListener("input",update));
+$("opt").addEventListener("change",update);$("boat").addEventListener("change",update);
+$("f").addEventListener("submit",e=>e.preventDefault());
+$("copy").onclick=()=>{const t="+52 55 3880 2185";navigator.clipboard?.writeText(t).then(()=>{$("copy").textContent=tr("copied")}).catch(()=>{const r=document.createRange();r.selectNodeContents($("num"));const s=getSelection();s.removeAllRanges();s.addRange(r)})};
+
+const BOATS=[
+ {id:"cc",kicker:{en:"Sport cruiser",es:"Lancha deportiva"},name:{en:"Chris‑Craft 35 ft",es:"Chris‑Craft 35 pies"},rate:5500,min:5,cap:12,
+  media:[{v:"img/cc-video.mp4",p:"img/cc-video.jpg"},"img/cc-1.jpg","img/cc-2.jpg","img/cc-3.jpg","img/cc-4.jpg"],
+  boat:{en:["Up to 12 guests","35 ft","1 cabin","1 bathroom","Sun deck","Bluetooth sound","Air conditioning"],es:["Hasta 12 personas","35 pies","1 recámara","1 baño","Asoleadero","Sonido Bluetooth","Aire acondicionado"]},
+  incl:{en:["Captain and crew","8 towels","Water and ice","12 beers"],es:["Capitán y tripulación","8 toallas","Agua y hielo","12 cervezas"]}},
+ {id:"dj",kicker:{en:"Azimut yacht · 2005",es:"Yate Azimut · 2005"},name:{en:"Yacht Don Joni 59 ft",es:"Yate Don Joni 59 pies"},rate:10500,min:5,cap:25,base:15,extra:1000,
+  media:["img/dj-7.jpg","img/dj-8.jpg","img/dj-4.jpg","img/dj-9.jpg","img/dj-5.jpg","img/dj-1.jpg","img/dj-2.jpg","img/dj-3.jpg","img/dj-6.jpg"],
+  boat:{en:["1 to 15 guests at base rate, up to 25","59 ft","3 cabins","2 bathrooms","Living room, kitchen and dining room","Large padded bow lounge","Bluetooth sound"],es:["De 1 a 15 personas con la tarifa base, hasta 25","59 pies","3 recámaras","2 baños","Sala, cocina y comedor","Proa amplia acolchonada","Sonido Bluetooth"]},
+  incl:{en:["Captain and crew","Water and ice","2 paddle boards","2 fishing rods","Snorkel gear","Floating island","Life jackets"],es:["Capitán y tripulación","Agua y hielo","2 paddle boards","2 cañas de pescar","Equipo de snorkel","Isla flotante","Salvavidas"]}},
+ {id:"cat",kicker:{en:"Party catamaran",es:"Catamarán de fiesta"},name:{en:"Catamarans Tequila & Margarita",es:"Catamaranes Tequila y Margarita"},rate:7500,min:4,cap:20,pick:true,
+  media:["img/cat-1.jpg","img/cat-2.jpg","img/cat-3.jpg","img/cat-4.jpg","img/cat-5.jpg","img/cat-6.jpg","img/cat-7.jpg","img/cat-8.jpg","img/cat-9.jpg","img/cat-10.jpg","img/cat-11.jpg"],
+  boat:{en:["Up to 20 guests","2 sun decks","Water slide","Sound system","Bathroom"],es:["Hasta 20 personas","2 asoleaderos","Tobogán","Sonido","Baño"]},
+  incl:{en:["Captain and crew","Water and ice","Snorkel gear","Floating island"],es:["Capitán y tripulación","Agua y hielo","Equipo de snorkel","Isla flotante"]}}
+];
+const BT={en:{hr:"per hour",minh:"Minimum {n} hours",fromh:"from {n} hours",from:"from",guests:"Guests",hours:"Hours",date:"Date",which:"Catamaran",either:"Either one",total:"Estimated total",req:"Request this boat",boat:"The boat",inc:"Included",swipe:"Swipe for more photos",extra:"Over 15 guests: +$1,000 MXN per person",maxg:"Up to {n} guests"},
+ es:{hr:"por hora",minh:"Mínimo {n} horas",fromh:"desde {n} horas",from:"desde",guests:"Personas",hours:"Horas",date:"Fecha",which:"Catamarán",either:"Cualquiera",total:"Total estimado",req:"Solicitar esta embarcación",boat:"La embarcación",inc:"Incluye",swipe:"Desliza para ver más fotos",extra:"Más de 15 personas: +$1,000 MXN por persona",maxg:"Hasta {n} personas"}};
+function bt(k){return BT[lang][k]}
+function boatTotal(b,g,h){let t=b.rate*h;if(b.base&&g>b.base)t+=(g-b.base)*b.extra;return t}
+function renderBoats(){
+  const prev={};document.querySelectorAll(".boat").forEach(c=>{prev[c.dataset.id]={g:c.querySelector(".bg-g").value,h:c.querySelector(".bg-h").value,d:c.querySelector(".bg-d").value,w:c.querySelector(".bg-w")?.value}});
+  $("boats").innerHTML=BOATS.map(b=>{
+    const media=b.media.map((m,i)=>typeof m==="string"?`<img src="${m}" alt="${b.name.en} photo ${i+1}" loading="${i<2?"eager":"lazy"}">`:`<video src="${m.v}" poster="${m.p}" autoplay muted loop playsinline aria-label="${b.name.en} video"></video>`).join("");
+    const p=prev[b.id]||{};
+    return `<article class="boat" data-id="${b.id}">
+      <div class="gal">${media}</div><div class="gal-hint">${bt("swipe")} →</div>
+      <div class="boat-body">
+        <div class="boat-head"><div><div class="kicker">${b.kicker[lang]}</div><h3>${b.name[lang]}</h3></div>
+          <div class="rate">${fmt(b.rate)}<small>${bt("hr")} · ${bt("fromh").replace("{n}",b.min)}</small></div></div>
+        <div class="cols"><div><h4>${bt("boat")}</h4><ul>${b.boat[lang].map(x=>`<li>${x}</li>`).join("")}</ul></div>
+          <div><h4>${bt("inc")}</h4><ul>${b.incl[lang].map(x=>`<li>${x}</li>`).join("")}</ul></div></div>
+        ${b.extra?`<p class="fine">${bt("extra")}</p>`:""}
+        <div class="calc">
+          ${b.pick?`<label for="w-${b.id}">${bt("which")}<select id="w-${b.id}" class="bg-w"><option value="either">${bt("either")}</option><option value="Tequila">Tequila Sunrise</option><option value="Margarita">Margarita</option></select></label>`:""}
+          <label for="d-${b.id}">${bt("date")}<input id="d-${b.id}" class="bg-d" type="date" value="${p.d||""}"></label>
+          <label for="g-${b.id}">${bt("guests")}<input id="g-${b.id}" class="bg-g" type="number" inputmode="numeric" min="1" max="${b.cap}" placeholder="—" value="${p.g||""}"></label>
+          <label for="h-${b.id}">${bt("hours")}<input id="h-${b.id}" class="bg-h" type="number" inputmode="numeric" min="${b.min}" max="24" placeholder="${b.min}+" value="${p.h||""}"></label>
+          <p class="fine" style="grid-column:1/-1">${bt("maxg").replace("{n}",b.cap)}</p>
+          <div class="sum" hidden><span>${bt("total")}</span><b class="bg-t">$0</b></div>
+          <a class="go bg-go" href="#" target="_blank" rel="noopener">${bt("req")}</a>
+        </div></div></article>`}).join("");
+  if(prev.cat&&prev.cat.w)document.querySelector("#w-cat").value=prev.cat.w;
+  document.querySelectorAll(".boat").forEach(updBoat);
+}
+function updBoat(c){
+  const b=BOATS.find(x=>x.id===c.dataset.id);
+  const gi=c.querySelector(".bg-g"),hi=c.querySelector(".bg-h");
+  let g=parseInt(gi.value,10);if(g>b.cap){g=b.cap;gi.value=g}
+  let hh=parseInt(hi.value,10);
+  const d=c.querySelector(".bg-d").value;const w=c.querySelector(".bg-w");
+  const ready=!!d&&g>=1&&hh>=b.min;
+  const sum=c.querySelector(".sum");sum.hidden=!ready;
+  let t=0;if(ready){t=boatTotal(b,g,hh);c.querySelector(".bg-t").textContent=fmt(t)}
+  const which=w&&w.value!=="either"?` (${w.value})`:"";
+  const L=lang==="es";
+  let msg=(L?"Hola Alexa, quiero solicitar una embarcación privada.\nEmbarcación: ":"Hi Alexa, I'd like to request a private boat.\nBoat: ")+b.name[lang]+which;
+  if(d)msg+=(L?"\nFecha: ":"\nDate: ")+d;
+  if(g>=1)msg+=(L?"\nPersonas: ":"\nGuests: ")+g;
+  if(hh>=1)msg+=(L?"\nHoras: ":"\nHours: ")+hh;
+  if(ready)msg+=(L?"\nTotal estimado: ":"\nEstimated total: ")+fmt(t);
+  c.querySelector(".bg-go").href=`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+}
+$("boats").addEventListener("input",e=>{const c=e.target.closest(".boat");if(c)updBoat(c)});
+$("boats").addEventListener("change",e=>{const c=e.target.closest(".boat");if(!c)return;const b=BOATS.find(x=>x.id===c.dataset.id);const hi=c.querySelector(".bg-h");if(hi.value&&parseInt(hi.value,10)<b.min)hi.value=b.min;updBoat(c)});
+
+let saved="en";try{saved=localStorage.getItem("lang")||"en"}catch(e){}
+renderOpts();setLang(saved);
+</script>
+
+</body>
+</html>
