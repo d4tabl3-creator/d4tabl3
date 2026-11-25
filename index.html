@@ -89,6 +89,23 @@ p{margin:0 0 1em;max-width:66ch}
 .drv div{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
 .drv h3{margin:0}.drv small{color:var(--soft);font-size:14px}
 .drv .btn{margin-top:auto;justify-content:center}
+.xo{margin-top:24px;background:#16120e;color:#f3e9d8;border:1px solid #c9a96e66;border-radius:24px;padding:clamp(22px,3vw,34px);display:grid;gap:18px;box-shadow:0 24px 50px -24px #0008}
+.xo header{display:flex;gap:16px;align-items:center}
+.xo .mono{flex:none;width:68px;height:68px;border-radius:50%;display:grid;place-items:center;border:2px solid #c9a96e;color:#c9a96e;font:700 24px Fraunces,serif;letter-spacing:.04em}
+.xo .k{color:#c9a96e;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+.xo h3{margin:2px 0 0;color:#fff;font-size:clamp(24px,3vw,32px)}.xo .biz{margin:0;color:#e0cfae;font-weight:600}
+.xo .lema2{margin:0;font-family:Fraunces,serif;font-style:italic;font-size:clamp(18px,2vw,22px);color:#f3e9d8}
+.xo .facts{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.xo .facts li{border:1px solid #c9a96e55;border-radius:99px;padding:6px 12px;font-size:14px;color:#efe2c9}
+.xo .xbody{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center}
+.xo .acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.xo .acts .btn{grid-column:1/-1;justify-content:center}
+.xo .xb{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:10px 14px;border-radius:14px;border:1px solid #c9a96e88;color:#f3e9d8;text-decoration:none;font-weight:600;overflow-wrap:anywhere}
+.xo .xb:hover{background:#c9a96e22}
+@media(min-width:701px){.xo .xb.mail{grid-column:span 2}}
+.xo .xqr{margin:0;background:#fff;border-radius:18px;padding:12px;width:190px;text-align:center}
+.xo .xqr img{width:100%;display:block}.xo .xqr figcaption{color:#16120e;font-weight:700;font-size:13px;margin-top:6px}
+@media(max-width:700px){.xo .xbody{grid-template-columns:1fr}.xo .xqr{justify-self:center}}
 .drv.pending{border-style:dashed;justify-content:center;align-items:center;text-align:center;padding:28px;color:var(--soft)}
 /* logros */
 .logros{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:22px;margin-top:32px}
@@ -303,9 +320,27 @@ dialog::backdrop{background:#14061ce8}
   <p class="lead fade">Conoce a quien te lleva. Escríbele directo por WhatsApp para reservar.</p>
   <div class="drivers">
    <article class="drv fade"><img src="img/poster-liz.jpg" alt="Cartel de Liz: si quieres que te escuchen y viajar segura, toma mi taxi" loading="lazy"><div><h3>Lizette Cabrera Meza</h3><small>Transportista · fundadora · más de 12 años al volante</small><a class="btn wa" href="https://wa.me/523221361264?text=Hola%20Liz%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener">WhatsApp 322 136 1264</a></div></article>
-   <article class="drv fade"><img src="img/poster-mayte.jpg" alt="Cartel de Mayte: toma mi taxi" loading="lazy"><div><h3>Mayte</h3><small>Transportista de la Unión</small><span class="btn" style="background:var(--line);color:var(--soft);justify-content:center">Número por confirmar</span></div></article>
+   <article class="drv fade"><img src="img/poster-mayte.jpg" alt="Cartel de Mayte: toma mi taxi" loading="lazy"><div><h3>Mayte Díaz</h3><small>Transportista de la Unión · disponible las 24 horas</small><a class="btn wa" href="https://wa.me/523221719742?text=Hola%20Mayte%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener">WhatsApp 322 171 9742</a></div></article>
    <div class="drv pending fade"><h3>Más conductoras muy pronto</h3><p>Cada integrante tendrá aquí su tarjeta con foto, vehículo y botón para reservar.</p></div>
   </div>
+  <article class="xo fade" id="xochitl">
+   <header><span class="mono">ET</span><div><small class="k">Aliada de la Unión</small><h3>Xochitl Ramírez</h3><p class="biz">Elite Transportation PV</p></div></header>
+   <p class="lema2">Transportación privada de lujo. Confiable, puntual y con manejo seguro.</p>
+   <ul class="facts"><li>Abierto 24/7</li><li>3, 6 o 9 pasajeros y grupos</li><li>Traslados al aeropuerto, tours y compras</li><li>Cobertura en todo México</li><li>★ 5.0 en Tripadvisor (12 opiniones)</li><li>De Cruz de Huanacaxtle, Nay. a Boca de Tomatlán, Jal.</li></ul>
+   <div class="xbody">
+    <div class="acts">
+     <a class="btn wa" href="https://wa.me/523222721818?text=Hola%20Xochitl%2C%20quiero%20cotizar%20un%20viaje" target="_blank" rel="noopener">WhatsApp 322 272 1818</a>
+     <a class="xb" href="tel:+523222721818">Llamar</a>
+     <a class="xb mail" href="mailto:ramirexo.pv@gmail.com">ramirexo.pv@gmail.com</a>
+     <a class="xb" href="contacto/xochitl-ramirez.vcf" download>Guardar contacto</a>
+     <a class="xb" href="https://www.facebook.com/profile.php?id=61557618595803" target="_blank" rel="noopener">Facebook</a>
+     <a class="xb" href="https://www.instagram.com/xochitl.ramirez.pv1" target="_blank" rel="noopener">Instagram</a>
+     <a class="xb" href="https://www.tiktok.com/@sochramirez" target="_blank" rel="noopener">TikTok</a>
+     <a class="xb" href="https://www.tripadvisor.com/Attraction_Review-g150793-d33232297-Reviews-Elite_Transportation_Pv-Puerto_Vallarta.html" target="_blank" rel="noopener">Opiniones en Tripadvisor</a>
+    </div>
+    <figure class="xqr"><img src="img/qr-xochitl.png" alt="Código QR para guardar el contacto de Xochitl Ramírez" loading="lazy"><figcaption>Escanea y guarda mi contacto</figcaption></figure>
+   </div>
+  </article>
  </div>
 </section>
 
@@ -402,7 +437,7 @@ dialog::backdrop{background:#14061ce8}
 <script>
 {
 const L=[
- {t:'Crecimiento a nivel estado',d:'El 5 de noviembre de 2026 dimos un gran paso: incorporamos a nuestra organización a «Yo Soy Su Taxi», organización independiente de Tepic.',f:['tepic-incorporacion']},
+ {t:'Crecimiento a nivel estado',d:'El 5 de noviembre de 2026 dimos un gran paso: incorporamos a nuestra organización a «Yo's Su Taxi», organización independiente de Tepic.',f:['tepic-incorporacion']},
  {t:'Reconocimiento en Hospitalidad Nayarita',d:'Lizette Esther Cabrera Meza recibió un reconocimiento por la capacitación en Hospitalidad Nayarita, sinónimo de mejor calidad de servicio y orgullo por la historia de Nayarit.',f:['reconocimiento']},
  {t:'Trabajo con la Secretaría de Movilidad',d:'Capacitaciones y gestiones para que en el transporte público haya más mujeres y seamos tratadas con dignidad y respeto, siempre.',f:['movilidad-grupo','movilidad-1','movilidad-2','movilidad-3','sala-movilidad']},
  {t:'Campaña «Alto al acoso»',d:'Difundimos la línea de denuncia 311 132 52 25 dentro y fuera de nuestras unidades, de día y de noche.',f:['acoso-1','acoso-2']},
