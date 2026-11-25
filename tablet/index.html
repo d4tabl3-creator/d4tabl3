@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2a0d3d">
+<title>Mujeres Transportistas BB · Pantalla</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="../img/logo-sm.png">
+<link rel="apple-touch-icon" href="../img/logo-sm.png">
+<style>
+@font-face{font-family:Fraunces;font-weight:700;src:url(f/fraunces-latin-700-normal.woff2)}
+@font-face{font-family:Fraunces;font-style:italic;font-weight:500;src:url(f/fraunces-latin-500-italic.woff2)}
+@font-face{font-family:Figtree;font-weight:400;src:url(f/figtree-latin-400-normal.woff2)}
+@font-face{font-family:Figtree;font-weight:600;src:url(f/figtree-latin-600-normal.woff2)}
+@font-face{font-family:Figtree;font-weight:700;src:url(f/figtree-latin-700-normal.woff2)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:Figtree,system-ui,sans-serif;-webkit-user-select:none;user-select:none}
+.app{position:fixed;inset:0;display:grid;grid-template-columns:minmax(0,1fr) clamp(240px,24vw,340px)}
+.stage{position:relative;overflow:hidden;background:radial-gradient(70% 60% at 80% 20%,#7b3a9e 0%,transparent 70%),radial-gradient(60% 50% at 10% 90%,#c86bae55 0%,transparent 70%),#3a1356}
+.slot{position:absolute;inset:0;display:none;align-items:center;justify-content:center}
+.slot.on{display:flex;animation:fi .6s ease}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+.slot video{width:100%;height:100%;object-fit:contain;background:#000}
+.reel{height:94%;aspect-ratio:9/16;max-width:94%;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 20px 60px #0009}
+.reel iframe{width:100%;height:100%;border:0}
+.tagline{position:absolute;left:24px;top:20px;font:600 clamp(14px,1.6vw,20px) Figtree;background:#00000055;padding:8px 14px;border-radius:99px}
+.ad{flex-direction:column;text-align:center;gap:2.2vh;padding:4vw}
+.ad .k{font:700 clamp(16px,2vw,26px) Figtree;color:#f8c9de;letter-spacing:.04em;text-transform:uppercase}
+.ad h1{font:700 clamp(36px,6vw,92px)/1.02 Fraunces,serif}
+.ad p{font:400 clamp(18px,2.2vw,32px)/1.35 Figtree;color:#f6e8f1;max-width:28ch}
+.ad .cta{margin-top:1vh;background:#1f9d55;color:#fff;font:700 clamp(20px,2.4vw,34px) Figtree;padding:.6em 1.2em;border-radius:99px}
+.ad .frame{position:absolute;inset:3vw;border:3px dashed #f3a9cb99;border-radius:28px;pointer-events:none;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{border-color:#f3a9cb}}
+.ad .float{animation:fl 6s ease-in-out infinite}@keyframes fl{50%{transform:translateY(-1.2vh)}}
+.side{background:#4b1d6b;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:12px;padding:20px 16px;text-align:center;border-left:2px solid #ffffff1f}
+.side img.logo{width:min(150px,60%);filter:drop-shadow(0 8px 20px #0007)}
+.side h2{font:700 clamp(17px,1.6vw,22px)/1.15 Fraunces,serif}
+.row{display:grid;gap:8px;width:100%}
+.pill{display:flex;align-items:center;gap:10px;background:#ffffff14;border:1px solid #ffffff26;border-radius:14px;padding:10px 12px;font:600 clamp(13px,1.2vw,16px) Figtree;text-align:left}
+.pill b{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#f3a9cb;color:#4b1d6b;font-size:13px}
+.pill.wa b{background:#1f9d55;color:#fff}
+.qr{background:#fff;border-radius:16px;padding:10px;width:min(170px,80%)}
+.qr img{width:100%;display:block}.qr p{color:#2a0d3d;font:700 13px Figtree;margin-top:4px}
+.dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px}
+.dots i{width:9px;height:9px;border-radius:50%;background:#ffffff55}.dots i.on{background:#fff}
+#start{position:fixed;inset:0;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:#2a0d3dee;text-align:center;padding:24px}
+#start img{width:160px}
+#start button{font:700 28px Figtree;background:#1f9d55;color:#fff;border:0;border-radius:99px;padding:20px 44px}
+#start small{color:#e8d3e6;font-size:16px;max-width:40ch}
+@media (orientation:portrait){.app{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}.side{flex-direction:row;flex-wrap:wrap;justify-content:center;border-left:0;border-top:2px solid #ffffff1f;padding:12px}.side img.logo{width:80px}.row{width:auto}.qr{width:120px}.side h2{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+ <main class="stage" id="stage">
+  <section class="slot" data-type="video" data-src="../img/presentacion.mp4"><video id="v1" playsinline preload="auto" poster="../img/presentacion-poster.jpg"></video></section>
+  <section class="slot" data-type="reel" data-href="https://www.facebook.com/share/r/1CVJFU3eAA/" data-secs="45"><span class="tagline">Hoteles en Nayarit</span><div class="reel"></div></section>
+  <section class="slot ad" data-type="ad" data-secs="10"><div class="frame"></div>
+   <div class="k">Espacio disponible</div><h1 class="float">Tu restaurante<br>u hotel aquí</h1>
+   <p>Visitantes y familias viajan con nosotras todos los días. Que te vean en cada traslado.</p>
+   <div class="cta">Anúnciate: 322 136 1264</div></section>
+  <section class="slot" data-type="reel" data-href="https://www.facebook.com/share/v/1CwMM7r8BG/" data-secs="45"><span class="tagline">Bienvenido a Nayarit</span><div class="reel"></div></section>
+  <section class="slot ad" data-type="ad" data-secs="10"><div class="frame"></div>
+   <div class="k">Publicidad en movimiento</div><h1 class="float">Tu marca puede estar<br>en esta pantalla</h1>
+   <p>Promociona tu negocio dentro de las unidades de la Unión de Mujeres Transportistas.</p>
+   <div class="cta">Pregunta por WhatsApp</div></section>
+  <div class="dots" id="dots"></div>
+ </main>
+ <aside class="side">
+  <img class="logo" src="../img/logo.png" alt="Unión de Mujeres Transportistas Bahía de Banderas">
+  <h2>Viaja segura con nosotras</h2>
+  <div class="row">
+   <div class="pill wa"><b>WA</b>322 136 1264</div>
+   <div class="pill"><b>f</b>Unión de Mujeres Transportistas BB</div>
+   <div class="pill"><b>TT</b>@lizzete.esther.ca</div>
+  </div>
+  <div class="qr"><img src="../img/qr-pagina.png" alt="Código QR de la página"><p>Escanea y conócenos</p></div>
+ </aside>
+</div>
+<div id="start">
+ <img src="../img/logo.png" alt="">
+ <button id="go" type="button">▶ Iniciar pantalla</button>
+ <small>Toca para iniciar con sonido y en pantalla completa. Si nadie toca, inicia sola sin sonido en unos segundos.</small>
+</div>
+<script>
+const slots=[...document.querySelectorAll('.slot')],dots=document.getElementById('dots'),v1=document.getElementById('v1');
+slots.forEach(()=>dots.appendChild(document.createElement('i')));
+let i=-1,timer=null,sound=false,lock=null;
+async function wake(){try{if('wakeLock' in navigator){lock=await navigator.wakeLock.request('screen')}}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')wake()});
+function clear(){clearTimeout(timer);v1.pause();document.querySelectorAll('.reel').forEach(r=>r.innerHTML='')}
+function next(){clear();i=(i+1)%slots.length;const s=slots[i];
+ if(s.dataset.type==='reel'&&!navigator.onLine){return next()}
+ slots.forEach((x,k)=>x.classList.toggle('on',k===i));[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
+ if(s.dataset.type==='video'){if(!v1.src)v1.src=s.dataset.src;v1.currentTime=0;v1.muted=!sound;v1.play().catch(()=>{v1.muted=true;v1.play().catch(()=>{timer=setTimeout(next,5000)})});v1.onended=next;v1.onerror=()=>{timer=setTimeout(next,2000)}}
+ else if(s.dataset.type==='reel'){const f=document.createElement('iframe');f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;
+  f.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(s.dataset.href)+'&show_text=false&autoplay=true&mute='+(sound?0:1)+'&width=360';
+  s.querySelector('.reel').appendChild(f);timer=setTimeout(next,(+s.dataset.secs||45)*1000)}
+ else{timer=setTimeout(next,(+s.dataset.secs||10)*1000)}}
+function begin(withSound){if(i>=0)return;sound=withSound;document.getElementById('start').remove();wake();next()}
+document.getElementById('go').onclick=()=>{try{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}catch(e){}begin(true)};
+setTimeout(()=>begin(false),8000);
+document.addEventListener('dblclick',()=>{try{document.documentElement.requestFullscreen()}catch(e){}});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
