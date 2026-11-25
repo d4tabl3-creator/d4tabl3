@@ -107,6 +107,15 @@ p{margin:0 0 1em;max-width:66ch}
 .hotline{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;background:var(--sun);color:#2a1236;border-radius:20px;padding:22px 26px}
 .hotline strong{font-family:Fraunces,serif;font-size:clamp(28px,4vw,40px);white-space:nowrap}
 .legal{font-size:14px;opacity:.85;margin-top:14px}
+.pres{width:100%;max-width:960px;margin:28px auto 0;display:block;border-radius:20px;background:#000;aspect-ratio:16/9;box-shadow:0 18px 40px -18px #0009}
+.stat3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:32px}
+.stat3 article{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.stat3 b{display:block;font-family:Fraunces,serif;font-size:clamp(40px,5vw,56px);line-height:1;color:var(--violet);margin-bottom:10px}
+.stat3 p{margin:0;color:var(--soft)}
+.dark .steps li:nth-child(4){border:2px solid #ffffff40}
+.anuncia{margin-top:36px;background:#ffffff12;border:2px solid var(--pink2);border-radius:20px;padding:26px;display:grid;gap:12px}
+img[src$="tepic-incorporacion.jpg"]{object-position:50% 12%}
+.anuncia h3{margin:0;color:#fff}.anuncia p{margin:0}
 .events{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:18px;margin-top:28px}
 .events button{all:unset;cursor:pointer;border-radius:16px;overflow:hidden;background:#fff;display:block}
 .events img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top}
@@ -160,7 +169,7 @@ dialog::backdrop{background:#14061ce8}
  <div class="in">
   <a class="brand" href="#inicio"><img src="img/logo-sm.png" alt="Sello de la Unión de Mujeres Transportistas Bahía de Banderas"><span>Mujeres Transportistas<br>Bahía de Banderas</span></a>
   <nav class="links" id="links" aria-label="Secciones">
-   <a href="#nosotras">Quiénes somos</a><a href="#historia">Historia</a><a href="#servicio">Servicio</a><a href="#logros">Logros</a><a href="#seguras">Mujeres seguras</a><a href="#donar">Donar</a><a href="#contacto">Contacto</a>
+   <a href="#nosotras">Quiénes somos</a><a href="#historia">Historia</a><a href="#servicio">Servicio</a><a href="#objetivo">Objetivo</a><a href="#logros">Logros</a><a href="#seguras">Mujeres seguras</a><a href="#donar">Donar</a><a href="#contacto">Contacto</a>
   </nav>
   <a class="btn wa wa-top" href="https://wa.me/523221361264?text=Hola%2C%20quiero%20pedir%20un%20viaje" target="_blank" rel="noopener">Pide tu viaje</a>
   <button class="btn menu" id="menu" aria-expanded="false" aria-controls="links">Menú</button>
@@ -197,6 +206,27 @@ dialog::backdrop{background:#14061ce8}
  <div class="in mv">
   <article class="fade"><h3>Misión</h3><p>Brindar un servicio de transporte 100% conducido por mujeres en Bahía de Banderas, combinando la mejor tecnología con el trato humano y cercano que nos distingue. Con nuestro código QR pides tu viaje de forma rápida, segura y sin complicaciones; conoces a tu conductora, compartes tu viaje con quien más confianza le tengas y viajas tranquila, porque no estás sola: nosotras te ayudamos.</p></article>
   <article class="fade"><h3>Visión</h3><p>Ser la mejor opción de transporte en Bahía de Banderas, pioneras en unir seguridad, confianza y tecnología. Queremos que cada mujer y cada familia viaje segura, tranquila y conectada, con conductoras verificadas, atención humana y el respaldo de una comunidad que te acompaña.</p></article>
+ </div>
+</section>
+
+<section class="band dark" id="presentacion">
+ <div class="in" style="text-align:center">
+  <h2 class="fade">Conócenos en dos minutos</h2>
+  <p class="lead fade" style="margin-inline:auto">Nuestra historia, nuestros logros y hacia dónde vamos.</p>
+  <video class="pres fade" controls playsinline preload="none" poster="img/presentacion-poster.jpg"><source src="img/presentacion.mp4" type="video/mp4">Tu navegador no reproduce el video.</video>
+ </div>
+</section>
+
+<section class="band rosa" id="bahia">
+ <div class="in">
+  <h2 class="fade">Nuestra casa: Bahía de Banderas, Nayarit</h2>
+  <p class="lead fade">Más visitantes y más familias cada año: más necesidad de un transporte seguro y confiable.</p>
+  <div class="stat3 fade">
+   <article><b>N.º 1</b><p>Principal destino turístico de Nayarit.</p></article>
+   <article><b>187,632</b><p>habitantes, según el Censo 2020 del INEGI.</p></article>
+   <article><b>+51%</b><p>creció su población de 2010 a 2020.</p></article>
+  </div>
+  <p class="legal">Fuentes: INEGI, Censo de Población y Vivienda 2020; Secretaría de Economía, Data México.</p>
  </div>
 </section>
 
@@ -243,6 +273,21 @@ dialog::backdrop{background:#14061ce8}
    <div class="vid fade" style="grid-template-columns:1fr;max-width:360px;justify-self:center;width:100%">
     <video controls playsinline preload="none" poster="img/video-poster.jpg"><source src="img/video.mp4" type="video/mp4">Tu navegador no reproduce el video.</video>
    </div>
+  </div>
+ </div>
+</section>
+
+<section class="band dark" id="objetivo">
+ <div class="in">
+  <h2 class="fade">Nuestro objetivo: cambiar el concepto del taxi</h2>
+  <p class="lead fade">Queremos un servicio de confianza, moderno y diferente. Este es el proyecto que estamos impulsando:</p>
+  <ol class="steps fade">
+   <li>Tablet a bordo con nuestra información</li><li>Promoción del estado y del Aeropuerto de Tepic</li><li>Publicidad de restaurantes y hoteles</li><li>Pago con tarjeta y celular</li>
+  </ol>
+  <div class="anuncia fade">
+   <h3>¿Tienes un restaurante u hotel?</h3>
+   <p>Anúnciate en nuestras unidades y llega a vecinas, familias y visitantes de la Bahía.</p>
+   <a class="btn wa" style="justify-self:start" href="https://wa.me/523221361264?text=Hola%2C%20me%20interesa%20anunciar%20mi%20negocio%20en%20sus%20unidades" target="_blank" rel="noopener">Quiero anunciarme</a>
   </div>
  </div>
 </section>
@@ -359,15 +404,16 @@ dialog::backdrop{background:#14061ce8}
 <script>
 {
 const L=[
+ {t:'Crecimiento a nivel estado',d:'El 5 de noviembre de 2026 dimos un gran paso: incorporamos a nuestra organización a «Yo Soy Su Taxi», organización independiente de Tepic.',f:['tepic-incorporacion']},
  {t:'Reconocimiento en Hospitalidad Nayarita',d:'Lizette Esther Cabrera Meza recibió un reconocimiento por la capacitación en Hospitalidad Nayarita, sinónimo de mejor calidad de servicio y orgullo por la historia de Nayarit.',f:['reconocimiento']},
- {t:'Trabajo con la Secretaría de Movilidad',d:'Capacitaciones y gestiones para que en el transporte público haya más mujeres y seamos tratadas con dignidad y respeto, siempre.',f:['movilidad-1','movilidad-2','movilidad-3']},
+ {t:'Trabajo con la Secretaría de Movilidad',d:'Capacitaciones y gestiones para que en el transporte público haya más mujeres y seamos tratadas con dignidad y respeto, siempre.',f:['movilidad-grupo','movilidad-1','movilidad-2','movilidad-3','sala-movilidad']},
  {t:'Campaña «Alto al acoso»',d:'Difundimos la línea de denuncia 311 132 52 25 dentro y fuera de nuestras unidades, de día y de noche.',f:['acoso-1','acoso-2']},
  {t:'Con la UTBB',d:'Con el apoyo de la Universidad Tecnológica de Bahía de Banderas y de la maestra Laura, llevamos nuestra manta y nuestro mensaje a la comunidad.',f:['utbb']},
  {t:'Curso «El Poder Financiero de las Mujeres»',d:'Nos capacitamos en finanzas para fortalecer el sustento de nuestras familias.',f:['financiero-1','financiero-2']},
  {t:'Junto a la Lic. Elizabeth Blanco',d:'Agradecidas por su apoyo al transporte público, al impulso de la mujer y a la igualdad de oportunidades.',f:['blanco-1','blanco-2','blanco-3']},
- {t:'Reuniones de trabajo',d:'Nos organizamos, nos escuchamos y planeamos juntas cada paso de la Unión.',f:['reunion','cafe','pizza']}
+ {t:'Reuniones de trabajo',d:'Nos organizamos, nos escuchamos y planeamos juntas cada paso de la Unión.',f:['reunion','cafe','pizza','pizza2']}
 ];
-const G={ev:['flyer-25n','activate','poster-abril'],com:['grupo','calle','escaleras','puerta','selfie5','dos','espaldas','cafe','pizza']};
+const G={ev:['flyer-25n','activate','poster-abril'],com:['movilidad-grupo','grupo','sala-movilidad','calle','escaleras','puerta','selfie5','dos','espaldas','cafe','pizza','pizza2']};
 const caps={ev:['Marcha 25N','Actívate Mujer','Campaña 28 de abril'],com:[]};
 L.forEach((x,i)=>{G['l'+i]=x.f;caps['l'+i]=x.f.map(()=>x.t)});
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
