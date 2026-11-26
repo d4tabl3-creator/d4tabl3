@@ -44,7 +44,7 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 .pill b{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#f3a9cb;color:#4b1d6b;font-size:13px}
 .pill.wa b{background:#1f9d55;color:#fff}
 .qr{background:#fff;border-radius:16px;padding:8px;width:min(140px,70%)}
-.qr img{width:100%;display:block}.qr p{color:#2a0d3d;font:700 13px Figtree;margin-top:4px}
+.qr img{width:100%;display:block}.qr p.url{font:600 10.5px/1.2 Figtree;color:#6b2a8a;margin-top:2px;word-break:break-all}.qr p{color:#2a0d3d;font:700 13px Figtree;margin-top:4px}
 .dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px}
 .dots i{width:9px;height:9px;border-radius:50%;background:#ffffff55}.dots i.on{background:#fff}
 #start{position:fixed;inset:0;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:#2a0d3dee;text-align:center;padding:24px}
@@ -55,7 +55,7 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 .side{flex-direction:row;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border-left:0;border-top:2px solid #ffffff1f;max-height:24vh}
 .side img.logo{width:72px;flex:none}.side h2{display:block;font-size:17px;max-width:110px;flex:none}
 .side .row{width:auto;flex:1;min-width:0}.side .row .pill:not(.wa){display:none}
-.side .safe{width:auto;flex:1;min-width:0}.side .qr{width:100px;flex:none;padding:6px}.side .qr p{font-size:10px}
+.side .safe{width:auto;flex:1;min-width:0}.side .qr{width:100px;flex:none;padding:6px}.side .qr p{font-size:10px}.side .qr p.url{display:none}
 .wel,.card{flex-direction:column;text-align:center;gap:2vh;padding:3vh 4vw}.wel img{height:40%;max-height:40%}.wel h1{font-size:clamp(28px,6vw,52px)}.wel .t,.card .t{max-width:92%}.chips{justify-content:center}.ad .row2{flex-direction:column}}
 
 .wel{gap:4vw;padding:4vw;justify-content:center}
@@ -171,8 +171,8 @@ html[lang=en] .es,html[lang=es] .en{display:none!important}
  .side .pill{padding-top:min(10px,1.2vh);padding-bottom:min(10px,1.2vh)}
  .side .trk{padding:min(12px,1.5vh) 10px}
  .side .safe>div{padding-top:min(8px,1vh);padding-bottom:min(8px,1vh)}
- .side .qr{margin-top:auto;width:auto;flex:0 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;padding:min(8px,1vh)}
- .side .qr img{width:auto;height:min(150px,20vh);max-width:100%}
+ .side .qr{margin-top:auto;width:auto;flex:none;display:flex;flex-direction:column;align-items:center;padding:min(8px,1vh)}
+ .side .qr img{width:auto;height:min(140px,17vh);max-width:100%}
 }
 .safe div{background:#b23a4833;border:1px solid #f3a9cb55;border-radius:12px;padding:8px 10px;font:600 clamp(12px,1.1vw,15px) Figtree;text-align:left}
 .safe b{color:#f3a9cb}
@@ -264,7 +264,7 @@ html[lang=en] .es,html[lang=es] .en{display:none!important}
   </div>
   <button class="trk" id="btn-trk" type="button">📍 <span class="es">Rastreo en vivo</span><span class="en">Live tracking</span></button>
   <div class="safe"><div><b><span class="es">Línea de las Mujeres</span><span class="en">Women’s Hotline</span></b><br>311 132 52 25</div><div><b><span class="es">Emergencias</span><span class="en">Emergency</span></b> 911</div></div>
-  <div class="qr"><img src="/img/qr-pagina.png" alt="Código QR de la página"><p><span class="es">Escanea y conócenos</span><span class="en">Scan to learn more</span></p></div>
+  <div class="qr"><img src="/img/qr-pagina.png" alt="Código QR de la página"><p><span class="es">Escanea y conócenos</span><span class="en">Scan to learn more</span></p><p class="url">mujerestransportistas<br>.datable.com.mx</p></div>
  </aside>
 </div>
 <div id="track"><div class="map" id="tmap"><div class="tiles" id="ttiles"></div><div class="pin"></div><div class="att">© OpenStreetMap</div></div>
