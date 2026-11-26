@@ -163,6 +163,17 @@ html[lang=en] .es,html[lang=es] .en{display:none!important}
 .vad .cta img{width:clamp(70px,8vw,110px);height:auto}
 .vad.c .gl{text-align:center;justify-items:center;max-width:52%}
 .safe{display:grid;gap:6px;width:100%}
+@media (orientation:landscape){
+ .side{justify-content:flex-start;gap:min(8px,1.1vh);padding:min(14px,1.8vh) 12px}
+ .side img.logo{width:auto;height:min(110px,13vh)}
+ .side h2{font-size:clamp(15px,2.4vh,21px)}
+ .side .lng{padding:min(9px,1.1vh) 10px}
+ .side .pill{padding-top:min(10px,1.2vh);padding-bottom:min(10px,1.2vh)}
+ .side .trk{padding:min(12px,1.5vh) 10px}
+ .side .safe>div{padding-top:min(8px,1vh);padding-bottom:min(8px,1vh)}
+ .side .qr{margin-top:auto;width:auto;flex:0 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;padding:min(8px,1vh)}
+ .side .qr img{width:auto;height:min(150px,20vh);max-width:100%}
+}
 .safe div{background:#b23a4833;border:1px solid #f3a9cb55;border-radius:12px;padding:8px 10px;font:600 clamp(12px,1.1vw,15px) Figtree;text-align:left}
 .safe b{color:#f3a9cb}
 </style>
