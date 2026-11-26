@@ -345,18 +345,18 @@ dialog::backdrop{background:#14061ce8}
     <div class="f"><label for="r-fec">Fecha *</label><input id="r-fec" type="date" required></div>
     <div class="f"><label for="r-hor">Hora *</label><input id="r-hor" type="time" required></div>
     <div class="f"><label for="r-pas">Pasajeras / pasajeros *</label><input id="r-pas" type="number" min="1" max="20" inputmode="numeric" required></div>
-    <div class="f"><label for="r-con">Conductora</label><select id="r-con"><option>La que esté disponible</option><option>Lizette</option><option>Mayte Díaz</option></select></div>
+    <div class="f"><label for="r-con">Conductora *</label><select id="r-con" required><option value="">Elige tu conductora</option><option value="liz">Lizette Cabrera</option><option value="mayte">Mayte Díaz</option><option value="xochitl">Xochitl Ramírez · Elite Transportation PV</option></select></div>
     <div class="f full"><label for="r-not">Notas (opcional)</label><textarea id="r-not" rows="2" placeholder="Número de vuelo, maletas, silla para bebé, regreso…"></textarea></div>
     <p class="err" id="r-err" role="alert"></p>
     <button class="btn wa" type="submit">Enviar mi reservación por WhatsApp</button>
    </form>
    <aside class="fade">
-    <div class="stp"><b>1</b><div><strong>Envía tu reservación</strong><p>Se abre WhatsApp con todos tus datos, listos para enviar.</p></div></div>
-    <div class="stp"><b>2</b><div><strong>Te confirmamos precio y conductora</strong><p>Te respondemos con el costo exacto de tu viaje.</p></div></div>
-    <div class="stp"><b>3</b><div><strong>Paga por adelantado y listo</strong><p>Con tarjeta de débito, crédito o desde tu celular. Tu viaje queda asegurado.</p></div></div>
+    <div class="stp"><b>1</b><div><strong>Elige tu conductora y envía</strong><p>Tu reservación le llega directo a ella por WhatsApp, con todos tus datos.</p></div></div>
+    <div class="stp"><b>2</b><div><strong>Ella te confirma el precio</strong><p>Tu conductora te responde con el costo exacto de tu viaje.</p></div></div>
+    <div class="stp"><b>3</b><div><strong>Le pagas directo a ella</strong><p>Con tarjeta de débito, crédito o desde tu celular. Tu viaje queda asegurado.</p></div></div>
     <div class="paybox" id="paybox">
      <h3>Pagar mi reservación</h3>
-     <p id="pay-txt">Al confirmarte el precio te enviamos por WhatsApp tu enlace de pago con tarjeta.</p>
+     <p id="pay-txt">Elige tu conductora para ver cómo pagarle.</p>
      <a class="btn wa" id="pay-btn" href="#" target="_blank" rel="noopener" hidden>Pagar con tarjeta</a>
     </div>
    </aside>
@@ -529,25 +529,37 @@ document.querySelectorAll('.fade').forEach(el=>io.observe(el));
 </script>
 <script>
 (function(){
- var PAGO=''; /* enlace de cobro de Mercado Pago de la Unión: al ponerlo aparece el botón "Pagar con tarjeta" */
- var b=document.getElementById('pay-btn'); if(PAGO){b.href=PAGO;b.hidden=false;document.getElementById('pay-txt').textContent='Cuando te confirmemos el precio, paga aquí con tarjeta de débito, crédito o desde tu celular.'}
+ /* Cada conductora: su WhatsApp y su enlace de cobro (Mercado Pago). Al poner el enlace en "pago" aparece su botón de pago con tarjeta. */
+ var COND={
+  liz:{n:'Lizette',wa:'523221361264',pago:''},
+  mayte:{n:'Mayte',wa:'523221719742',pago:''},
+  xochitl:{n:'Xochitl',wa:'523222721818',pago:''}
+ };
+ var C=null, b=document.getElementById('pay-btn'), pt=document.getElementById('pay-txt'), sel=document.getElementById('r-con');
+ function pago(){C=COND[sel.value]||null;
+  if(!C){b.hidden=true;pt.textContent='Elige tu conductora para ver cómo pagarle.';return}
+  if(C.pago){b.href=C.pago;b.hidden=false;b.textContent='Pagar a '+C.n+' con tarjeta';pt.textContent='Cuando '+C.n+' te confirme el precio, paga aquí con tarjeta de débito, crédito o desde tu celular.'}
+  else{b.hidden=true;pt.textContent=C.n+' te enviará su enlace de pago con tarjeta por WhatsApp al confirmarte el precio.'}}
+ if(sel)sel.addEventListener('change',pago);
  var f=document.getElementById('rf'); if(!f)return;
  var d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());var hoy=d.toISOString().slice(0,10);
  document.getElementById('r-fec').min=hoy;
  f.addEventListener('submit',function(e){e.preventDefault();
-  var g=function(id){return document.getElementById(id)}, req=['r-nom','r-tel','r-ori','r-des','r-fec','r-hor','r-pas'], bad=false;
+  var g=function(id){return document.getElementById(id)}, req=['r-nom','r-tel','r-ori','r-des','r-fec','r-hor','r-pas','r-con'], bad=false;
   req.forEach(function(id){var el=g(id);el.classList.remove('bad');if(!String(el.value).trim()){el.classList.add('bad');bad=true}});
   if(g('r-tel').value.replace(/\D/g,'').length<10){g('r-tel').classList.add('bad');bad=true}
-  if(bad){g('r-err').textContent='Completa los datos marcados en rojo (el WhatsApp a 10 dígitos).';f.querySelector('.bad').focus();return}
+  if(bad){g('r-err').textContent='Completa los datos marcados en rojo (el WhatsApp a 10 dígitos y elige tu conductora).';f.querySelector('.bad').focus();return}
   if(g('r-fec').value<hoy){g('r-fec').classList.add('bad');g('r-err').textContent='La fecha no puede ser pasada.';return}
   g('r-err').textContent='';
+  C=COND[g('r-con').value];
   var fe=g('r-fec').value.split('-').reverse().join('/');
-  var t=['Hola, quiero reservar un viaje con la Unión de Mujeres Transportistas:','',
+  var t=['Hola '+C.n+', quiero reservar un viaje contigo (Unión de Mujeres Transportistas):','',
    'Nombre: '+g('r-nom').value.trim(),'WhatsApp: '+g('r-tel').value.trim(),'Recogida: '+g('r-ori').value.trim(),'Destino: '+g('r-des').value.trim(),
-   'Fecha: '+fe,'Hora: '+g('r-hor').value,'Pasajeros: '+g('r-pas').value,'Conductora: '+g('r-con').value];
+   'Fecha: '+fe,'Hora: '+g('r-hor').value,'Pasajeros: '+g('r-pas').value];
   if(g('r-not').value.trim())t.push('Notas: '+g('r-not').value.trim());
   t.push('','Quedo pendiente del precio para pagar por adelantado.');
-  window.open('https://wa.me/523221361264?text='+encodeURIComponent(t.join('\n')),'_blank','noopener');
+  C=COND[g('r-con').value];
+  window.open('https://wa.me/'+C.wa+'?text='+encodeURIComponent(t.join('\n')),'_blank','noopener');
  });
 })();
 </script>
