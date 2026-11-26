@@ -541,6 +541,7 @@ document.querySelectorAll('.fade').forEach(el=>io.observe(el));
   if(C.pago){b.href=C.pago;b.hidden=false;b.textContent='Pagar a '+C.n+' con tarjeta';pt.textContent='Cuando '+C.n+' te confirme el precio, paga aquí con tarjeta de débito, crédito o desde tu celular.'}
   else{b.hidden=true;pt.textContent=C.n+' te enviará su enlace de pago con tarjeta por WhatsApp al confirmarte el precio.'}}
  if(sel)sel.addEventListener('change',pago);
+ try{var pc=new URLSearchParams(location.search).get('c');if(pc&&COND[pc]&&sel){sel.value=pc;pago()}}catch(e){}
  var f=document.getElementById('rf'); if(!f)return;
  var d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());var hoy=d.toISOString().slice(0,10);
  document.getElementById('r-fec').min=hoy;

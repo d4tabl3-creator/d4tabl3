@@ -52,63 +52,146 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 #start button{font:700 28px Figtree;background:#1f9d55;color:#fff;border:0;border-radius:99px;padding:20px 44px}
 #start small{color:#e8d3e6;font-size:16px;max-width:40ch}
 @media (orientation:portrait){.app{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}.side{flex-direction:row;flex-wrap:wrap;justify-content:center;border-left:0;border-top:2px solid #ffffff1f;padding:12px}.side img.logo{width:80px}.row{width:auto}.qr{width:120px}.side h2{display:none}}
+
+.wel{gap:4vw;padding:4vw;justify-content:center}
+.wel img{height:78%;border-radius:22px;box-shadow:0 20px 60px #0009;object-fit:cover}
+.wel .t{max-width:46%;display:grid;gap:2vh}
+.wel .k{font:700 clamp(15px,1.7vw,22px) Figtree;letter-spacing:.06em;text-transform:uppercase;color:#f8c9de}
+.wel h1{font:700 clamp(34px,5vw,76px)/1.04 Fraunces,serif}
+.wel p{font:400 clamp(17px,2vw,28px)/1.35 Figtree;color:#f6e8f1}
+.chips{display:flex;flex-wrap:wrap;gap:10px}.chips span{background:#ffffff1c;border:1px solid #ffffff33;border-radius:99px;padding:8px 14px;font:600 clamp(13px,1.3vw,18px) Figtree}
+.card{gap:4vw;padding:4vw;justify-content:center}
+.card .t{max-width:52%;display:grid;gap:2vh}
+.card .k{font:700 clamp(15px,1.7vw,22px) Figtree;letter-spacing:.06em;text-transform:uppercase;color:#f8c9de}
+.card h1{font:700 clamp(32px,4.6vw,70px)/1.05 Fraunces,serif}
+.card p{font:400 clamp(17px,2vw,28px)/1.35 Figtree;color:#f6e8f1}
+.bigqr{background:#fff;border-radius:24px;padding:16px;width:clamp(200px,26vw,360px);text-align:center;box-shadow:0 20px 60px #0009}
+.bigqr img{width:100%;display:block}.bigqr b{display:block;color:#2a0d3d;font:700 clamp(14px,1.5vw,20px) Figtree;margin-top:6px}
+.ad .row2{display:flex;align-items:center;gap:3vw}
+.ad .bigqr{width:clamp(160px,18vw,260px)}
+.play{cursor:pointer}
+.play .tap{margin-top:1vh;background:#f29a2e;color:#2a0d3d;font:700 clamp(20px,2.4vw,34px) Figtree;padding:.6em 1.3em;border-radius:99px;animation:pulse2 1.6s ease-in-out infinite}
+@keyframes pulse2{50%{transform:scale(1.06)}}
+#game{position:absolute;inset:0;z-index:5;display:none;flex-direction:column;align-items:center;justify-content:center;gap:3vh;padding:4vw;background:radial-gradient(70% 60% at 50% 20%,#7b3a9e,#2a0d3d);text-align:center}
+#game.on{display:flex}
+#game .n{font:700 clamp(15px,1.6vw,22px) Figtree;color:#f8c9de;letter-spacing:.06em;text-transform:uppercase}
+#game h2{font:700 clamp(28px,4vw,60px)/1.1 Fraunces,serif;max-width:22ch}
+#game .opts{display:grid;gap:14px;width:min(720px,90%)}
+#game .opts button{font:700 clamp(20px,2.3vw,32px) Figtree;padding:.7em 1em;border-radius:18px;border:2px solid #ffffff44;background:#ffffff18;color:#fff}
+#game .opts button.ok{background:#1f9d55;border-color:#1f9d55}
+#game .opts button.no{background:#b23a48;border-color:#b23a48}
+#game p{font:400 clamp(17px,2vw,28px)/1.35 Figtree;color:#f6e8f1;max-width:34ch}
+#game .x{position:absolute;top:18px;right:22px;font:700 20px Figtree;background:#ffffff22;border:0;color:#fff;border-radius:99px;padding:10px 18px}
+.safe{display:grid;gap:6px;width:100%}
+.safe div{background:#b23a4833;border:1px solid #f3a9cb55;border-radius:12px;padding:8px 10px;font:600 clamp(12px,1.1vw,15px) Figtree;text-align:left}
+.safe b{color:#f3a9cb}
 </style>
 </head>
 <body>
 <div class="app">
  <main class="stage" id="stage">
-  <section class="slot" data-type="video" data-src="/img/presentacion.mp4"><video id="v1" playsinline preload="auto" poster="/img/presentacion-poster.jpg"></video></section>
+  <section class="slot wel" data-type="welcome" data-secs="9"><img id="w-foto" src="/tablet/s/cond-liz.jpg" alt="">
+   <div class="t"><div class="k">Unión de Mujeres Transportistas · Bahía de Banderas</div>
+    <h1>¡Bienvenida, bienvenido!<br>Hoy viajas con <span class="cn">Lizette</span></h1>
+    <p>Gracias por elegirnos. Relájate y disfruta tu viaje.</p>
+    <div class="chips"><span>Conductora verificada</span><span>Rastreo GPS en tiempo real</span><span>Viaja segura</span></div></div></section>
+  <section class="slot" data-type="video"><video id="v1" playsinline preload="auto" poster="/img/presentacion-poster.jpg" src="/img/presentacion.mp4"></video></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/01b_bahia.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
-  <section class="slot ad" data-type="ad" data-secs="10"><div class="frame"></div>
-   <div class="k">Espacio disponible</div><h1 class="float">Tu restaurante<br>u hotel aquí</h1>
-   <p>Visitantes y familias viajan con nosotras todos los días. Que te vean en cada traslado.</p>
-   <div class="cta">Anúnciate: 322 136 1264</div></section>
+  <section class="slot ad play" data-type="invite" data-secs="12"><div class="frame"></div>
+   <div class="k">Juega y gana</div><h1 class="float">3 preguntas sobre<br>Bahía de Banderas</h1>
+   <p>Contesta y llévate una sorpresa.</p><div class="tap">Toca aquí para jugar</div></section>
+  <section class="slot ad" data-type="ad" data-secs="11"><div class="frame"></div>
+   <div class="row2"><div><div class="k">Espacio disponible</div><h1 class="float">Tu restaurante<br>u hotel aquí</h1>
+   <p>Visitantes y familias viajan con nosotras todos los días. Que te vean en cada traslado.</p></div>
+   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Anúnciate aquí</b></div></div></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/05_servicio.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot card" data-type="card" data-secs="11"><div class="t"><div class="k">Tu próximo viaje</div>
+   <h1>Reserva otra vez con <span class="cn">Lizette</span></h1><p>Escanea, elige fecha y hora, y te confirma por WhatsApp. Aeropuerto, citas, eventos y viajes largos.</p></div>
+   <div class="bigqr"><img id="q-res" src="/tablet/s/qr-reserva-liz.png" alt=""><b>Reserva aquí</b></div></section>
   <section class="slot" data-type="img" data-secs="10"><img src="/tablet/s/14c_objetivo.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
-  <section class="slot ad" data-type="ad" data-secs="10"><div class="frame"></div>
-   <div class="k">Publicidad en movimiento</div><h1 class="float">Tu marca puede estar<br>en esta pantalla</h1>
-   <p>Promociona tu negocio dentro de las unidades de la Unión de Mujeres Transportistas.</p>
-   <div class="cta">Pregunta por WhatsApp</div></section>
+  <section class="slot ad" data-type="ad" data-secs="11"><div class="frame"></div>
+   <div class="row2"><div><div class="k">Publicidad en movimiento</div><h1 class="float">Tu marca puede estar<br>en esta pantalla</h1>
+   <p>Promociona tu negocio dentro de las unidades de la Unión de Mujeres Transportistas.</p></div>
+   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Pregunta por WhatsApp</b></div></div></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/08_movilidad.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/14b_estado.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot card" data-type="card" data-secs="10"><div class="t"><div class="k">Síguenos</div>
+   <h1>¿Te gustó tu viaje?</h1><p>Síguenos en Facebook y recomiéndanos. Tu apoyo ayuda a que más mujeres trabajen seguras.</p></div>
+   <div class="bigqr"><img src="/tablet/s/qr-facebook.png" alt=""><b>Facebook de la Unión</b></div></section>
+  <div id="game"><button class="x" id="g-x" type="button">Cerrar ✕</button><div class="n" id="g-n"></div><h2 id="g-q"></h2><div class="opts" id="g-o"></div><p id="g-p"></p></div>
   <div class="dots" id="dots"></div>
  </main>
  <aside class="side">
-  <img class="logo" src="/img/logo.png" alt="Unión de Mujeres Transportistas Bahía de Banderas">
-  <h2>Viaja segura con nosotras</h2>
+  <img class="logo" id="logo" src="/img/logo.png" alt="Unión de Mujeres Transportistas Bahía de Banderas">
+  <h2>Viajas con <span class="cn">Lizette</span></h2>
   <div class="row">
-   <div class="pill wa"><b>WA</b>322 136 1264</div>
+   <div class="pill wa"><b>WA</b><span id="s-wa">322 136 1264</span></div>
    <div class="pill"><b>f</b>Unión de Mujeres Transportistas BB</div>
    <div class="pill"><b>TT</b>@lizzete.esther.ca</div>
   </div>
+  <div class="safe"><div><b>Línea de las Mujeres</b><br>311 132 52 25</div><div><b>Emergencias</b> 911</div></div>
   <div class="qr"><img src="/img/qr-pagina.png" alt="Código QR de la página"><p>Escanea y conócenos</p></div>
  </aside>
 </div>
 <div id="start">
  <img src="/img/logo.png" alt="">
  <button id="go" type="button">▶ Iniciar pantalla</button>
- <small>Toca para iniciar con sonido y en pantalla completa. Si nadie toca, inicia sola sin sonido en unos segundos.</small>
+ <small>Toca para iniciar con sonido y en pantalla completa. Si nadie toca, inicia sola sin sonido en unos segundos.<br>Para un pasajero nuevo: toca dos veces el logo de la derecha.</small>
 </div>
 <script>
-const slots=[...document.querySelectorAll('.slot')],dots=document.getElementById('dots'),v1=document.getElementById('v1');
-slots.forEach(()=>dots.appendChild(document.createElement('i')));
-let i=-1,timer=null,sound=false,lock=null;
-async function wake(){try{if('wakeLock' in navigator){lock=await navigator.wakeLock.request('screen')}}catch(e){}}
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')wake()});
-function clear(){clearTimeout(timer);v1.pause();document.querySelectorAll('.reel').forEach(r=>r.innerHTML='')}
-function next(){clear();i=(i+1)%slots.length;const s=slots[i];
- if(s.dataset.type==='reel'&&!navigator.onLine){return next()}
- slots.forEach((x,k)=>x.classList.toggle('on',k===i));[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
- if(s.dataset.type==='video'){if(!v1.src)v1.src=s.dataset.src;v1.currentTime=0;v1.muted=!sound;v1.play().catch(()=>{v1.muted=true;v1.play().catch(()=>{timer=setTimeout(next,5000)})});v1.onended=next;v1.onerror=()=>{timer=setTimeout(next,2000)}}
- else if(s.dataset.type==='reel'){const f=document.createElement('iframe');f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;
-  f.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(s.dataset.href)+'&show_text=false&autoplay=true&mute='+(sound?0:1)+'&width=360';
-  s.querySelector('.reel').appendChild(f);timer=setTimeout(next,(+s.dataset.secs||45)*1000)}
- else{timer=setTimeout(next,(+s.dataset.secs||10)*1000)}}
-function begin(withSound){if(i>=0)return;sound=withSound;document.getElementById('start').remove();wake();next()}
-document.getElementById('go').onclick=()=>{try{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}catch(e){}begin(true)};
-setTimeout(()=>begin(false),8000);
-document.addEventListener('dblclick',()=>{try{document.documentElement.requestFullscreen()}catch(e){}});
-if('serviceWorker' in navigator)navigator.serviceWorker.register('/tablet/sw.js',{scope:'/tablet/'}).catch(()=>{});
+/* ===== Configuración ===== */
+var CONDUCTORAS={
+ liz:{n:'Lizette',wa:'322 136 1264',foto:'/tablet/s/cond-liz.jpg',qr:'/tablet/s/qr-reserva-liz.png'},
+ mayte:{n:'Mayte',wa:'322 171 9742',foto:'/tablet/s/cond-mayte.jpg',qr:'/tablet/s/qr-reserva-mayte.png'}
+};
+var PREMIO={activo:false,titulo:'City Tour de regalo',valor:'$500',wa:''}; /* al poner el WhatsApp de la agencia se activa el premio */
+var PREGUNTAS=[
+ {q:'¿En qué estado está Bahía de Banderas?',o:['Jalisco','Nayarit','Colima'],c:1},
+ {q:'¿Cuál es la capital de Nayarit?',o:['Tepic','Compostela','Bucerías'],c:0},
+ {q:'¿Qué visitantes llegan a la bahía en invierno?',o:['Pingüinos','Osos polares','Ballenas jorobadas'],c:2}
+];
+/* ===== Conductora de esta tablet (?c=liz o ?c=mayte, se recuerda) ===== */
+var key='liz';
+try{var u=new URLSearchParams(location.search).get('c');if(u&&CONDUCTORAS[u]){localStorage.setItem('mtbb_c',u)}key=localStorage.getItem('mtbb_c')||'liz'}catch(e){}
+var C=CONDUCTORAS[key]||CONDUCTORAS.liz;
+document.querySelectorAll('.cn').forEach(function(e){e.textContent=C.n});
+document.getElementById('w-foto').src=C.foto;document.getElementById('q-res').src=C.qr;document.getElementById('s-wa').textContent=C.wa;
+/* ===== Bucle ===== */
+var slots=[].slice.call(document.querySelectorAll('.slot')),dots=document.getElementById('dots'),v1=document.getElementById('v1');
+slots.forEach(function(){dots.appendChild(document.createElement('i'))});
+var i=-1,timer=null,sound=false,lock=null,started=false,inGame=false;
+function wake(){try{if('wakeLock' in navigator)navigator.wakeLock.request('screen').then(function(l){lock=l}).catch(function(){})}catch(e){}}
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')wake()});
+function show(k){clearTimeout(timer);v1.pause();i=k;var s=slots[i];
+ slots.forEach(function(x,n){x.classList.toggle('on',n===i)});[].forEach.call(dots.children,function(d,n){d.classList.toggle('on',n===i)});
+ if(s.dataset.type==='video'){v1.currentTime=0;v1.muted=!sound;v1.play().catch(function(){v1.muted=true;v1.play().catch(function(){timer=setTimeout(next,4000)})});v1.onended=next;v1.onerror=function(){timer=setTimeout(next,2000)}}
+ else{timer=setTimeout(next,(+s.dataset.secs||9)*1000)}}
+function next(){if(inGame)return;show((i+1)%slots.length)}
+function begin(withSound){if(started)return;started=true;sound=withSound;var st=document.getElementById('start');if(st)st.remove();wake();show(0)}
+document.getElementById('go').onclick=function(){try{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}catch(e){}begin(true)};
+setTimeout(function(){begin(false)},8000);
+/* Pasajero nuevo: doble toque en el logo */
+document.getElementById('logo').addEventListener('dblclick',function(){sound=true;closeGame();try{document.documentElement.requestFullscreen()}catch(e){}show(0)});
+/* ===== Juego ===== */
+var G=document.getElementById('game'),gq=0,ok=0,idle=null;
+function idleReset(){clearTimeout(idle);idle=setTimeout(closeGame,45000)}
+function openGame(){inGame=true;clearTimeout(timer);v1.pause();gq=0;ok=0;G.classList.add('on');ask();idleReset()}
+function closeGame(){if(!inGame)return;inGame=false;clearTimeout(idle);G.classList.remove('on');next()}
+function ask(){var p=PREGUNTAS[gq];document.getElementById('g-n').textContent='Pregunta '+(gq+1)+' de '+PREGUNTAS.length;
+ document.getElementById('g-q').textContent=p.q;document.getElementById('g-p').textContent='';var o=document.getElementById('g-o');o.innerHTML='';
+ p.o.forEach(function(t,n){var b=document.createElement('button');b.type='button';b.textContent=t;b.onclick=function(){idleReset();
+  [].forEach.call(o.children,function(x){x.disabled=true});if(n===p.c){b.classList.add('ok');ok++;document.getElementById('g-p').textContent='¡Correcto!'}
+  else{b.classList.add('no');o.children[p.c].classList.add('ok');document.getElementById('g-p').textContent='La respuesta es: '+p.o[p.c]}
+  setTimeout(function(){gq++;if(gq<PREGUNTAS.length)ask();else fin()},1600)};o.appendChild(b)})}
+function fin(){var o=document.getElementById('g-o');o.innerHTML='';document.getElementById('g-n').textContent='Resultado';
+ document.getElementById('g-q').textContent='¡Acertaste '+ok+' de '+PREGUNTAS.length+'!';
+ if(PREMIO.activo&&PREMIO.wa){var code='CT-'+Math.random().toString(36).slice(2,6).toUpperCase();
+  document.getElementById('g-p').innerHTML='Ganaste: <b>'+PREMIO.titulo+'</b> (valor '+PREMIO.valor+').<br>Tu código: <b>'+code+'</b>. Tómale foto a esta pantalla y envíala al WhatsApp '+PREMIO.wa+' para reclamarlo.'}
+ else{document.getElementById('g-p').textContent='Gracias por jugar y por viajar con nosotras. ¡Disfruta Bahía de Banderas!'}
+ idleReset()}
+document.querySelector('.play').addEventListener('click',openGame);
+document.getElementById('g-x').addEventListener('click',closeGame);
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/tablet/sw.js',{scope:'/tablet/'}).catch(function(){});
 </script>
 </body>
 </html>
