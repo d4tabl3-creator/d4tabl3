@@ -39,23 +39,27 @@ footer{padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));display:gr
  <div class="btns"><a class="wa" id="share" href="#" target="_blank" rel="noopener">Compartir por WhatsApp</a><a id="gm" href="#" target="_blank" rel="noopener">Abrir en mapas</a></div>
  <div class="em">Emergencias 911 · Línea de las Mujeres 311 132 52 25</div></footer>
 <script>
+var EN=false;try{var q=new URLSearchParams(location.search).get('lang');EN=q?q==='en':(localStorage.getItem('mtbb_web_lang')==='en'||/^en/i.test(navigator.language||''))}catch(e){}
+function T(es,en){return EN?en:es}
+if(EN){document.documentElement.lang='en';document.title='Live ride · Unión de Mujeres Transportistas';
+ [['h1','Live ride'],['#st','Finding the location…'],['#share','Share on WhatsApp'],['#gm','Open in maps'],['.em','Emergency 911 · Women’s Hotline 311 132 52 25']].forEach(function(x){var e=document.querySelector(x[0]);if(e)e.textContent=x[1]})}
 var SB='https://xqbaiqfkpbyyjhqtbune.supabase.co',SK='sb_publishable_Tq9CtFQbKGesNrn6bjbfGQ_Ovpg0tw5';
 var id=new URLSearchParams(location.search).get('id')||'';
-document.getElementById('share').href='https://wa.me/?text='+encodeURIComponent('Sigue mi viaje en vivo: '+location.href);
+document.getElementById('share').href='https://wa.me/?text='+encodeURIComponent(T('Sigue mi viaje en vivo: ','Follow my ride live: ')+location.href);
 function msg(t){var m=document.getElementById('msg');m.textContent=t;m.style.display='grid'}
 function pinta(lat,lon){var z=16,n=Math.pow(2,z),xf=(lon+180)/360*n,yr=lat*Math.PI/180,yf=(1-Math.log(Math.tan(yr)+1/Math.cos(yr))/Math.PI)/2*n;
  var x0=Math.floor(xf)-2,y0=Math.floor(yf)-2,t=document.getElementById('tiles'),h='';
  for(var y=y0;y<y0+5;y++)for(var x=x0;x<x0+5;x++)h+='<img alt="" src="https://tile.openstreetmap.org/'+z+'/'+x+'/'+y+'.png">';
  if(t.dataset.k!==x0+','+y0){t.innerHTML=h;t.dataset.k=x0+','+y0}
  var m=document.getElementById('map');t.style.left=(m.clientWidth/2-(xf-x0)*256)+'px';t.style.top=(m.clientHeight/2-(yf-y0)*256)+'px'}
-function hace(s){if(s<60)return 'hace '+Math.max(1,Math.round(s))+' s';var m=Math.round(s/60);return 'hace '+m+' min'}
-function carga(){if(!/^[a-z0-9]{10,40}$/.test(id)){msg('Este enlace no es válido.');return}
+function hace(s){if(s<60)return T('hace ','')+Math.max(1,Math.round(s))+T(' s',' s ago');var m=Math.round(s/60);return T('hace ','')+m+T(' min',' min ago')}
+function carga(){if(!/^[a-z0-9]{10,40}$/.test(id)){msg(T('Este enlace no es válido.','This link is not valid.'));return}
  fetch(SB+'/rest/v1/mtbb_viajes?id=eq.'+id+'&select=conductora,lat,lon,actualizado',{headers:{apikey:SK,Authorization:'Bearer '+SK}})
- .then(function(r){return r.json()}).then(function(d){if(!d||!d.length){msg('Este viaje terminó o el enlace ya expiró.');return}
-  var v=d[0];document.getElementById('msg').style.display='none';document.getElementById('who').textContent='Viajas con '+v.conductora+' · Unión de Mujeres Transportistas';
+ .then(function(r){return r.json()}).then(function(d){if(!d||!d.length){msg(T('Este viaje terminó o el enlace ya expiró.','This ride has ended or the link has expired.'));return}
+  var v=d[0];document.getElementById('msg').style.display='none';document.getElementById('who').textContent=T('Viaja con ','Riding with ')+v.conductora+' · Unión de Mujeres Transportistas';
   pinta(v.lat,v.lon);document.getElementById('gm').href='https://maps.google.com/?q='+v.lat+','+v.lon;
-  var s=(Date.now()-new Date(v.actualizado).getTime())/1000;document.getElementById('st').textContent='Última ubicación: '+hace(s)+'. Se actualiza sola.'})
- .catch(function(){document.getElementById('st').textContent='Sin conexión. Reintentando…'})}
+  var s=(Date.now()-new Date(v.actualizado).getTime())/1000;document.getElementById('st').textContent=T('Última ubicación: ','Last location: ')+hace(s)+T('. Se actualiza sola.','. Updates automatically.')})
+ .catch(function(){document.getElementById('st').textContent=T('Sin conexión. Reintentando…','No connection. Retrying…')})}
 carga();setInterval(carga,10000);
 </script>
 </body>

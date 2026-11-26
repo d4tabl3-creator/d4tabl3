@@ -141,11 +141,27 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 .tall h1{font:700 clamp(26px,3.4vw,52px)/1.05 Fraunces,serif}.tall p{font:400 clamp(15px,1.6vw,22px)/1.35 Figtree;color:#f6e8f1}
 .tall video,.tall img.fg{position:relative;height:96%;max-width:56%;object-fit:contain;border-radius:16px;box-shadow:0 20px 60px #000a;background:#000}
 @media (orientation:portrait){.tall{flex-direction:column}.tall .t{max-width:92%;text-align:center}.tall video,.tall img.fg{height:72%;max-width:96%}}
-.pan{background-size:cover;background-position:center;overflow:hidden}
-.pan::before{content:"";position:absolute;inset:0;background:#1a0b2a8c}
-.pan img{position:absolute;left:50%;top:0;width:100%;max-width:1250px;transform:translate(-50%,0);box-shadow:0 0 60px #000a;will-change:transform}
+.pinf{background-size:cover;background-position:center;overflow:hidden}
+.pinf::before{content:"";position:absolute;inset:0;background:#1a0b2a8c}
+.pinf img{position:absolute;left:50%;top:0;width:100%;max-width:1250px;transform:translate(-50%,0);box-shadow:0 0 60px #000a;will-change:transform}
 .wide{background-size:cover;background-position:center}.wide::before{content:"";position:absolute;inset:0;background:#1a0b2a8c}
 .wide img{position:relative;width:100%;height:100%;object-fit:contain}
+html[lang=en] .es,html[lang=es] .en{display:none!important}
+.lng{all:unset;cursor:pointer;text-align:center;background:#ffffff1f;border:1px solid #ffffff40;border-radius:12px;padding:9px 10px;font:700 clamp(13px,1.2vw,16px) Figtree}
+#lang{position:fixed;inset:0;z-index:60;display:none;place-items:center;background:radial-gradient(70% 60% at 50% 30%,#7b3a9e,#2a0d3d)}
+#lang.on{display:grid}#lang .in{display:grid;gap:3vh;justify-items:center;text-align:center;padding:4vw}
+#lang img{width:clamp(110px,14vw,180px)}#lang h1{font:700 clamp(26px,4vw,54px)/1.1 Fraunces,serif}
+#lang .bt{display:flex;gap:3vw;flex-wrap:wrap;justify-content:center}
+#lang button{all:unset;cursor:pointer;min-width:min(38vw,320px);padding:3vh 3vw;border-radius:24px;font:700 clamp(24px,3.4vw,44px) Figtree;background:#fff;color:#2a0d3d;box-shadow:0 14px 40px #0007}
+#lang button+button{background:#f3a9cb}
+#lang small{font:400 clamp(13px,1.3vw,17px) Figtree;color:#f6e8f1cc}
+.vad video.bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vad .gl{position:relative;background:#1a0b2acc;backdrop-filter:blur(6px);border:2px solid #ffffff38;border-radius:26px;padding:3vh 3vw;display:grid;gap:1.4vh;max-width:46%;box-shadow:0 20px 60px #0009}
+.vad.l{justify-content:flex-start;padding-left:4vw}.vad .k{font:700 clamp(12px,1.3vw,17px) Figtree;letter-spacing:.08em;text-transform:uppercase;color:#f8c9de}
+.vad h1{font:700 clamp(24px,3.2vw,48px)/1.08 Fraunces,serif}.vad p{font:400 clamp(14px,1.5vw,21px)/1.35 Figtree;color:#f6e8f1}
+.vad .cta{display:flex;align-items:center;gap:14px;background:#fff;color:#2a0d3d;border-radius:16px;padding:10px 14px;font:700 clamp(13px,1.4vw,19px)/1.2 Figtree}
+.vad .cta img{width:clamp(70px,8vw,110px);height:auto}
+.vad.c .gl{text-align:center;justify-items:center;max-width:52%}
 .safe{display:grid;gap:6px;width:100%}
 .safe div{background:#b23a4833;border:1px solid #f3a9cb55;border-radius:12px;padding:8px 10px;font:600 clamp(12px,1.1vw,15px) Figtree;text-align:left}
 .safe b{color:#f3a9cb}
@@ -156,92 +172,99 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
  <main class="stage" id="stage">
   <section class="slot wel" data-type="welcome" data-secs="9"><img id="w-foto" src="/tablet/s/cond-liz.jpg" alt="">
    <div class="t"><div class="k">Unión de Mujeres Transportistas · Bahía de Banderas</div>
-    <h1>¡Bienvenida, bienvenido!<br>Hoy viajas con <span class="cn">Lizette</span></h1>
-    <p>Gracias por elegirnos. Relájate y disfruta tu viaje.</p>
-    <div class="chips"><span>Conductora verificada</span><span>Viaja segura</span><span>Reserva tu próximo viaje</span></div></div></section>
+    <h1><span class="es">¡Bienvenida, bienvenido!<br>Hoy viajas con <span class="cn">Lizette</span></span><span class="en">Welcome!<br>Today you’re riding with <span class="cn">Lizette</span></span></h1>
+    <p><span class="es">Gracias por elegirnos. Relájate y disfruta tu viaje.</span><span class="en">Thank you for choosing us. Relax and enjoy your ride.</span></p>
+    <div class="chips"><span><span class="es">Conductora verificada</span><span class="en">Verified driver</span></span><span><span class="es">Viaja segura</span><span class="en">Ride safely</span></span><span><span class="es">Reserva tu próximo viaje</span><span class="en">Book your next ride</span></span></div></div></section>
   <section class="slot" data-type="video"><video id="v1" playsinline preload="auto" poster="/img/presentacion-poster.jpg" src="/img/presentacion.mp4"></video></section>
-  <section class="slot mock" data-type="ad" data-secs="12" style="--bg:linear-gradient(135deg,#ff7043,#c2185b);--bd:#d84315"><div class="rib">EJEMPLO DE ANUNCIO</div>
+  <section class="slot mock" data-type="ad" data-secs="12" style="--bg:linear-gradient(135deg,#ff7043,#c2185b);--bd:#d84315"><div class="rib"><span class="es">EJEMPLO DE ANUNCIO</span><span class="en">SAMPLE AD</span></div>
    <div class="card2"><div class="ill"><svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg"><ellipse cx="150" cy="238" rx="120" ry="14" fill="#00000033"/>
 <path d="M30 200 Q150 20 270 200 Z" fill="#f6c453" stroke="#7a4a12" stroke-width="7" stroke-linejoin="round"/>
 <path d="M55 190 Q90 120 120 150 Q140 110 170 145 Q200 115 225 160 Q240 170 248 190" fill="#58b947" stroke="#2e7d32" stroke-width="6" stroke-linejoin="round"/>
 <circle cx="110" cy="160" r="12" fill="#e53935"/><circle cx="190" cy="158" r="12" fill="#e53935"/><circle cx="150" cy="148" r="10" fill="#fff"/>
 <circle cx="125" cy="185" r="9" fill="#2a1a0a"/><circle cx="175" cy="185" r="9" fill="#2a1a0a"/><circle cx="128" cy="182" r="3" fill="#fff"/><circle cx="178" cy="182" r="3" fill="#fff"/>
 <path d="M130 205 Q150 222 170 205" fill="none" stroke="#2a1a0a" stroke-width="6" stroke-linecap="round"/>
-<circle cx="108" cy="203" r="8" fill="#f48fb1" opacity=".8"/><circle cx="192" cy="203" r="8" fill="#f48fb1" opacity=".8"/></svg></div><div><div class="nm">Tacos El Bigotón</div><div class="sl">Los tacos más felices de la Bahía</div><div class="of">¡2x1 HOY!</div><div class="mini">Muestra esta pantalla y pide tu promoción · Negocio de ejemplo</div></div>
-   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea</b></div></div>
-   <div class="bar"><span>¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><b>WhatsApp 322 136 1264</b></div></section>
-  <section class="slot mapw" data-type="map" data-secs="12"><div class="hd"><h1>Tu viaje en vivo</h1><span id="m-txt">Ubicando…</span></div>
+<circle cx="108" cy="203" r="8" fill="#f48fb1" opacity=".8"/><circle cx="192" cy="203" r="8" fill="#f48fb1" opacity=".8"/></svg></div><div><div class="nm">Tacos El Bigotón</div><div class="sl"><span class="es">Los tacos más felices de la Bahía</span><span class="en">The happiest tacos in the Bay</span></div><div class="of"><span class="es">¡2x1 HOY!</span><span class="en">2-for-1 TODAY!</span></div><div class="mini"><span class="es">Muestra esta pantalla y pide tu promoción · Negocio de ejemplo</span><span class="en">Show this screen to get the deal · Sample business</span></div></div>
+   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b><span class="es">Escanea</span><span class="en">Scan</span></b></div></div>
+   <div class="bar"><span><span class="es">¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><span class="en">Own a business? <u>This space can be yours.</u></span></span><b>WhatsApp 322 136 1264</b></div></section>
+  <section class="slot mapw" data-type="map" data-secs="12"><div class="hd"><h1><span class="es">Tu viaje en vivo</span><span class="en">Your ride, live</span></h1><span id="m-txt">Ubicando…</span></div>
    <div class="map" id="map"><div class="tiles" id="tiles"></div><div class="pin"></div><div class="att">© OpenStreetMap</div></div></section>
-  <section class="slot tall" data-type="clip" data-secs="15" style="background-image:url(/tablet/s/clip-vallarta-bg.jpg)"><div class="t"><div class="k">Para nuestros visitantes · For our visitors</div><h1>10 cosas que hacer en Puerto Vallarta</h1><p>Playas, ballenas, Zona Romántica, malecón y más. Pregunta a tu conductora por los mejores lugares.</p></div>
+  <section class="slot tall" data-type="clip" data-secs="15" style="background-image:url(/tablet/s/clip-vallarta-bg.jpg)"><div class="t"><div class="k"><span class="es">Para nuestros visitantes</span><span class="en">For our visitors</span></div><h1><span class="es">10 cosas que hacer en Puerto Vallarta</span><span class="en">10 things to do in Puerto Vallarta</span></h1><p><span class="es">Playas, ballenas, Zona Romántica, malecón y más. Pregunta a tu conductora por los mejores lugares.</span><span class="en">Beaches, whales, the Romantic Zone, the boardwalk and more. Ask your driver for the best spots.</span></p></div>
    <video muted playsinline loop preload="auto" src="/tablet/s/clip-vallarta.mp4"></video></section>
-  <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/01b_bahia.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
-  <section class="slot pan" data-type="pan" data-secs="30" style="background-image:url(/tablet/s/info-nayarit-bg.jpg)"><img src="/tablet/s/info-nayarit.jpg" alt="Estado de Nayarit"></section>
+  <section class="slot" data-type="img" data-secs="8"><img class="es" src="/tablet/s/01b_bahia.jpg" alt="" style="width:100%;height:100%;object-fit:contain"><img class="en" src="/tablet/s/en/01b_bahia.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot pinf" data-type="pan" data-secs="30" style="background-image:url(/tablet/s/info-nayarit-bg.jpg)"><img src="/tablet/s/info-nayarit.jpg" alt="Estado de Nayarit"></section>
   <section class="slot ad play" data-type="invite" data-secs="12"><div class="frame"></div>
-   <div class="k">Juega y gana</div><h1 class="float">3 preguntas sobre<br>Bahía de Banderas</h1>
-   <p>Contesta y llévate una sorpresa.</p><div class="tap">Toca aquí para jugar</div></section>
-  <section class="slot mock" data-type="ad" data-secs="12" style="--bg:linear-gradient(135deg,#3949ab,#00acc1);--bd:#3949ab"><div class="rib">EJEMPLO DE ANUNCIO</div>
+   <div class="k"><span class="es">Juega y gana</span><span class="en">Play and win</span></div><h1 class="float"><span class="es">3 preguntas sobre<br>Bahía de Banderas</span><span class="en">3 questions about<br>Bahía de Banderas</span></h1>
+   <p><span class="es">Contesta y llévate una sorpresa.</span><span class="en">Answer and get a surprise.</span></p><div class="tap"><span class="es">Toca aquí para jugar</span><span class="en">Tap here to play</span></div></section>
+  <section class="slot mock" data-type="ad" data-secs="12" style="--bg:linear-gradient(135deg,#3949ab,#00acc1);--bd:#3949ab"><div class="rib"><span class="es">EJEMPLO DE ANUNCIO</span><span class="en">SAMPLE AD</span></div>
    <div class="card2"><div class="ill"><svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg"><circle cx="240" cy="50" r="30" fill="#ffd54f"/><ellipse cx="150" cy="240" rx="130" ry="14" fill="#00000033"/>
 <rect x="70" y="60" width="140" height="170" rx="10" fill="#fff" stroke="#3949ab" stroke-width="7"/>
 <g fill="#4fc3f7" stroke="#3949ab" stroke-width="4"><rect x="88" y="80" width="30" height="26"/><rect x="128" y="80" width="30" height="26"/><rect x="168" y="80" width="26" height="26"/><rect x="88" y="120" width="30" height="26"/><rect x="128" y="120" width="30" height="26"/><rect x="168" y="120" width="26" height="26"/></g>
 <rect x="122" y="170" width="38" height="60" rx="6" fill="#ff7043" stroke="#3949ab" stroke-width="5"/>
 <rect x="85" y="40" width="110" height="26" rx="8" fill="#e91e63"/><text x="140" y="59" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="16" fill="#fff">HOTEL</text>
-<path d="M240 230 L246 130" stroke="#8d6e63" stroke-width="9" stroke-linecap="round"/><g fill="#43a047"><path d="M246 130 Q210 110 200 140 Q225 125 246 130Z"/><path d="M246 130 Q280 105 290 135 Q265 122 246 130Z"/><path d="M246 130 Q236 95 262 92 Q250 110 246 130Z"/></g></svg></div><div><div class="nm">Hotel Palmerita</div><div class="sl">Alberca, playa y desayuno incluido</div><div class="of">-20% esta semana</div><div class="mini">Reserva escaneando el código · Negocio de ejemplo</div></div>
-   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea</b></div></div>
-   <div class="bar"><span>¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><b>WhatsApp 322 136 1264</b></div></section>
-  <section class="slot pan" data-type="pan" data-secs="28" style="background-image:url(/tablet/s/info-huicholes-bg.jpg)"><img src="/tablet/s/info-huicholes.jpg" alt="Huicholes"></section>
+<path d="M240 230 L246 130" stroke="#8d6e63" stroke-width="9" stroke-linecap="round"/><g fill="#43a047"><path d="M246 130 Q210 110 200 140 Q225 125 246 130Z"/><path d="M246 130 Q280 105 290 135 Q265 122 246 130Z"/><path d="M246 130 Q236 95 262 92 Q250 110 246 130Z"/></g></svg></div><div><div class="nm">Hotel Palmerita</div><div class="sl"><span class="es">Alberca, playa y desayuno incluido</span><span class="en">Pool, beach and breakfast included</span></div><div class="of"><span class="es">-20% esta semana</span><span class="en">20% off this week</span></div><div class="mini"><span class="es">Reserva escaneando el código · Negocio de ejemplo</span><span class="en">Book by scanning the code · Sample business</span></div></div>
+   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b><span class="es">Escanea</span><span class="en">Scan</span></b></div></div>
+   <div class="bar"><span><span class="es">¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><span class="en">Own a business? <u>This space can be yours.</u></span></span><b>WhatsApp 322 136 1264</b></div></section>
+  <section class="slot pinf" data-type="pan" data-secs="28" style="background-image:url(/tablet/s/info-huicholes-bg.jpg)"><img src="/tablet/s/info-huicholes.jpg" alt="Huicholes"></section>
   <section class="slot wide" data-type="img" data-secs="14" style="background-image:url(/tablet/s/info-ojodedios-bg.jpg)"><img src="/tablet/s/info-ojodedios.jpg" alt="Ojo de Dios"></section>
-  <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/05_servicio.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
-  <section class="slot card" data-type="card" data-secs="11"><div class="t"><div class="k">Tu próximo viaje</div>
-   <h1>Reserva otra vez con <span class="cn">Lizette</span></h1><p>Escanea, elige fecha y hora, y te confirma por WhatsApp. Aeropuerto, citas, eventos y viajes largos.</p></div>
-   <div class="bigqr"><img id="q-res" src="/tablet/s/qr-reserva-liz.png" alt=""><b>Reserva aquí</b></div></section>
-  <section class="slot" data-type="img" data-secs="10"><img src="/tablet/s/14c_objetivo.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
-  <section class="slot pan" data-type="pan" data-secs="26" style="background-image:url(/tablet/s/info-puntamita-bg.jpg)"><img src="/tablet/s/info-puntamita.jpg" alt="Punta Mita"></section>
-  <section class="slot mock" data-type="ad" data-secs="12" style="--bg:linear-gradient(135deg,#0288d1,#26a69a);--bd:#0277bd"><div class="rib">EJEMPLO DE ANUNCIO</div>
+  <section class="slot vad l" data-type="clip" data-secs="12"><video class="bgv" muted playsinline loop preload="auto" src="/tablet/s/vad-venado.mp4"></video><div class="gl"><div class="k"><span class="es">Arte wixárika de Nayarit</span><span class="en">Wixárika art from Nayarit</span></div><h1><span class="es">El venado azul</span><span class="en">The blue deer</span></h1><p><span class="es">Para el pueblo wixárika, el venado es el espíritu guía.</span><span class="en">For the Wixárika people, the deer is the guiding spirit.</span></p><div class="cta"><img src="/tablet/s/qr-anunciate.png" alt=""><span><span class="es">Anuncia tu negocio aquí<br>WhatsApp 322 136 1264</span><span class="en">Advertise your business here<br>WhatsApp 322 136 1264</span></span></div></div></section>
+  <section class="slot" data-type="img" data-secs="8"><img class="es" src="/tablet/s/05_servicio.jpg" alt="" style="width:100%;height:100%;object-fit:contain"><img class="en" src="/tablet/s/en/05_servicio.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot card" data-type="card" data-secs="11"><div class="t"><div class="k"><span class="es">Tu próximo viaje</span><span class="en">Your next ride</span></div>
+   <h1><span class="es">Reserva otra vez con <span class="cn">Lizette</span></span><span class="en">Book again with <span class="cn">Lizette</span></span></h1><p><span class="es">Escanea, elige fecha y hora, y te confirma por WhatsApp. Aeropuerto, citas, eventos y viajes largos.</span><span class="en">Scan, choose a date and time, and she will confirm by WhatsApp. Airport, appointments, events and long trips.</span></p></div>
+   <div class="bigqr"><img id="q-res" src="/tablet/s/qr-reserva-liz.png" alt=""><b><span class="es">Reserva aquí</span><span class="en">Book here</span></b></div></section>
+  <section class="slot" data-type="img" data-secs="10"><img class="es" src="/tablet/s/14c_objetivo.jpg" alt="" style="width:100%;height:100%;object-fit:contain"><img class="en" src="/tablet/s/en/14c_objetivo.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot pinf" data-type="pan" data-secs="26" style="background-image:url(/tablet/s/info-puntamita-bg.jpg)"><img src="/tablet/s/info-puntamita.jpg" alt="Punta Mita"></section>
+  <section class="slot vad l" data-type="clip" data-secs="12"><video class="bgv" muted playsinline loop preload="auto" src="/tablet/s/vad-ojo.mp4"></video><div class="gl"><div class="k"><span class="es">Artesanía de Nayarit</span><span class="en">Craft from Nayarit</span></div><h1><span class="es">Hecho a mano, con historia</span><span class="en">Handmade, with history</span></h1><p><span class="es">Hilos de colores que cuentan la cultura de nuestra tierra.</span><span class="en">Colored threads that tell the story of our land.</span></p><div class="cta"><img src="/tablet/s/qr-anunciate.png" alt=""><span><span class="es">Anuncia tu negocio aquí<br>WhatsApp 322 136 1264</span><span class="en">Advertise your business here<br>WhatsApp 322 136 1264</span></span></div></div></section>
+  <section class="slot mock" data-type="ad" data-secs="12" style="--bg:linear-gradient(135deg,#0288d1,#26a69a);--bd:#0277bd"><div class="rib"><span class="es">EJEMPLO DE ANUNCIO</span><span class="en">SAMPLE AD</span></div>
    <div class="card2"><div class="ill"><svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg"><path d="M0 200 Q40 185 75 200 T150 200 T225 200 T300 200 V260 H0Z" fill="#29b6f6"/>
 <path d="M175 150 Q200 110 245 128 Q275 140 268 165 Q240 175 200 170 Z" fill="#455a64"/><path d="M262 160 Q285 150 292 128 Q280 150 262 150Z" fill="#455a64"/><circle cx="215" cy="138" r="4" fill="#fff"/>
 <path d="M232 118 Q236 95 228 80 M232 118 Q246 98 250 84" stroke="#81d4fa" stroke-width="5" fill="none" stroke-linecap="round"/>
 <path d="M40 175 H160 L145 205 H55 Z" fill="#fff" stroke="#c62828" stroke-width="6" stroke-linejoin="round"/><rect x="95" y="80" width="7" height="95" fill="#6d4c41"/>
-<path d="M102 85 L150 160 H102 Z" fill="#ffca28" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/><circle cx="80" cy="190" r="5" fill="#c62828"/><circle cx="120" cy="190" r="5" fill="#c62828"/></svg></div><div><div class="nm">Tours La Ballenita</div><div class="sl">Avistamiento de ballenas y snorkel</div><div class="of">Salidas 9 y 11 am</div><div class="mini">Niños a mitad de precio · Negocio de ejemplo</div></div>
-   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea</b></div></div>
-   <div class="bar"><span>¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><b>WhatsApp 322 136 1264</b></div></section>
-  <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/08_movilidad.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
-  <section class="slot pan" data-type="pan" data-secs="34" style="background-image:url(/tablet/s/info-sayulita-bg.jpg)"><img src="/tablet/s/info-sayulita.jpg" alt="Sayulita"></section>
-  <section class="slot tall" data-type="img" data-secs="12" style="background-image:url(/tablet/s/propinas-bg.jpg)"><div class="t"><div class="k">Guía rápida · Quick guide</div><h1>Propinas en México</h1><p>Tipping in Mexico: a quick guide for our visitors.</p></div>
+<path d="M102 85 L150 160 H102 Z" fill="#ffca28" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/><circle cx="80" cy="190" r="5" fill="#c62828"/><circle cx="120" cy="190" r="5" fill="#c62828"/></svg></div><div><div class="nm">Tours La Ballenita</div><div class="sl"><span class="es">Avistamiento de ballenas y snorkel</span><span class="en">Whale watching and snorkeling</span></div><div class="of"><span class="es">Salidas 9 y 11 am</span><span class="en">Departures at 9 and 11 am</span></div><div class="mini"><span class="es">Niños a mitad de precio · Negocio de ejemplo</span><span class="en">Kids half price · Sample business</span></div></div>
+   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b><span class="es">Escanea</span><span class="en">Scan</span></b></div></div>
+   <div class="bar"><span><span class="es">¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><span class="en">Own a business? <u>This space can be yours.</u></span></span><b>WhatsApp 322 136 1264</b></div></section>
+  <section class="slot" data-type="img" data-secs="8"><img class="es" src="/tablet/s/08_movilidad.jpg" alt="" style="width:100%;height:100%;object-fit:contain"><img class="en" src="/tablet/s/en/08_movilidad.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot pinf" data-type="pan" data-secs="34" data-only="es" style="background-image:url(/tablet/s/info-sayulita-bg.jpg)"><img src="/tablet/s/info-sayulita.jpg" alt="Sayulita"></section>
+  <section class="slot tall" data-type="img" data-secs="12" style="background-image:url(/tablet/s/propinas-bg.jpg)"><div class="t"><div class="k"><span class="es">Guía rápida</span><span class="en">Quick guide</span></div><h1><span class="es">Propinas en México</span><span class="en">Tipping in Mexico</span></h1><p><span class="es">Una guía rápida para nuestros visitantes.</span><span class="en">A quick guide for our visitors.</span></p></div>
    <img class="fg" src="/tablet/s/propinas.jpg" alt="Guía de propinas en México"></section>
-  <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/14b_estado.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
-  <section class="slot mock" data-type="ad" data-secs="12" style="--bg:linear-gradient(135deg,#8e24aa,#ec407a);--bd:#ad1457"><div class="rib">EJEMPLO DE ANUNCIO</div>
+  <section class="slot" data-type="img" data-secs="8"><img class="es" src="/tablet/s/14b_estado.jpg" alt="" style="width:100%;height:100%;object-fit:contain"><img class="en" src="/tablet/s/en/14b_estado.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot mock" data-type="ad" data-secs="12" style="--bg:linear-gradient(135deg,#8e24aa,#ec407a);--bd:#ad1457"><div class="rib"><span class="es">EJEMPLO DE ANUNCIO</span><span class="en">SAMPLE AD</span></div>
    <div class="card2"><div class="ill"><svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg"><ellipse cx="150" cy="240" rx="110" ry="13" fill="#00000033"/>
 <path d="M115 85 Q115 40 150 40 Q185 40 185 85" fill="none" stroke="#6a1b9a" stroke-width="9" stroke-linecap="round"/>
 <path d="M70 80 H230 L245 230 H55 Z" fill="#ec407a" stroke="#6a1b9a" stroke-width="7" stroke-linejoin="round"/>
 <path d="M150 110 L162 138 L192 140 L168 158 L177 187 L150 170 L123 187 L132 158 L108 140 L138 138Z" fill="#ffeb3b" stroke="#f57f17" stroke-width="4" stroke-linejoin="round"/>
-<text x="150" y="215" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="22" fill="#fff">-30%</text></svg></div><div><div class="nm">Boutique Coqueta</div><div class="sl">Ropa de playa y accesorios</div><div class="of">¡-30%!</div><div class="mini">Presenta tu viaje y recibe regalo · Negocio de ejemplo</div></div>
-   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea</b></div></div>
-   <div class="bar"><span>¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><b>WhatsApp 322 136 1264</b></div></section>
-  <section class="slot card" data-type="card" data-secs="10"><div class="t"><div class="k">Síguenos</div>
-   <h1>¿Te gustó tu viaje?</h1><p>Síguenos en Facebook y recomiéndanos. Tu apoyo ayuda a que más mujeres trabajen seguras.</p></div>
-   <div class="bigqr"><img src="/tablet/s/qr-facebook.png" alt=""><b>Facebook de la Unión</b></div></section>
-  <div id="game"><button class="x" id="g-x" type="button">Cerrar ✕</button><div class="n" id="g-n"></div><h2 id="g-q"></h2><div class="opts" id="g-o"></div><p id="g-p"></p></div>
+<text x="150" y="215" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="22" fill="#fff">-30%</text></svg></div><div><div class="nm">Boutique Coqueta</div><div class="sl"><span class="es">Ropa de playa y accesorios</span><span class="en">Beachwear and accessories</span></div><div class="of"><span class="es">¡-30%!</span><span class="en">30% OFF!</span></div><div class="mini"><span class="es">Presenta tu viaje y recibe regalo · Negocio de ejemplo</span><span class="en">Show your ride and get a gift · Sample business</span></div></div>
+   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b><span class="es">Escanea</span><span class="en">Scan</span></b></div></div>
+   <div class="bar"><span><span class="es">¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><span class="en">Own a business? <u>This space can be yours.</u></span></span><b>WhatsApp 322 136 1264</b></div></section>
+  <section class="slot vad c" data-type="clip" data-secs="12"><video class="bgv" muted playsinline loop preload="auto" src="/tablet/s/vad-flores.mp4"></video><div class="gl"><div class="k"><span class="es">Espacio publicitario</span><span class="en">Advertising space</span></div><h1><span class="es">Tu negocio aquí</span><span class="en">Your business here</span></h1><p><span class="es">Turistas y familias ven esta pantalla en cada viaje. Restaurantes, hoteles, tours y tiendas.</span><span class="en">Tourists and families see this screen on every ride. Restaurants, hotels, tours and shops.</span></p><div class="cta"><img src="/tablet/s/qr-anunciate.png" alt=""><span><span class="es">Anuncia tu negocio aquí<br>WhatsApp 322 136 1264</span><span class="en">Advertise your business here<br>WhatsApp 322 136 1264</span></span></div></div></section>
+  <section class="slot card" data-type="card" data-secs="10"><div class="t"><div class="k"><span class="es">Síguenos</span><span class="en">Follow us</span></div>
+   <h1><span class="es">¿Te gustó tu viaje?</span><span class="en">Did you enjoy your ride?</span></h1><p><span class="es">Síguenos en Facebook y recomiéndanos. Tu apoyo ayuda a que más mujeres trabajen seguras.</span><span class="en">Follow us on Facebook and recommend us. Your support helps more women work safely.</span></p></div>
+   <div class="bigqr"><img src="/tablet/s/qr-facebook.png" alt=""><b><span class="es">Facebook de la Unión</span><span class="en">Our Facebook page</span></b></div></section>
+  <div id="game"><button class="x" id="g-x" type="button"><span class="es">Cerrar ✕</span><span class="en">Close ✕</span></button><div class="n" id="g-n"></div><h2 id="g-q"></h2><div class="opts" id="g-o"></div><p id="g-p"></p></div>
   <div class="dots" id="dots"></div>
  </main>
  <aside class="side">
   <img class="logo" id="logo" src="/img/logo.png" alt="Unión de Mujeres Transportistas Bahía de Banderas">
-  <h2>Viajas con <span class="cn">Lizette</span></h2>
+  <h2><span class="es">Viajas con <span class="cn">Lizette</span></span><span class="en">Riding with <span class="cn">Lizette</span></span></h2>
+  <button class="lng" id="btn-lng" type="button"><span class="es">🌐 English</span><span class="en">🌐 Español</span></button>
   <div class="row">
    <div class="pill wa"><b>WA</b><span id="s-wa">322 136 1264</span></div>
    <div class="pill"><b>f</b>Unión de Mujeres Transportistas BB</div>
    <div class="pill"><b>TT</b>@lizzete.esther.ca</div>
   </div>
-  <button class="trk" id="btn-trk" type="button">📍 Rastreo en vivo</button>
-  <div class="safe"><div><b>Línea de las Mujeres</b><br>311 132 52 25</div><div><b>Emergencias</b> 911</div></div>
-  <div class="qr"><img src="/img/qr-pagina.png" alt="Código QR de la página"><p>Escanea y conócenos</p></div>
+  <button class="trk" id="btn-trk" type="button">📍 <span class="es">Rastreo en vivo</span><span class="en">Live tracking</span></button>
+  <div class="safe"><div><b><span class="es">Línea de las Mujeres</span><span class="en">Women’s Hotline</span></b><br>311 132 52 25</div><div><b><span class="es">Emergencias</span><span class="en">Emergency</span></b> 911</div></div>
+  <div class="qr"><img src="/img/qr-pagina.png" alt="Código QR de la página"><p><span class="es">Escanea y conócenos</span><span class="en">Scan to learn more</span></p></div>
  </aside>
 </div>
 <div id="track"><div class="map" id="tmap"><div class="tiles" id="ttiles"></div><div class="pin"></div><div class="att">© OpenStreetMap</div></div>
- <div class="pan"><h2>Tu viaje en vivo</h2><p id="t-txt">Ubicando…</p>
+ <div class="pan"><h2><span class="es">Tu viaje en vivo</span><span class="en">Your ride, live</span></h2><p id="t-txt">Ubicando…</p>
   <div class="qrbox" id="t-qr"></div>
-  <p><b>Comparte tu viaje:</b> escanea con tu celular y mándale el enlace a quien quieras por WhatsApp. Verá dónde vas en tiempo real.</p>
+  <p><span class="es"><b>Comparte tu viaje:</b> escanea con tu celular y mándale el enlace a quien quieras por WhatsApp. Verá dónde vas en tiempo real.</span><span class="en"><b>Share your ride:</b> scan with your phone and send the link to anyone on WhatsApp. They will see where you are in real time.</span></p>
   <div class="st" id="t-st"></div>
-  <button class="close" id="t-x" type="button">Cerrar ✕</button></div></div>
+  <button class="close" id="t-x" type="button"><span class="es">Cerrar ✕</span><span class="en">Close ✕</span></button></div></div>
+<div id="lang"><div class="in"><img src="/img/logo.png" alt=""><h1>Elige tu idioma<br>Choose your language</h1>
+ <div class="bt"><button type="button" data-l="es">Español</button><button type="button" data-l="en">English</button></div>
+ <small>Puedes cambiarlo en cualquier momento · You can change it at any time</small></div></div>
 <div id="start">
  <img src="/img/logo.png" alt="">
  <button id="go" type="button">▶ Iniciar pantalla</button>
@@ -256,9 +279,9 @@ var CONDUCTORAS={
 };
 var PREMIO={activo:false,titulo:'City Tour de regalo',valor:'$500',wa:''}; /* al poner el WhatsApp de la agencia se activa el premio */
 var PREGUNTAS=[
- {q:'¿En qué estado está Bahía de Banderas?',o:['Jalisco','Nayarit','Colima'],c:1},
- {q:'¿Cuál es la capital de Nayarit?',o:['Tepic','Compostela','Bucerías'],c:0},
- {q:'¿Qué visitantes llegan a la bahía en invierno?',o:['Pingüinos','Osos polares','Ballenas jorobadas'],c:2}
+ {q:'¿En qué estado está Bahía de Banderas?',qe:'Which state is Bahía de Banderas in?',o:['Jalisco','Nayarit','Colima'],c:1},
+ {q:'¿Cuál es la capital de Nayarit?',qe:'What is the capital of Nayarit?',o:['Tepic','Compostela','Bucerías'],c:0},
+ {q:'¿Qué visitantes llegan a la bahía en invierno?',qe:'Which visitors arrive in the bay in winter?',o:['Pingüinos','Osos polares','Ballenas jorobadas'],oe:['Penguins','Polar bears','Humpback whales'],c:2}
 ];
 /* ===== Conductora de esta tablet (?c=liz o ?c=mayte, se recuerda) ===== */
 var key='liz';
@@ -266,13 +289,25 @@ try{var u=new URLSearchParams(location.search).get('c');if(u&&CONDUCTORAS[u]){lo
 var C=CONDUCTORAS[key]||CONDUCTORAS.liz;
 document.querySelectorAll('.cn').forEach(function(e){e.textContent=C.n});
 document.getElementById('w-foto').src=C.foto;document.getElementById('q-res').src=C.qr;document.getElementById('s-wa').textContent=C.wa;
+/* ===== Idioma ===== */
+var LANG='es';try{LANG=localStorage.getItem('mtbb_lang')||'es'}catch(e){}
+function T(es,en){return LANG==='en'?en:es}
+var VID={es:'/img/presentacion.mp4',en:'/img/presentacion-en.mp4'};
+function setLang(l){LANG=l==='en'?'en':'es';document.documentElement.lang=LANG;try{localStorage.setItem('mtbb_lang',LANG)}catch(e){}
+ var v=document.getElementById('v1');if(v.getAttribute('src')!==VID[LANG]){v.setAttribute('src',VID[LANG]);v.load()}
+ if(typeof VIAJE!=='undefined'&&VIAJE)pintaQR();var mt=document.getElementById('m-txt');if(mt)mt.textContent=POS?T('Así va tu recorrido ahora mismo','Here is your ride right now'):T('Ubicando…','Locating…')}
+var LG=document.getElementById('lang');
+function pideIdioma(){inGame=true;clearTimeout(timer);LG.classList.add('on');clearTimeout(LG._t);LG._t=setTimeout(function(){eligeIdioma(LANG)},15000)}
+function eligeIdioma(l){clearTimeout(LG._t);LG.classList.remove('on');setLang(l);inGame=false;sound=true;vuelta=0;show(0)}
+[].forEach.call(LG.querySelectorAll('button'),function(b){b.addEventListener('click',function(){eligeIdioma(b.dataset.l)})});
+setLang(LANG);
 /* ===== Bucle ===== */
 var slots=[].slice.call(document.querySelectorAll('.slot')),dots=document.getElementById('dots'),v1=document.getElementById('v1');
 slots.forEach(function(){dots.appendChild(document.createElement('i'))});
 var i=-1,timer=null,sound=false,lock=null,started=false,inGame=false,vuelta=0;
 function wake(){try{if('wakeLock' in navigator)navigator.wakeLock.request('screen').then(function(l){lock=l}).catch(function(){})}catch(e){}}
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')wake()});
-function show(k){clearTimeout(timer);v1.pause();document.querySelectorAll('.tall video').forEach(function(v){v.pause()});document.querySelectorAll('.reelw .reel').forEach(function(r){r.innerHTML=''});i=k;var s=slots[i];
+function show(k){clearTimeout(timer);v1.pause();document.querySelectorAll('.tall video,.vad video').forEach(function(v){v.pause()});document.querySelectorAll('.reelw .reel').forEach(function(r){r.innerHTML=''});i=k;var s=slots[i];
  slots.forEach(function(x,n){x.classList.toggle('on',n===i)});[].forEach.call(dots.children,function(d,n){d.classList.toggle('on',n===i)});
  if(s.dataset.type==='video'){v1.currentTime=0;v1.muted=!sound;v1.play().catch(function(){v1.muted=true;v1.play().catch(function(){timer=setTimeout(next,4000)})});v1.onended=next;v1.onerror=function(){timer=setTimeout(next,2000)}}
  else{if(s.dataset.type==='clip'){var cv=s.querySelector('video');cv.currentTime=0;cv.play().catch(function(){})}if(s.dataset.type==='map')pintaMapa();if(s.dataset.type==='pan')panea(s);
@@ -287,12 +322,14 @@ function next(){if(inGame)return;var k=(i+1)%slots.length;if(k===0)vuelta++;
  if(slots[k].dataset.type==='video'&&vuelta%3!==0){k=(k+1)%slots.length}
  if(slots[k].dataset.type==='map'&&!mapOK()){k=(k+1)%slots.length}
  if(slots[k].dataset.type==='reel'&&!navigator.onLine){k=(k+1)%slots.length}
+ if(slots[k].dataset.only&&slots[k].dataset.only!==LANG){k=(k+1)%slots.length}
  show(k)}
-function begin(withSound){if(started)return;started=true;sound=withSound;var st=document.getElementById('start');if(st)st.remove();wake();show(0)}
+function begin(withSound){if(started)return;started=true;sound=withSound;var st=document.getElementById('start');if(st)st.remove();wake();show(0);if(withSound)pideIdioma()}
 document.getElementById('go').onclick=function(){try{navigator.geolocation.getCurrentPosition(function(p){POS=p.coords},function(){},{timeout:20000})}catch(e){}try{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}catch(e){}begin(true)};
 setTimeout(function(){begin(false)},8000);
 /* Pasajero nuevo: doble toque en el logo */
-document.getElementById('logo').addEventListener('dblclick',function(){sound=true;vuelta=0;nuevoViaje();closeGame();try{document.documentElement.requestFullscreen()}catch(e){}show(0)});
+document.getElementById('logo').addEventListener('dblclick',function(){sound=true;vuelta=0;nuevoViaje();closeGame();try{document.documentElement.requestFullscreen()}catch(e){}show(0);pideIdioma()});
+document.getElementById('btn-lng').addEventListener('click',function(){if(LG.classList.contains('on'))return;setLang(LANG==='es'?'en':'es');show(i<0?0:i)});
 /* ===== Mapa en vivo (ubicación de la tablet, mapa de OpenStreetMap) ===== */
 var POS=null;
 function mapOK(){return !!POS&&navigator.onLine}
@@ -303,26 +340,26 @@ function pintaMapa(tid,mid){tid=tid||'tiles';mid=mid||'map';if(!POS)return;var z
  for(var y=y0;y<y0+5;y++)for(var x=x0;x<x0+5;x++)h+='<img alt="" src="https://tile.openstreetmap.org/'+z+'/'+x+'/'+y+'.png">';
  t.innerHTML=h;var m=document.getElementById(mid);
  t.style.left=(m.clientWidth/2-(xf-x0)*256)+'px';t.style.top=(m.clientHeight/2-(yf-y0)*256)+'px';
- if(mid==='map')document.getElementById('m-txt').textContent='Así va tu recorrido ahora mismo';}
+ if(mid==='map')document.getElementById('m-txt').textContent=T('Así va tu recorrido ahora mismo','Here is your ride right now');}
 /* ===== Rastreo en vivo compartible ===== */
 var SB='https://xqbaiqfkpbyyjhqtbune.supabase.co',SK='sb_publishable_Tq9CtFQbKGesNrn6bjbfGQ_Ovpg0tw5',VIAJE=null;
 function nuevoViaje(){var a='abcdefghijkmnpqrstuvwxyz23456789',id='';for(var k=0;k<14;k++)id+=a[Math.floor(Math.random()*a.length)];VIAJE={id:id,t:Date.now()};try{localStorage.setItem('mtbb_viaje',JSON.stringify(VIAJE))}catch(e){}pintaQR()}
 try{VIAJE=JSON.parse(localStorage.getItem('mtbb_viaje')||'null')}catch(e){}
 if(!VIAJE||Date.now()-VIAJE.t>4*3600e3)nuevoViaje();
-function enlace(){return 'https://mujerestransportistas.datable.com.mx/viaje/?id='+VIAJE.id}
+function enlace(){return 'https://mujerestransportistas.datable.com.mx/viaje/?id='+VIAJE.id+(LANG==='en'?'&lang=en':'')}
 function pintaQR(){try{var q=qrcode(0,'M');q.addData(enlace());q.make();document.getElementById('t-qr').innerHTML=q.createImgTag(8,8)}catch(e){}}
 pintaQR();
 var ultimoEnvio=0;
 function enviar(){if(!POS||!navigator.onLine)return;var b={id:VIAJE.id,conductora:C.n,lat:POS.latitude,lon:POS.longitude,precision_m:POS.accuracy||null,activo:true,actualizado:new Date().toISOString()};
  fetch(SB+'/rest/v1/mtbb_viajes?on_conflict=id',{method:'POST',headers:{apikey:SK,Authorization:'Bearer '+SK,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify(b)})
- .then(function(r){if(r.ok){ultimoEnvio=Date.now();document.getElementById('t-st').textContent='Ubicación compartida · actualizada hace un momento'}}).catch(function(){})}
+ .then(function(r){if(r.ok){ultimoEnvio=Date.now();document.getElementById('t-st').textContent=T('Ubicación compartida · actualizada hace un momento','Location shared · updated a moment ago')}}).catch(function(){})}
 setInterval(enviar,15000);setTimeout(enviar,4000);
 var TR=document.getElementById('track');
-function pideUbic(){try{navigator.geolocation.getCurrentPosition(function(p){POS=p.coords;if(TR.classList.contains('on')){pintaMapa('ttiles','tmap');document.getElementById('t-txt').textContent='Así va tu recorrido ahora mismo.';enviar()}},
- function(e){document.getElementById('t-txt').innerHTML='No se pudo obtener la ubicación. En la tablet: <b>Ajustes → Ubicación → Activar</b>, y en Chrome permite la ubicación para esta página.'},{enableHighAccuracy:true,timeout:20000,maximumAge:15000})}catch(e){}}
+function pideUbic(){try{navigator.geolocation.getCurrentPosition(function(p){POS=p.coords;if(TR.classList.contains('on')){pintaMapa('ttiles','tmap');document.getElementById('t-txt').textContent=T('Así va tu recorrido ahora mismo.','Here is your ride right now.');enviar()}},
+ function(e){document.getElementById('t-txt').innerHTML=T('No se pudo obtener la ubicación. En la tablet: <b>Ajustes → Ubicación → Activar</b>, y en Chrome permite la ubicación para esta página.','Location is not available right now. Please ask your driver to turn on location on this tablet.')},{enableHighAccuracy:true,timeout:20000,maximumAge:15000})}catch(e){}}
 function abreTrack(){inGame=true;clearTimeout(timer);v1.pause();TR.classList.add('on');if(!POS)pideUbic();
- if(POS){pintaMapa('ttiles','tmap');document.getElementById('t-txt').textContent='Así va tu recorrido ahora mismo.';enviar()}
- else{document.getElementById('t-txt').textContent='Activando ubicación… Si la tablet pregunta, toca «Permitir».';var keep=POS;POS={latitude:20.7469,longitude:-105.3956};pintaMapa('ttiles','tmap');POS=keep}
+ if(POS){pintaMapa('ttiles','tmap');document.getElementById('t-txt').textContent=T('Así va tu recorrido ahora mismo.','Here is your ride right now.');enviar()}
+ else{document.getElementById('t-txt').textContent=T('Activando ubicación… Si la tablet pregunta, toca «Permitir».','Turning on location… If the tablet asks, tap “Allow”.');var keep=POS;POS={latitude:20.7469,longitude:-105.3956};pintaMapa('ttiles','tmap');POS=keep}
  clearTimeout(TR._t);TR._t=setTimeout(cierraTrack,90000)}
 function cierraTrack(){TR.classList.remove('on');clearTimeout(TR._t);inGame=false;next()}
 document.getElementById('btn-trk').addEventListener('click',abreTrack);
@@ -332,17 +369,17 @@ var G=document.getElementById('game'),gq=0,ok=0,idle=null;
 function idleReset(){clearTimeout(idle);idle=setTimeout(closeGame,45000)}
 function openGame(){inGame=true;clearTimeout(timer);v1.pause();gq=0;ok=0;G.classList.add('on');ask();idleReset()}
 function closeGame(){if(!inGame)return;inGame=false;clearTimeout(idle);G.classList.remove('on');next()}
-function ask(){var p=PREGUNTAS[gq];document.getElementById('g-n').textContent='Pregunta '+(gq+1)+' de '+PREGUNTAS.length;
- document.getElementById('g-q').textContent=p.q;document.getElementById('g-p').textContent='';var o=document.getElementById('g-o');o.innerHTML='';
- p.o.forEach(function(t,n){var b=document.createElement('button');b.type='button';b.textContent=t;b.onclick=function(){idleReset();
-  [].forEach.call(o.children,function(x){x.disabled=true});if(n===p.c){b.classList.add('ok');ok++;document.getElementById('g-p').textContent='¡Correcto!'}
-  else{b.classList.add('no');o.children[p.c].classList.add('ok');document.getElementById('g-p').textContent='La respuesta es: '+p.o[p.c]}
+function ask(){var p=PREGUNTAS[gq];document.getElementById('g-n').textContent=T('Pregunta ','Question ')+(gq+1)+T(' de ',' of ')+PREGUNTAS.length;
+ document.getElementById('g-q').textContent=T(p.q,p.qe);var OP=(LANG==='en'&&p.oe)?p.oe:p.o;document.getElementById('g-p').textContent='';var o=document.getElementById('g-o');o.innerHTML='';
+ OP.forEach(function(t,n){var b=document.createElement('button');b.type='button';b.textContent=t;b.onclick=function(){idleReset();
+  [].forEach.call(o.children,function(x){x.disabled=true});if(n===p.c){b.classList.add('ok');ok++;document.getElementById('g-p').textContent=T('¡Correcto!','Correct!')}
+  else{b.classList.add('no');o.children[p.c].classList.add('ok');document.getElementById('g-p').textContent=T('La respuesta es: ','The answer is: ')+OP[p.c]}
   setTimeout(function(){gq++;if(gq<PREGUNTAS.length)ask();else fin()},1600)};o.appendChild(b)})}
-function fin(){var o=document.getElementById('g-o');o.innerHTML='';document.getElementById('g-n').textContent='Resultado';
- document.getElementById('g-q').textContent='¡Acertaste '+ok+' de '+PREGUNTAS.length+'!';
+function fin(){var o=document.getElementById('g-o');o.innerHTML='';document.getElementById('g-n').textContent=T('Resultado','Result');
+ document.getElementById('g-q').textContent=T('¡Acertaste ','You got ')+ok+T(' de ',' of ')+PREGUNTAS.length+T('!',' right!');
  if(PREMIO.activo&&PREMIO.wa){var code='CT-'+Math.random().toString(36).slice(2,6).toUpperCase();
   document.getElementById('g-p').innerHTML='Ganaste: <b>'+PREMIO.titulo+'</b> (valor '+PREMIO.valor+').<br>Tu código: <b>'+code+'</b>. Tómale foto a esta pantalla y envíala al WhatsApp '+PREMIO.wa+' para reclamarlo.'}
- else{document.getElementById('g-p').textContent='Gracias por jugar y por viajar con nosotras. ¡Disfruta Bahía de Banderas!'}
+ else{document.getElementById('g-p').textContent=T('Gracias por jugar y por viajar con nosotras. ¡Disfruta Bahía de Banderas!','Thank you for playing and for riding with us. Enjoy Bahía de Banderas!')}
  idleReset()}
 document.querySelector('.play').addEventListener('click',openGame);
 document.getElementById('g-x').addEventListener('click',closeGame);
