@@ -51,7 +51,12 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 #start img{width:160px}
 #start button{font:700 28px Figtree;background:#1f9d55;color:#fff;border:0;border-radius:99px;padding:20px 44px}
 #start small{color:#e8d3e6;font-size:16px;max-width:40ch}
-@media (orientation:portrait){.app{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}.side{flex-direction:row;flex-wrap:wrap;justify-content:center;border-left:0;border-top:2px solid #ffffff1f;padding:12px}.side img.logo{width:80px}.row{width:auto}.qr{width:120px}.side h2{display:none}}
+@media (orientation:portrait){.app{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}
+.side{flex-direction:row;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border-left:0;border-top:2px solid #ffffff1f;max-height:24vh}
+.side img.logo{width:72px;flex:none}.side h2{display:block;font-size:17px;max-width:110px;flex:none}
+.side .row{width:auto;flex:1;min-width:0}.side .row .pill:not(.wa){display:none}
+.side .safe{width:auto;flex:1;min-width:0}.side .qr{width:100px;flex:none;padding:6px}.side .qr p{font-size:10px}
+.wel,.card{flex-direction:column;text-align:center;gap:2vh;padding:3vh 4vw}.wel img{height:40%;max-height:40%}.wel h1{font-size:clamp(28px,6vw,52px)}.wel .t,.card .t{max-width:92%}.chips{justify-content:center}.ad .row2{flex-direction:column}}
 
 .wel{gap:4vw;padding:4vw;justify-content:center}
 .wel img{height:78%;border-radius:22px;box-shadow:0 20px 60px #0009;object-fit:cover}
