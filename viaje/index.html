@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2a0d3d">
+<title>Viaje en vivo · Unión de Mujeres Transportistas</title>
+<meta property="og:title" content="Sigue mi viaje en vivo">
+<meta property="og:description" content="Unión de Mujeres Transportistas Bahía de Banderas · ubicación en tiempo real">
+<meta property="og:image" content="https://mujerestransportistas.datable.com.mx/img/hero.jpg">
+<link rel="icon" href="/img/logo-sm.png">
+<style>
+@font-face{font-family:Fraunces;font-weight:700;src:url(/tablet/f/fraunces-latin-700-normal.woff2)}
+@font-face{font-family:Figtree;font-weight:400;src:url(/tablet/f/figtree-latin-400-normal.woff2)}
+@font-face{font-family:Figtree;font-weight:700;src:url(/tablet/f/figtree-latin-700-normal.woff2)}
+*{box-sizing:border-box;margin:0}html,body{height:100%}
+body{font-family:Figtree,system-ui,sans-serif;background:#2a0d3d;color:#fff;display:grid;grid-template-rows:auto minmax(0,1fr) auto;height:100dvh}
+header{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#4b1d6b}
+header img{width:46px;height:46px}header h1{font:700 20px/1.1 Fraunces,serif}header p{font-size:14px;color:#f8c9de}
+.map{position:relative;overflow:hidden;background:#e8e0ef}
+.tiles{position:absolute;display:grid;grid-template-columns:repeat(5,256px)}.tiles img{width:256px;height:256px;display:block}
+.pin{position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:#c2185b;border:4px solid #fff;box-shadow:0 0 0 10px #c2185b44,0 6px 16px #0006;animation:p 1.6s infinite}
+@keyframes p{50%{box-shadow:0 0 0 22px #c2185b22,0 6px 16px #0006}}
+.att{position:absolute;right:8px;bottom:6px;background:#ffffffcc;color:#333;font:600 11px Figtree;padding:2px 6px;border-radius:6px}
+.msg{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:24px;background:#2a0d3dee;font-size:18px}
+footer{padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));display:grid;gap:10px;background:#4b1d6b}
+#st{font-size:15px;color:#f6e8f1}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btns a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:50px;border-radius:14px;font-weight:700;text-decoration:none;color:#fff;background:#ffffff22}
+.btns a.wa{background:#1f9d55}
+.em{font-size:13px;color:#f8c9de}
+</style>
+</head>
+<body>
+<header><img src="/img/logo-sm.png" alt=""><div><h1>Viaje en vivo</h1><p id="who">Unión de Mujeres Transportistas Bahía de Banderas</p></div></header>
+<div class="map" id="map"><div class="tiles" id="tiles"></div><div class="pin" id="pin"></div><div class="att">© OpenStreetMap</div><div class="msg" id="msg"></div></div>
+<footer><div id="st">Buscando la ubicación…</div>
+ <div class="btns"><a class="wa" id="share" href="#" target="_blank" rel="noopener">Compartir por WhatsApp</a><a id="gm" href="#" target="_blank" rel="noopener">Abrir en mapas</a></div>
+ <div class="em">Emergencias 911 · Línea de las Mujeres 311 132 52 25</div></footer>
+<script>
+var SB='https://xqbaiqfkpbyyjhqtbune.supabase.co',SK='sb_publishable_Tq9CtFQbKGesNrn6bjbfGQ_Ovpg0tw5';
+var id=new URLSearchParams(location.search).get('id')||'';
+document.getElementById('share').href='https://wa.me/?text='+encodeURIComponent('Sigue mi viaje en vivo: '+location.href);
+function msg(t){var m=document.getElementById('msg');m.textContent=t;m.style.display='grid'}
+function pinta(lat,lon){var z=16,n=Math.pow(2,z),xf=(lon+180)/360*n,yr=lat*Math.PI/180,yf=(1-Math.log(Math.tan(yr)+1/Math.cos(yr))/Math.PI)/2*n;
+ var x0=Math.floor(xf)-2,y0=Math.floor(yf)-2,t=document.getElementById('tiles'),h='';
+ for(var y=y0;y<y0+5;y++)for(var x=x0;x<x0+5;x++)h+='<img alt="" src="https://tile.openstreetmap.org/'+z+'/'+x+'/'+y+'.png">';
+ if(t.dataset.k!==x0+','+y0){t.innerHTML=h;t.dataset.k=x0+','+y0}
+ var m=document.getElementById('map');t.style.left=(m.clientWidth/2-(xf-x0)*256)+'px';t.style.top=(m.clientHeight/2-(yf-y0)*256)+'px'}
+function hace(s){if(s<60)return 'hace '+Math.max(1,Math.round(s))+' s';var m=Math.round(s/60);return 'hace '+m+' min'}
+function carga(){if(!/^[a-z0-9]{10,40}$/.test(id)){msg('Este enlace no es válido.');return}
+ fetch(SB+'/rest/v1/mtbb_viajes?id=eq.'+id+'&select=conductora,lat,lon,actualizado',{headers:{apikey:SK,Authorization:'Bearer '+SK}})
+ .then(function(r){return r.json()}).then(function(d){if(!d||!d.length){msg('Este viaje terminó o el enlace ya expiró.');return}
+  var v=d[0];document.getElementById('msg').style.display='none';document.getElementById('who').textContent='Viajas con '+v.conductora+' · Unión de Mujeres Transportistas';
+  pinta(v.lat,v.lon);document.getElementById('gm').href='https://maps.google.com/?q='+v.lat+','+v.lon;
+  var s=(Date.now()-new Date(v.actualizado).getTime())/1000;document.getElementById('st').textContent='Última ubicación: '+hace(s)+'. Se actualiza sola.'})
+ .catch(function(){document.getElementById('st').textContent='Sin conexión. Reintentando…'})}
+carga();setInterval(carga,10000);
+</script>
+</body>
+</html>

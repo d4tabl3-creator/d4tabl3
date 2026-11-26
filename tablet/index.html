@@ -87,6 +87,41 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 #game .opts button.no{background:#b23a48;border-color:#b23a48}
 #game p{font:400 clamp(17px,2vw,28px)/1.35 Figtree;color:#f6e8f1;max-width:34ch}
 #game .x{position:absolute;top:18px;right:22px;font:700 20px Figtree;background:#ffffff22;border:0;color:#fff;border-radius:99px;padding:10px 18px}
+.adx{flex-direction:column;justify-content:center;align-items:stretch;padding:3.2vw 4vw;gap:2.2vh;background:radial-gradient(80% 70% at 85% 15%,var(--a1),transparent 70%),radial-gradient(70% 60% at 10% 90%,var(--a2),transparent 70%),#2a0d3d}
+.adx .lbl{align-self:flex-start;font:700 clamp(12px,1.2vw,16px) Figtree;letter-spacing:.12em;text-transform:uppercase;background:#ffffff22;border:1px solid #ffffff44;border-radius:99px;padding:6px 14px}
+.adx .grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3vw;align-items:center}
+.adx .ico{font-size:clamp(54px,8vw,120px);line-height:1}
+.adx h1{font:700 clamp(32px,5vw,80px)/1.02 Fraunces,serif;margin:.6vh 0}
+.adx p{font:400 clamp(16px,1.9vw,26px)/1.35 Figtree;color:#f6e8f1;max-width:36ch}
+.adx ul{list-style:none;padding:0;margin:1.4vh 0 0;display:flex;flex-wrap:wrap;gap:10px}
+.adx li{background:#ffffff1c;border:1px solid #ffffff33;border-radius:99px;padding:8px 14px;font:600 clamp(13px,1.3vw,18px) Figtree}
+.adx .bigqr{width:clamp(170px,20vw,300px)}
+.adx .foot{font:700 clamp(16px,1.8vw,26px) Figtree;color:#fff}.adx .foot b{color:#7ee2a8}
+.mapw{flex-direction:column;gap:1.6vh;padding:2.4vw}
+.mapw .hd{display:flex;align-items:baseline;gap:14px;width:100%}.mapw .hd h1{font:700 clamp(26px,3.4vw,48px) Fraunces,serif}.mapw .hd span{color:#f8c9de;font:600 clamp(14px,1.4vw,19px) Figtree}
+.map{position:relative;flex:1;width:100%;border-radius:20px;overflow:hidden;background:#e8e0ef}
+.map .tiles{position:absolute;display:grid;grid-template-columns:repeat(5,256px)}.map .tiles img{width:256px;height:256px;display:block}
+.map .pin{position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:#c2185b;border:4px solid #fff;box-shadow:0 0 0 10px #c2185b44,0 6px 16px #0006;animation:pin 1.6s ease-in-out infinite}
+@keyframes pin{50%{box-shadow:0 0 0 22px #c2185b22,0 6px 16px #0006}}
+.map .att{position:absolute;right:8px;bottom:6px;background:#ffffffcc;color:#333;font:600 11px Figtree;padding:2px 6px;border-radius:6px}
+.trk{width:100%;border:0;border-radius:14px;background:#c2185b;color:#fff;font:700 clamp(14px,1.4vw,19px) Figtree;padding:12px 10px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 0 0 0 #c2185b88;animation:tp 2s infinite}
+@keyframes tp{70%{box-shadow:0 0 0 12px #c2185b00}}
+#track{position:fixed;inset:0;z-index:8;display:none;grid-template-columns:minmax(0,1fr) clamp(240px,28vw,380px);background:#2a0d3d}
+#track.on{display:grid}
+#track .map{border-radius:0}
+#track .pan{padding:22px;display:flex;flex-direction:column;gap:14px;justify-content:center;text-align:center}
+#track h2{font:700 clamp(24px,2.8vw,40px)/1.05 Fraunces,serif}#track p{color:#f6e8f1;font:400 clamp(15px,1.5vw,20px)/1.35 Figtree}
+#track .qrbox{background:#fff;border-radius:18px;padding:12px;align-self:center;width:min(240px,90%)}#track .qrbox canvas,#track .qrbox img{width:100%;display:block}
+#track .st{font:600 14px Figtree;color:#f8c9de}
+#track .close{border:0;border-radius:99px;background:#ffffff22;color:#fff;font:700 18px Figtree;padding:12px 18px}
+.reelw{gap:3vw;padding:3vw;justify-content:center}
+.reelw .reel{height:92%;aspect-ratio:9/16;max-width:44%;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 20px 60px #0009}
+.reelw .reel iframe{width:100%;height:100%;border:0}
+.reelw .t{max-width:40%;display:grid;gap:2vh}
+.reelw .k{font:700 clamp(14px,1.6vw,20px) Figtree;letter-spacing:.06em;text-transform:uppercase;color:#f8c9de}
+.reelw h1{font:700 clamp(28px,3.6vw,54px)/1.05 Fraunces,serif}.reelw p{font:400 clamp(15px,1.7vw,24px)/1.35 Figtree;color:#f6e8f1}
+.reelw .bigqr{width:clamp(140px,15vw,220px)}
+@media (orientation:portrait){#track{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}.reelw{flex-direction:column}.reelw .reel{height:60%;max-width:90%}.reelw .t{max-width:92%;text-align:center}}
 .safe{display:grid;gap:6px;width:100%}
 .safe div{background:#b23a4833;border:1px solid #f3a9cb55;border-radius:12px;padding:8px 10px;font:600 clamp(12px,1.1vw,15px) Figtree;text-align:left}
 .safe b{color:#f3a9cb}
@@ -99,27 +134,43 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
    <div class="t"><div class="k">Unión de Mujeres Transportistas · Bahía de Banderas</div>
     <h1>¡Bienvenida, bienvenido!<br>Hoy viajas con <span class="cn">Lizette</span></h1>
     <p>Gracias por elegirnos. Relájate y disfruta tu viaje.</p>
-    <div class="chips"><span>Conductora verificada</span><span>Rastreo GPS en tiempo real</span><span>Viaja segura</span></div></div></section>
+    <div class="chips"><span>Conductora verificada</span><span>Viaja segura</span><span>Reserva tu próximo viaje</span></div></div></section>
   <section class="slot" data-type="video"><video id="v1" playsinline preload="auto" poster="/img/presentacion-poster.jpg" src="/img/presentacion.mp4"></video></section>
+  <section class="slot adx" data-type="ad" data-secs="12" style="--a1:#c2185b88;--a2:#f29a2e55"><div class="lbl">Publicidad · Espacio disponible</div>
+   <div class="grid"><div><div class="ico">🍽️</div><h1>Tu restaurante aquí</h1><p>Cada pasajero llega con hambre de algo. Muéstrale tu menú y tu promoción del día.</p><ul><li>Pantalla en cada viaje</li><li>QR directo a tu WhatsApp</li><li>Turistas y familias locales</li></ul></div>
+   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea y anúnciate</b></div></div>
+   <div class="foot">Informes por WhatsApp: <b>322 136 1264</b></div></section>
+  <section class="slot mapw" data-type="map" data-secs="12"><div class="hd"><h1>Tu viaje en vivo</h1><span id="m-txt">Ubicando…</span></div>
+   <div class="map" id="map"><div class="tiles" id="tiles"></div><div class="pin"></div><div class="att">© OpenStreetMap</div></div></section>
+  <section class="slot reelw" data-type="reel" data-href="https://www.facebook.com/share/r/1CVJFU3eAA/" data-secs="40"><div class="reel"></div>
+   <div class="t"><div class="k">Conoce Nayarit</div><h1>Hospédate en Tepic: Hoteles Fray</h1><p>Si no lo alcanzas a ver completo, escanea y míralo en tu celular.</p>
+   <div class="bigqr"><img src="/tablet/s/qr-reel1.png" alt=""><b>Ver el video</b></div></div></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/01b_bahia.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
   <section class="slot ad play" data-type="invite" data-secs="12"><div class="frame"></div>
    <div class="k">Juega y gana</div><h1 class="float">3 preguntas sobre<br>Bahía de Banderas</h1>
    <p>Contesta y llévate una sorpresa.</p><div class="tap">Toca aquí para jugar</div></section>
-  <section class="slot ad" data-type="ad" data-secs="11"><div class="frame"></div>
-   <div class="row2"><div><div class="k">Espacio disponible</div><h1 class="float">Tu restaurante<br>u hotel aquí</h1>
-   <p>Visitantes y familias viajan con nosotras todos los días. Que te vean en cada traslado.</p></div>
-   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Anúnciate aquí</b></div></div></section>
+  <section class="slot adx" data-type="ad" data-secs="12" style="--a1:#3f51b588;--a2:#c86bae55"><div class="lbl">Publicidad · Espacio disponible</div>
+   <div class="grid"><div><div class="ico">🏨</div><h1>Tu hotel o tu renta aquí</h1><p>Viajeros que vienen del aeropuerto y buscan dónde hospedarse, comer y pasear.</p><ul><li>Ruta al aeropuerto</li><li>Visitantes nacionales y extranjeros</li><li>Promociones con QR</li></ul></div>
+   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea y anúnciate</b></div></div>
+   <div class="foot">Informes por WhatsApp: <b>322 136 1264</b></div></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/05_servicio.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
   <section class="slot card" data-type="card" data-secs="11"><div class="t"><div class="k">Tu próximo viaje</div>
    <h1>Reserva otra vez con <span class="cn">Lizette</span></h1><p>Escanea, elige fecha y hora, y te confirma por WhatsApp. Aeropuerto, citas, eventos y viajes largos.</p></div>
    <div class="bigqr"><img id="q-res" src="/tablet/s/qr-reserva-liz.png" alt=""><b>Reserva aquí</b></div></section>
   <section class="slot" data-type="img" data-secs="10"><img src="/tablet/s/14c_objetivo.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
-  <section class="slot ad" data-type="ad" data-secs="11"><div class="frame"></div>
-   <div class="row2"><div><div class="k">Publicidad en movimiento</div><h1 class="float">Tu marca puede estar<br>en esta pantalla</h1>
-   <p>Promociona tu negocio dentro de las unidades de la Unión de Mujeres Transportistas.</p></div>
-   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Pregunta por WhatsApp</b></div></div></section>
+  <section class="slot adx" data-type="ad" data-secs="12" style="--a1:#00897b88;--a2:#7b3a9e55"><div class="lbl">Publicidad · Espacio disponible</div>
+   <div class="grid"><div><div class="ico">🚤</div><h1>Tu tour o actividad aquí</h1><p>Ballenas, playas, islas y aventura: el pasajero está decidiendo qué hacer hoy.</p><ul><li>Público en plan de paseo</li><li>Reserva directa desde el QR</li><li>Video o imagen de tu tour</li></ul></div>
+   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea y anúnciate</b></div></div>
+   <div class="foot">Informes por WhatsApp: <b>322 136 1264</b></div></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/08_movilidad.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot reelw" data-type="reel" data-href="https://www.facebook.com/share/v/1CwMM7r8BG/" data-secs="40"><div class="reel"></div>
+   <div class="t"><div class="k">Bienvenido a Nayarit</div><h1>Lo mejor de nuestro estado</h1><p>Si no lo alcanzas a ver completo, escanea y míralo en tu celular.</p>
+   <div class="bigqr"><img src="/tablet/s/qr-reel2.png" alt=""><b>Ver el video</b></div></div></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/14b_estado.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot adx" data-type="ad" data-secs="12" style="--a1:#f29a2e88;--a2:#6b2a8a55"><div class="lbl">Publicidad · Espacio disponible</div>
+   <div class="grid"><div><div class="ico">🛍️</div><h1>Tu tienda o servicio aquí</h1><p>Farmacias, boutiques, salones, consultorios: que te conozcan en el camino.</p><ul><li>Tu logo y tu oferta</li><li>Cupones de descuento</li><li>Reporte de cuántos escanean</li></ul></div>
+   <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea y anúnciate</b></div></div>
+   <div class="foot">Informes por WhatsApp: <b>322 136 1264</b></div></section>
   <section class="slot card" data-type="card" data-secs="10"><div class="t"><div class="k">Síguenos</div>
    <h1>¿Te gustó tu viaje?</h1><p>Síguenos en Facebook y recomiéndanos. Tu apoyo ayuda a que más mujeres trabajen seguras.</p></div>
    <div class="bigqr"><img src="/tablet/s/qr-facebook.png" alt=""><b>Facebook de la Unión</b></div></section>
@@ -134,15 +185,23 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
    <div class="pill"><b>f</b>Unión de Mujeres Transportistas BB</div>
    <div class="pill"><b>TT</b>@lizzete.esther.ca</div>
   </div>
+  <button class="trk" id="btn-trk" type="button">📍 Rastreo en vivo</button>
   <div class="safe"><div><b>Línea de las Mujeres</b><br>311 132 52 25</div><div><b>Emergencias</b> 911</div></div>
   <div class="qr"><img src="/img/qr-pagina.png" alt="Código QR de la página"><p>Escanea y conócenos</p></div>
  </aside>
 </div>
+<div id="track"><div class="map" id="tmap"><div class="tiles" id="ttiles"></div><div class="pin"></div><div class="att">© OpenStreetMap</div></div>
+ <div class="pan"><h2>Tu viaje en vivo</h2><p id="t-txt">Ubicando…</p>
+  <div class="qrbox" id="t-qr"></div>
+  <p><b>Comparte tu viaje:</b> escanea con tu celular y mándale el enlace a quien quieras por WhatsApp. Verá dónde vas en tiempo real.</p>
+  <div class="st" id="t-st"></div>
+  <button class="close" id="t-x" type="button">Cerrar ✕</button></div></div>
 <div id="start">
  <img src="/img/logo.png" alt="">
  <button id="go" type="button">▶ Iniciar pantalla</button>
  <small>Toca para iniciar con sonido y en pantalla completa. Si nadie toca, inicia sola sin sonido en unos segundos.<br>Para un pasajero nuevo: toca dos veces el logo de la derecha. Para pasar las pantallas a mano: desliza el dedo a la izquierda o a la derecha.</small>
 </div>
+<script src="/tablet/s/qrcode.js"></script>
 <script>
 /* ===== Configuración ===== */
 var CONDUCTORAS={
@@ -164,19 +223,58 @@ document.getElementById('w-foto').src=C.foto;document.getElementById('q-res').sr
 /* ===== Bucle ===== */
 var slots=[].slice.call(document.querySelectorAll('.slot')),dots=document.getElementById('dots'),v1=document.getElementById('v1');
 slots.forEach(function(){dots.appendChild(document.createElement('i'))});
-var i=-1,timer=null,sound=false,lock=null,started=false,inGame=false;
+var i=-1,timer=null,sound=false,lock=null,started=false,inGame=false,vuelta=0;
 function wake(){try{if('wakeLock' in navigator)navigator.wakeLock.request('screen').then(function(l){lock=l}).catch(function(){})}catch(e){}}
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')wake()});
-function show(k){clearTimeout(timer);v1.pause();i=k;var s=slots[i];
+function show(k){clearTimeout(timer);v1.pause();document.querySelectorAll('.reelw .reel').forEach(function(r){r.innerHTML=''});i=k;var s=slots[i];
  slots.forEach(function(x,n){x.classList.toggle('on',n===i)});[].forEach.call(dots.children,function(d,n){d.classList.toggle('on',n===i)});
  if(s.dataset.type==='video'){v1.currentTime=0;v1.muted=!sound;v1.play().catch(function(){v1.muted=true;v1.play().catch(function(){timer=setTimeout(next,4000)})});v1.onended=next;v1.onerror=function(){timer=setTimeout(next,2000)}}
- else{timer=setTimeout(next,(+s.dataset.secs||9)*1000)}}
-function next(){if(inGame)return;show((i+1)%slots.length)}
+ else{if(s.dataset.type==='map')pintaMapa();
+  if(s.dataset.type==='reel'){var f=document.createElement('iframe');f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;
+   f.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(s.dataset.href)+'&show_text=false&autoplay=true&mute=1&width=360';s.querySelector('.reel').appendChild(f)}
+  timer=setTimeout(next,(+s.dataset.secs||9)*1000)}}
+function next(){if(inGame)return;var k=(i+1)%slots.length;if(k===0)vuelta++;
+ if(slots[k].dataset.type==='video'&&vuelta%3!==0){k=(k+1)%slots.length}
+ if(slots[k].dataset.type==='map'&&!mapOK()){k=(k+1)%slots.length}
+ if(slots[k].dataset.type==='reel'&&!navigator.onLine){k=(k+1)%slots.length}
+ show(k)}
 function begin(withSound){if(started)return;started=true;sound=withSound;var st=document.getElementById('start');if(st)st.remove();wake();show(0)}
 document.getElementById('go').onclick=function(){try{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}catch(e){}begin(true)};
 setTimeout(function(){begin(false)},8000);
 /* Pasajero nuevo: doble toque en el logo */
-document.getElementById('logo').addEventListener('dblclick',function(){sound=true;closeGame();try{document.documentElement.requestFullscreen()}catch(e){}show(0)});
+document.getElementById('logo').addEventListener('dblclick',function(){sound=true;vuelta=0;nuevoViaje();closeGame();try{document.documentElement.requestFullscreen()}catch(e){}show(0)});
+/* ===== Mapa en vivo (ubicación de la tablet, mapa de OpenStreetMap) ===== */
+var POS=null;
+function mapOK(){return !!POS&&navigator.onLine}
+if('geolocation' in navigator){try{navigator.geolocation.watchPosition(function(p){POS=p.coords},function(){},{enableHighAccuracy:true,maximumAge:15000,timeout:20000})}catch(e){}}
+function pintaMapa(tid,mid){tid=tid||'tiles';mid=mid||'map';if(!POS)return;var z=16,lat=POS.latitude,lon=POS.longitude,n=Math.pow(2,z);
+ var xf=(lon+180)/360*n,yr=lat*Math.PI/180,yf=(1-Math.log(Math.tan(yr)+1/Math.cos(yr))/Math.PI)/2*n;
+ var x0=Math.floor(xf)-2,y0=Math.floor(yf)-2,t=document.getElementById(tid),h='';
+ for(var y=y0;y<y0+5;y++)for(var x=x0;x<x0+5;x++)h+='<img alt="" src="https://tile.openstreetmap.org/'+z+'/'+x+'/'+y+'.png">';
+ t.innerHTML=h;var m=document.getElementById(mid);
+ t.style.left=(m.clientWidth/2-(xf-x0)*256)+'px';t.style.top=(m.clientHeight/2-(yf-y0)*256)+'px';
+ if(mid==='map')document.getElementById('m-txt').textContent='Así va tu recorrido ahora mismo';}
+/* ===== Rastreo en vivo compartible ===== */
+var SB='https://xqbaiqfkpbyyjhqtbune.supabase.co',SK='sb_publishable_Tq9CtFQbKGesNrn6bjbfGQ_Ovpg0tw5',VIAJE=null;
+function nuevoViaje(){var a='abcdefghijkmnpqrstuvwxyz23456789',id='';for(var k=0;k<14;k++)id+=a[Math.floor(Math.random()*a.length)];VIAJE={id:id,t:Date.now()};try{localStorage.setItem('mtbb_viaje',JSON.stringify(VIAJE))}catch(e){}pintaQR()}
+try{VIAJE=JSON.parse(localStorage.getItem('mtbb_viaje')||'null')}catch(e){}
+if(!VIAJE||Date.now()-VIAJE.t>4*3600e3)nuevoViaje();
+function enlace(){return 'https://mujerestransportistas.datable.com.mx/viaje/?id='+VIAJE.id}
+function pintaQR(){try{var q=qrcode(0,'M');q.addData(enlace());q.make();document.getElementById('t-qr').innerHTML=q.createImgTag(8,8)}catch(e){}}
+pintaQR();
+var ultimoEnvio=0;
+function enviar(){if(!POS||!navigator.onLine)return;var b={id:VIAJE.id,conductora:C.n,lat:POS.latitude,lon:POS.longitude,precision_m:POS.accuracy||null,activo:true,actualizado:new Date().toISOString()};
+ fetch(SB+'/rest/v1/mtbb_viajes?on_conflict=id',{method:'POST',headers:{apikey:SK,Authorization:'Bearer '+SK,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify(b)})
+ .then(function(r){if(r.ok){ultimoEnvio=Date.now();document.getElementById('t-st').textContent='Ubicación compartida · actualizada hace un momento'}}).catch(function(){})}
+setInterval(enviar,15000);setTimeout(enviar,4000);
+var TR=document.getElementById('track');
+function abreTrack(){inGame=true;clearTimeout(timer);v1.pause();TR.classList.add('on');
+ if(POS){pintaMapa('ttiles','tmap');document.getElementById('t-txt').textContent='Así va tu recorrido ahora mismo.';enviar()}
+ else document.getElementById('t-txt').textContent='Activando ubicación… Si la tablet pregunta, toca «Permitir».';
+ clearTimeout(TR._t);TR._t=setTimeout(cierraTrack,90000)}
+function cierraTrack(){TR.classList.remove('on');clearTimeout(TR._t);inGame=false;next()}
+document.getElementById('btn-trk').addEventListener('click',abreTrack);
+document.getElementById('t-x').addEventListener('click',cierraTrack);
 /* ===== Juego ===== */
 var G=document.getElementById('game'),gq=0,ok=0,idle=null;
 function idleReset(){clearTimeout(idle);idle=setTimeout(closeGame,45000)}
