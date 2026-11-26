@@ -136,7 +136,7 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 <div id="start">
  <img src="/img/logo.png" alt="">
  <button id="go" type="button">▶ Iniciar pantalla</button>
- <small>Toca para iniciar con sonido y en pantalla completa. Si nadie toca, inicia sola sin sonido en unos segundos.<br>Para un pasajero nuevo: toca dos veces el logo de la derecha.</small>
+ <small>Toca para iniciar con sonido y en pantalla completa. Si nadie toca, inicia sola sin sonido en unos segundos.<br>Para un pasajero nuevo: toca dos veces el logo de la derecha. Para pasar las pantallas a mano: desliza el dedo a la izquierda o a la derecha.</small>
 </div>
 <script>
 /* ===== Configuración ===== */
@@ -191,6 +191,12 @@ function fin(){var o=document.getElementById('g-o');o.innerHTML='';document.getE
  idleReset()}
 document.querySelector('.play').addEventListener('click',openGame);
 document.getElementById('g-x').addEventListener('click',closeGame);
+/* Deslizar para avanzar o regresar (para enseñar la pantalla) */
+var sx=null,sy=null;var stg=document.getElementById('stage');
+stg.addEventListener('touchstart',function(e){if(inGame)return;sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+stg.addEventListener('touchend',function(e){if(inGame||sx===null)return;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;
+ if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)){if(!started)begin(true);show(dx<0?(i+1)%slots.length:(i-1+slots.length)%slots.length)}},{passive:true});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')show((i+1)%slots.length);if(e.key==='ArrowLeft')show((i-1+slots.length)%slots.length)});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/tablet/sw.js',{scope:'/tablet/'}).catch(function(){});
 </script>
 </body>
