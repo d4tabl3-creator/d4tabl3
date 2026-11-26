@@ -134,6 +134,13 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 .mock .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#2a0d3dcc;border-radius:18px;padding:12px 18px;font:700 clamp(15px,1.7vw,24px) Figtree;color:#fff}
 .mock .bar b{color:#7ee2a8;white-space:nowrap}
 @media (orientation:portrait){.mock .card2{grid-template-columns:1fr;text-align:center}.mock .ill{max-width:40%;margin:auto}.mock .bigqr{margin:auto}.mock .bar{flex-direction:column;text-align:center}}
+.tall{gap:3vw;padding:2vh 3vw;justify-content:center;background-size:cover;background-position:center}
+.tall::before{content:"";position:absolute;inset:0;background:#2a0d3d99}
+.tall .t{position:relative;max-width:36%;display:grid;gap:1.6vh}
+.tall .k{font:700 clamp(13px,1.4vw,18px) Figtree;letter-spacing:.08em;text-transform:uppercase;color:#f8c9de}
+.tall h1{font:700 clamp(26px,3.4vw,52px)/1.05 Fraunces,serif}.tall p{font:400 clamp(15px,1.6vw,22px)/1.35 Figtree;color:#f6e8f1}
+.tall video,.tall img.fg{position:relative;height:96%;max-width:56%;object-fit:contain;border-radius:16px;box-shadow:0 20px 60px #000a;background:#000}
+@media (orientation:portrait){.tall{flex-direction:column}.tall .t{max-width:92%;text-align:center}.tall video,.tall img.fg{height:72%;max-width:96%}}
 .safe{display:grid;gap:6px;width:100%}
 .safe div{background:#b23a4833;border:1px solid #f3a9cb55;border-radius:12px;padding:8px 10px;font:600 clamp(12px,1.1vw,15px) Figtree;text-align:left}
 .safe b{color:#f3a9cb}
@@ -160,6 +167,8 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
    <div class="bar"><span>¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><b>WhatsApp 322 136 1264</b></div></section>
   <section class="slot mapw" data-type="map" data-secs="12"><div class="hd"><h1>Tu viaje en vivo</h1><span id="m-txt">Ubicando…</span></div>
    <div class="map" id="map"><div class="tiles" id="tiles"></div><div class="pin"></div><div class="att">© OpenStreetMap</div></div></section>
+  <section class="slot tall" data-type="clip" data-secs="15" style="background-image:url(/tablet/s/clip-vallarta-bg.jpg)"><div class="t"><div class="k">Para nuestros visitantes · For our visitors</div><h1>10 cosas que hacer en Puerto Vallarta</h1><p>Playas, ballenas, Zona Romántica, malecón y más. Pregunta a tu conductora por los mejores lugares.</p></div>
+   <video muted playsinline loop preload="auto" src="/tablet/s/clip-vallarta.mp4"></video></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/01b_bahia.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
   <section class="slot ad play" data-type="invite" data-secs="12"><div class="frame"></div>
    <div class="k">Juega y gana</div><h1 class="float">3 preguntas sobre<br>Bahía de Banderas</h1>
@@ -187,6 +196,10 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
    <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea</b></div></div>
    <div class="bar"><span>¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><b>WhatsApp 322 136 1264</b></div></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/08_movilidad.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot tall" data-type="clip" data-secs="15" style="background-image:url(/tablet/s/clip-destinos-bg.jpg)"><div class="t"><div class="k">Viaja por México · Travel Mexico</div><h1>Los mejores destinos de México por temporada</h1><p>Playas, cultura y aventura todo el año. ¿Qué sigue en tu lista?</p></div>
+   <video muted playsinline loop preload="auto" src="/tablet/s/clip-destinos.mp4"></video></section>
+  <section class="slot tall" data-type="img" data-secs="12" style="background-image:url(/tablet/s/propinas-bg.jpg)"><div class="t"><div class="k">Guía rápida · Quick guide</div><h1>Propinas en México</h1><p>Tipping in Mexico: a quick guide for our visitors.</p></div>
+   <img class="fg" src="/tablet/s/propinas.jpg" alt="Guía de propinas en México"></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/14b_estado.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
   <section class="slot mock" data-type="ad" data-secs="12" style="--bg:linear-gradient(135deg,#8e24aa,#ec407a);--bd:#ad1457"><div class="rib">EJEMPLO DE ANUNCIO</div>
    <div class="card2"><div class="ill"><svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg"><ellipse cx="150" cy="240" rx="110" ry="13" fill="#00000033"/>
@@ -251,10 +264,10 @@ slots.forEach(function(){dots.appendChild(document.createElement('i'))});
 var i=-1,timer=null,sound=false,lock=null,started=false,inGame=false,vuelta=0;
 function wake(){try{if('wakeLock' in navigator)navigator.wakeLock.request('screen').then(function(l){lock=l}).catch(function(){})}catch(e){}}
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')wake()});
-function show(k){clearTimeout(timer);v1.pause();document.querySelectorAll('.reelw .reel').forEach(function(r){r.innerHTML=''});i=k;var s=slots[i];
+function show(k){clearTimeout(timer);v1.pause();document.querySelectorAll('.tall video').forEach(function(v){v.pause()});document.querySelectorAll('.reelw .reel').forEach(function(r){r.innerHTML=''});i=k;var s=slots[i];
  slots.forEach(function(x,n){x.classList.toggle('on',n===i)});[].forEach.call(dots.children,function(d,n){d.classList.toggle('on',n===i)});
  if(s.dataset.type==='video'){v1.currentTime=0;v1.muted=!sound;v1.play().catch(function(){v1.muted=true;v1.play().catch(function(){timer=setTimeout(next,4000)})});v1.onended=next;v1.onerror=function(){timer=setTimeout(next,2000)}}
- else{if(s.dataset.type==='map')pintaMapa();
+ else{if(s.dataset.type==='clip'){var cv=s.querySelector('video');cv.currentTime=0;cv.play().catch(function(){})}if(s.dataset.type==='map')pintaMapa();
   if(s.dataset.type==='reel'){var f=document.createElement('iframe');f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;
    f.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(s.dataset.href)+'&show_text=false&autoplay=true&mute=1&width=360';s.querySelector('.reel').appendChild(f)}
   timer=setTimeout(next,(+s.dataset.secs||9)*1000)}}
