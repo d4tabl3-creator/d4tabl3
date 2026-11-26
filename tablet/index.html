@@ -141,6 +141,11 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 .tall h1{font:700 clamp(26px,3.4vw,52px)/1.05 Fraunces,serif}.tall p{font:400 clamp(15px,1.6vw,22px)/1.35 Figtree;color:#f6e8f1}
 .tall video,.tall img.fg{position:relative;height:96%;max-width:56%;object-fit:contain;border-radius:16px;box-shadow:0 20px 60px #000a;background:#000}
 @media (orientation:portrait){.tall{flex-direction:column}.tall .t{max-width:92%;text-align:center}.tall video,.tall img.fg{height:72%;max-width:96%}}
+.pan{background-size:cover;background-position:center;overflow:hidden}
+.pan::before{content:"";position:absolute;inset:0;background:#1a0b2a8c}
+.pan img{position:absolute;left:50%;top:0;width:100%;max-width:1250px;transform:translate(-50%,0);box-shadow:0 0 60px #000a;will-change:transform}
+.wide{background-size:cover;background-position:center}.wide::before{content:"";position:absolute;inset:0;background:#1a0b2a8c}
+.wide img{position:relative;width:100%;height:100%;object-fit:contain}
 .safe{display:grid;gap:6px;width:100%}
 .safe div{background:#b23a4833;border:1px solid #f3a9cb55;border-radius:12px;padding:8px 10px;font:600 clamp(12px,1.1vw,15px) Figtree;text-align:left}
 .safe b{color:#f3a9cb}
@@ -170,6 +175,7 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
   <section class="slot tall" data-type="clip" data-secs="15" style="background-image:url(/tablet/s/clip-vallarta-bg.jpg)"><div class="t"><div class="k">Para nuestros visitantes · For our visitors</div><h1>10 cosas que hacer en Puerto Vallarta</h1><p>Playas, ballenas, Zona Romántica, malecón y más. Pregunta a tu conductora por los mejores lugares.</p></div>
    <video muted playsinline loop preload="auto" src="/tablet/s/clip-vallarta.mp4"></video></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/01b_bahia.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot pan" data-type="pan" data-secs="30" style="background-image:url(/tablet/s/info-nayarit-bg.jpg)"><img src="/tablet/s/info-nayarit.jpg" alt="Estado de Nayarit"></section>
   <section class="slot ad play" data-type="invite" data-secs="12"><div class="frame"></div>
    <div class="k">Juega y gana</div><h1 class="float">3 preguntas sobre<br>Bahía de Banderas</h1>
    <p>Contesta y llévate una sorpresa.</p><div class="tap">Toca aquí para jugar</div></section>
@@ -182,11 +188,14 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 <path d="M240 230 L246 130" stroke="#8d6e63" stroke-width="9" stroke-linecap="round"/><g fill="#43a047"><path d="M246 130 Q210 110 200 140 Q225 125 246 130Z"/><path d="M246 130 Q280 105 290 135 Q265 122 246 130Z"/><path d="M246 130 Q236 95 262 92 Q250 110 246 130Z"/></g></svg></div><div><div class="nm">Hotel Palmerita</div><div class="sl">Alberca, playa y desayuno incluido</div><div class="of">-20% esta semana</div><div class="mini">Reserva escaneando el código · Negocio de ejemplo</div></div>
    <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea</b></div></div>
    <div class="bar"><span>¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><b>WhatsApp 322 136 1264</b></div></section>
+  <section class="slot pan" data-type="pan" data-secs="28" style="background-image:url(/tablet/s/info-huicholes-bg.jpg)"><img src="/tablet/s/info-huicholes.jpg" alt="Huicholes"></section>
+  <section class="slot wide" data-type="img" data-secs="14" style="background-image:url(/tablet/s/info-ojodedios-bg.jpg)"><img src="/tablet/s/info-ojodedios.jpg" alt="Ojo de Dios"></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/05_servicio.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
   <section class="slot card" data-type="card" data-secs="11"><div class="t"><div class="k">Tu próximo viaje</div>
    <h1>Reserva otra vez con <span class="cn">Lizette</span></h1><p>Escanea, elige fecha y hora, y te confirma por WhatsApp. Aeropuerto, citas, eventos y viajes largos.</p></div>
    <div class="bigqr"><img id="q-res" src="/tablet/s/qr-reserva-liz.png" alt=""><b>Reserva aquí</b></div></section>
   <section class="slot" data-type="img" data-secs="10"><img src="/tablet/s/14c_objetivo.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
+  <section class="slot pan" data-type="pan" data-secs="26" style="background-image:url(/tablet/s/info-puntamita-bg.jpg)"><img src="/tablet/s/info-puntamita.jpg" alt="Punta Mita"></section>
   <section class="slot mock" data-type="ad" data-secs="12" style="--bg:linear-gradient(135deg,#0288d1,#26a69a);--bd:#0277bd"><div class="rib">EJEMPLO DE ANUNCIO</div>
    <div class="card2"><div class="ill"><svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg"><path d="M0 200 Q40 185 75 200 T150 200 T225 200 T300 200 V260 H0Z" fill="#29b6f6"/>
 <path d="M175 150 Q200 110 245 128 Q275 140 268 165 Q240 175 200 170 Z" fill="#455a64"/><path d="M262 160 Q285 150 292 128 Q280 150 262 150Z" fill="#455a64"/><circle cx="215" cy="138" r="4" fill="#fff"/>
@@ -196,8 +205,7 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
    <div class="bigqr"><img src="/tablet/s/qr-anunciate.png" alt=""><b>Escanea</b></div></div>
    <div class="bar"><span>¿Tienes un negocio? <u>Este espacio puede ser tuyo.</u></span><b>WhatsApp 322 136 1264</b></div></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/08_movilidad.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
-  <section class="slot tall" data-type="clip" data-secs="15" style="background-image:url(/tablet/s/clip-destinos-bg.jpg)"><div class="t"><div class="k">Viaja por México · Travel Mexico</div><h1>Los mejores destinos de México por temporada</h1><p>Playas, cultura y aventura todo el año. ¿Qué sigue en tu lista?</p></div>
-   <video muted playsinline loop preload="auto" src="/tablet/s/clip-destinos.mp4"></video></section>
+  <section class="slot pan" data-type="pan" data-secs="34" style="background-image:url(/tablet/s/info-sayulita-bg.jpg)"><img src="/tablet/s/info-sayulita.jpg" alt="Sayulita"></section>
   <section class="slot tall" data-type="img" data-secs="12" style="background-image:url(/tablet/s/propinas-bg.jpg)"><div class="t"><div class="k">Guía rápida · Quick guide</div><h1>Propinas en México</h1><p>Tipping in Mexico: a quick guide for our visitors.</p></div>
    <img class="fg" src="/tablet/s/propinas.jpg" alt="Guía de propinas en México"></section>
   <section class="slot" data-type="img" data-secs="8"><img src="/tablet/s/14b_estado.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></section>
@@ -267,10 +275,14 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 function show(k){clearTimeout(timer);v1.pause();document.querySelectorAll('.tall video').forEach(function(v){v.pause()});document.querySelectorAll('.reelw .reel').forEach(function(r){r.innerHTML=''});i=k;var s=slots[i];
  slots.forEach(function(x,n){x.classList.toggle('on',n===i)});[].forEach.call(dots.children,function(d,n){d.classList.toggle('on',n===i)});
  if(s.dataset.type==='video'){v1.currentTime=0;v1.muted=!sound;v1.play().catch(function(){v1.muted=true;v1.play().catch(function(){timer=setTimeout(next,4000)})});v1.onended=next;v1.onerror=function(){timer=setTimeout(next,2000)}}
- else{if(s.dataset.type==='clip'){var cv=s.querySelector('video');cv.currentTime=0;cv.play().catch(function(){})}if(s.dataset.type==='map')pintaMapa();
+ else{if(s.dataset.type==='clip'){var cv=s.querySelector('video');cv.currentTime=0;cv.play().catch(function(){})}if(s.dataset.type==='map')pintaMapa();if(s.dataset.type==='pan')panea(s);
   if(s.dataset.type==='reel'){var f=document.createElement('iframe');f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;
    f.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(s.dataset.href)+'&show_text=false&autoplay=true&mute=1&width=360';s.querySelector('.reel').appendChild(f)}
   timer=setTimeout(next,(+s.dataset.secs||9)*1000)}}
+function panea(s){var im=s.querySelector('img'),secs=+s.dataset.secs||20;
+ function go(){im.style.transition='none';var h=im.offsetHeight,H=s.clientHeight,d=h-H;im.style.top=d<0?(-d/2)+'px':'0';im.style.transform='translate(-50%,0)';void im.offsetHeight;
+  if(d>0){im.style.transition='transform '+Math.max(secs-5,4)+'s linear 2.5s';im.style.transform='translate(-50%,-'+d+'px)'}}
+ if(im.complete&&im.naturalWidth)go();else im.onload=go}
 function next(){if(inGame)return;var k=(i+1)%slots.length;if(k===0)vuelta++;
  if(slots[k].dataset.type==='video'&&vuelta%3!==0){k=(k+1)%slots.length}
  if(slots[k].dataset.type==='map'&&!mapOK()){k=(k+1)%slots.length}
