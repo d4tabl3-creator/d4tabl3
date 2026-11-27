@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Presentación · Unión de Mujeres Transportistas Bahía de Banderas</title>
+<link rel="icon" href="/img/logo-sm.png">
+<style>
+:root{--deep:#4b1d6b;--violet:#6b2a8a;--rose:#c86bae;--sun:#f29a2e}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font:400 17px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;background:radial-gradient(80% 70% at 50% 30%,var(--violet),var(--deep));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:24px;text-align:center}
+img.l{width:120px;height:120px;border-radius:50%;background:#fff;padding:6px}
+h1{font:700 clamp(24px,4vw,40px)/1.15 Georgia,serif;margin:0;max-width:22ch}
+.play{all:unset;cursor:pointer;background:#fff;color:var(--deep);font:800 clamp(24px,4vw,38px) system-ui,sans-serif;padding:22px 44px;border-radius:999px;box-shadow:0 16px 50px #0008}
+.play:focus-visible{outline:4px solid var(--sun);outline-offset:4px}
+.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.row a,.row button{all:unset;cursor:pointer;font:700 16px system-ui,sans-serif;padding:12px 18px;border-radius:14px;background:#ffffff22;border:1px solid #ffffff55;color:#fff}
+small{color:#f3dff2;max-width:40ch}
+video{display:none;position:fixed;inset:0;width:100%;height:100%;background:#000;z-index:10}
+video.on{display:block}
+</style>
+</head>
+<body>
+<img class="l" src="/img/logo.png" alt="Unión de Mujeres Transportistas Bahía de Banderas">
+<h1>Unión de Mujeres Transportistas Bahía de Banderas</h1>
+<button class="play" id="es" type="button">▶ Reproducir presentación</button>
+<div class="row">
+ <button id="en" type="button">▶ English version</button>
+ <a href="/descargas/Video-Mujeres-Transportistas-BB.mp4" download>⬇ Guardar en mi celular</a>
+</div>
+<small>Al tocar «Reproducir», el video se abre en pantalla completa. Para salir, toca la flecha de regresar o la tecla Esc.</small>
+<video id="v" controls playsinline preload="metadata"></video>
+<script>
+var v=document.getElementById('v');
+var SRC={es:'/descargas/Video-Mujeres-Transportistas-BB.mp4',en:'/descargas/Video-Mujeres-Transportistas-BB-English.mp4'};
+function play(l){v.src=SRC[l];v.classList.add('on');v.play().catch(function(){});var r=v.requestFullscreen||v.webkitEnterFullscreen||v.webkitRequestFullscreen;if(r){try{r.call(v)}catch(e){}}}
+document.getElementById('es').onclick=function(){play('es')};
+document.getElementById('en').onclick=function(){play('en')};
+function off(){if(!document.fullscreenElement){v.pause();v.classList.remove('on')}}
+document.addEventListener('fullscreenchange',off);
+v.addEventListener('webkitendfullscreen',function(){v.pause();v.classList.remove('on')});
+v.addEventListener('ended',function(){if(document.exitFullscreen&&document.fullscreenElement)document.exitFullscreen();v.classList.remove('on')});
+</script>
+</body>
+</html>
