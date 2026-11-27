@@ -106,6 +106,13 @@ html,body{height:100%;overflow:hidden;background:#2a0d3d;color:#fff;font-family:
 .map .att{position:absolute;right:8px;bottom:6px;background:#ffffffcc;color:#333;font:600 11px Figtree;padding:2px 6px;border-radius:6px}
 .trk{width:100%;border:0;border-radius:14px;background:#c2185b;color:#fff;font:700 clamp(14px,1.4vw,19px) Figtree;padding:12px 10px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 0 0 0 #c2185b88;animation:tp 2s infinite}
 @keyframes tp{70%{box-shadow:0 0 0 12px #c2185b00}}
+button.pill{color:inherit;width:100%;cursor:pointer;-webkit-tap-highlight-color:transparent}button.pill:active{transform:scale(.97)}
+#soc{position:fixed;inset:0;z-index:9;display:none;place-items:center;background:#1c0729ee;padding:20px}
+#soc .in{background:#fff;color:#2a1636;border-radius:24px;padding:22px 26px;text-align:center;max-width:min(92vw,440px)}
+#soc h2{font:700 clamp(22px,2.6vw,32px)/1.1 Fraunces,serif;color:#4b1d6b;margin:0 0 6px}
+#soc p{font:400 clamp(14px,1.4vw,18px)/1.3 Figtree;margin:0 0 12px}
+#soc .q{width:min(44vh,300px);margin:0 auto 12px}#soc .q img{width:100%;height:auto;display:block;image-rendering:pixelated}
+#soc button{border:0;border-radius:99px;background:#4b1d6b;color:#fff;font:700 18px Figtree;padding:12px 22px}
 #track{position:fixed;top:0;left:0;right:0;height:100dvh;padding-bottom:env(safe-area-inset-bottom,0px);z-index:8;display:none;grid-template-columns:minmax(0,1fr) clamp(280px,32vw,420px);background:#2a0d3d}
 #track.on{display:grid}
 #track .map{border-radius:0}
@@ -258,15 +265,16 @@ html[lang=en] .es,html[lang=es] .en{display:none!important}
   <h2><span class="es">Viajas con <span class="cn">Lizette</span></span><span class="en">Riding with <span class="cn">Lizette</span></span></h2>
   <button class="lng" id="btn-lng" type="button"><span class="es">🌐 English</span><span class="en">🌐 Español</span></button>
   <div class="row">
-   <div class="pill wa"><b>WA</b><span id="s-wa">322 136 1264</span></div>
-   <div class="pill"><b>f</b>Unión de Mujeres Transportistas BB</div>
-   <div class="pill"><b>TT</b>@lizzete.esther.ca</div>
+   <button class="pill wa" type="button" data-s="wa"><b>WA</b><span id="s-wa">322 136 1264</span></button>
+   <button class="pill" type="button" data-s="fb"><b>f</b>Unión de Mujeres Transportistas BB</button>
+   <button class="pill" type="button" data-s="tt"><b>TT</b>@lizzete.esther.ca</button>
   </div>
   <button class="trk" id="btn-trk" type="button">📍 <span class="es">Rastreo en vivo</span><span class="en">Live tracking</span></button>
   <div class="safe"><div><b><span class="es">Línea de las Mujeres</span><span class="en">Women’s Hotline</span></b><br>311 132 52 25</div><div><b><span class="es">Emergencias</span><span class="en">Emergency</span></b> 911</div></div>
   <div class="qr"><img src="/img/qr-pagina.png" alt="Código QR de la página"><p><span class="es">Escanea y conócenos</span><span class="en">Scan to learn more</span></p><p class="url">mujerestransportistas<br>.datable.com.mx</p></div>
  </aside>
 </div>
+<div id="soc"><div class="in"><h2 id="soc-h"></h2><p id="soc-p"></p><div class="q" id="soc-q"></div><button type="button" id="soc-x"><span class="es">Cerrar ✕</span><span class="en">Close ✕</span></button></div></div>
 <div id="track"><div class="map" id="tmap"><div class="tiles" id="ttiles"></div><div class="pin"></div><div class="att">© OpenStreetMap</div></div>
  <div class="pan"><h2><span class="es">Tu viaje en vivo</span><span class="en">Your ride, live</span></h2><p id="t-txt">Ubicando…</p>
   <div class="qrbox" id="t-qr"></div>
@@ -401,6 +409,25 @@ stg.addEventListener('touchend',function(e){if(inGame||sx===null)return;var dx=e
  if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)){if(!started)begin(true);show(dx<0?(i+1)%slots.length:(i-1+slots.length)%slots.length)}},{passive:true});
 document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')show((i+1)%slots.length);if(e.key==='ArrowLeft')show((i-1+slots.length)%slots.length)});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/tablet/sw.js',{scope:'/tablet/'}).catch(function(){});
+
+/* ===== Botones de WhatsApp y redes: abren un QR para el celular del pasajero ===== */
+(function(){
+ var SOC={fb:'https://www.facebook.com/profile.php?id=61589655522275',tt:'https://www.tiktok.com/@lizzete.esther.ca'};
+ var box=document.getElementById('soc'),tm=null;
+ function cierra(){box.style.display='none';clearTimeout(tm)}
+ function abre(k){
+  var url,h,p;
+  if(k==='wa'){url='https://wa.me/52'+C.wa.replace(/\D/g,'')+'?text='+encodeURIComponent(T('Hola '+C.n+', viajé contigo y quiero contactarte','Hi '+C.n+', I rode with you and would like to contact you'));h=T('WhatsApp de '+C.n,C.n+'’s WhatsApp');p=T('Escanea con tu celular para escribirle directo.','Scan with your phone to message her directly.')}
+  else if(k==='fb'){url=SOC.fb;h=T('Facebook de la Unión','Our Facebook page');p=T('Escanea con tu celular para seguirnos.','Scan with your phone to follow us.')}
+  else{url=SOC.tt;h='TikTok';p=T('Escanea con tu celular para seguirnos.','Scan with your phone to follow us.')}
+  document.getElementById('soc-h').textContent=h;document.getElementById('soc-p').textContent=p;
+  try{var q=qrcode(0,'M');q.addData(url);q.make();document.getElementById('soc-q').innerHTML=q.createImgTag(8,8)}catch(e){}
+  box.style.display='grid';clearTimeout(tm);tm=setTimeout(cierra,25000);
+ }
+ [].forEach.call(document.querySelectorAll('button.pill[data-s]'),function(b){b.addEventListener('click',function(e){e.stopPropagation();abre(b.getAttribute('data-s'))})});
+ document.getElementById('soc-x').addEventListener('click',function(e){e.stopPropagation();cierra()});
+ box.addEventListener('click',function(e){e.stopPropagation();if(e.target===box)cierra()});
+})();
 </script>
 </body>
 </html>
