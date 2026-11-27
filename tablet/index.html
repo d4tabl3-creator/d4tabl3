@@ -181,6 +181,20 @@ html[lang=en] .es,html[lang=es] .en{display:none!important}
  .side .qr{margin-top:auto;width:auto;flex:none;display:flex;flex-direction:column;align-items:center;padding:min(8px,1vh)}
  .side .qr img{width:auto;height:min(140px,17vh);max-width:100%}
 }
+@media (orientation:landscape) and (max-height:700px){
+ .side{gap:min(6px,1.2vh);padding:min(10px,2vh) 10px}
+ .side img.logo{height:min(90px,11vh)}
+ .side h2{font-size:clamp(13px,3.6vh,19px)}
+ .side .lng{padding:min(6px,1.2vh) 8px;font-size:clamp(11px,3vh,14px)}
+ .side .row{display:flex;flex-direction:row;gap:4px}
+ .side .row .pill{padding:min(5px,1vh) 4px;font-size:0;gap:5px;width:auto;flex:none}
+ .side .row .pill.wa{flex:1;min-width:0;white-space:nowrap;font-size:clamp(10px,2.6vh,13px)}
+ .side .row .pill b{width:min(30px,7vh);height:min(30px,7vh);font-size:12px}
+ .side .trk{padding:min(8px,1.6vh) 8px;font-size:clamp(12px,3.4vh,16px)}
+ .side .safe{gap:4px}.side .safe>div{padding:min(5px,1vh) 8px;font-size:clamp(10px,2.8vh,13px)}
+ .side .qr{padding:min(6px,1.2vh)}.side .qr img{height:min(120px,19vh)}
+ .side .qr p{font-size:clamp(9px,2.4vh,12px)}.side .qr p.url{display:none}
+}
 .safe div{background:#b23a4833;border:1px solid #f3a9cb55;border-radius:12px;padding:8px 10px;font:600 clamp(12px,1.1vw,15px) Figtree;text-align:left}
 .safe b{color:#f3a9cb}
 </style>
